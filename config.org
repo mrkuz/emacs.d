@@ -733,10 +733,16 @@ Keybindings:
   :config
   (setq markdown-command "pandoc -s -t html5"))
 
+;; Live preview in web browser
 (use-package markdown-preview-mode
   :commands markdown-preview-mode
   :config
+  ;; Use Github style
   (setq markdown-preview-stylesheets '("https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css")))
+
+;; Pandoc integration
+(use-package pandoc-mode
+  :commands pandoc-mode)
 #+END_SRC
 
 * Packages: Databases
