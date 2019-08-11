@@ -724,25 +724,56 @@ Keybindings:
   (add-to-list 'company-backends 'company-restclient))
 #+END_SRC
 
+* Packages: Live previews
+
+#+BEGIN_SRC emacs-lisp :results none
+
+;; Simple HTTP server used for live preview
+(use-package simple-httpd
+  :config
+  (setq httpd-port 7070)
+  (setq httpd-host (system-name)))
+
+;; Live preview
+(use-package impatient-mode
+  :commands impatient-mode)
+
+#+END_SRC
+
 * Packages: Markdown
 
 #+BEGIN_SRC emacs-lisp :results none
+
+;; Pandoc integration
+(use-package pandoc-mode
+  :commands pandoc-mode)
+
 (use-package markdown-mode
   :mode ("\\.md\\'" . gfm-mode)
   :commands (markdown-mode gfm-mode)
   :config
   (setq markdown-command "pandoc -s -t html5"))
 
-;; Live preview in web browser
-(use-package markdown-preview-mode
-  :commands markdown-preview-mode
-  :config
-  ;; Use Github style
-  (setq markdown-preview-stylesheets '("https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css")))
+;; Custom filter to render markdown like GitHub
+(defun my-markdown-filter (buffer)
+  (princ
+   (with-temp-buffer
+     (let ((tmp (buffer-name)))
+       (set-buffer buffer)
+       (set-buffer (markdown tmp))
+       (format "<!DOCTYPE html><html><title>Markdown preview</title><link rel=\"stylesheet\" href = \"https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css\"/>
+<body><article class=\"markdown-body\" style=\"box-sizing: border-box;min-width: 200px;max-width: 980px;margin: 0 auto;padding: 45px;\">%s</article></body></html>" (buffer-string))))
+   (current-buffer)))
 
-;; Pandoc integration
-(use-package pandoc-mode
-  :commands pandoc-mode)
+;; Show preview of current markdown buffer
+(defun my-markdown-preview ()
+  "Preview markdown."
+  (interactive)
+  (unless (process-status "httpd")
+    (httpd-start))
+  (impatient-mode)
+  (imp-set-user-filter 'my-markdown-filter)
+  (imp-visit-buffer))
 #+END_SRC
 
 * Packages: Databases
