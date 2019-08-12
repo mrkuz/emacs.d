@@ -253,7 +253,19 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 (use-package dired
   :ensure nil
   :bind (:map dired-mode-map ([remap dired-find-file] . 'dired-find-alternate-file)))
+#+END_SRC
 
+* Packages: Spell checking
+
+#+BEGIN_SRC emacs-lisp :results none
+(use-package flyspell
+  :commands flyspell-mode
+  :config
+  (unbind-key "C-;" flyspell-mode-map))
+
+(use-package flyspell-correct-ivy
+  :after flyspell ivy
+  :bind (:map flyspell-mode-map ([remap flyspell-correct-word-before-point] . 'flyspell-correct-wrapper)))
 #+END_SRC
 
 * Packages: Utilities
@@ -962,6 +974,7 @@ Interact with language servers.
 (define-key my-map (kbd "M-U") 'string-inflection-upcase)
 (define-key my-map (kbd "M-x") 'string-inflection-all-cycle)
 (define-key my-map (kbd "b") 'broadcast-mode)
+(define-key my-map (kbd "c") 'flyspell-mode)
 (define-key my-map (kbd "d d") 'dap-debug)
 (define-key my-map (kbd "d l") 'lsp)
 (define-key my-map (kbd "D l") 'desktop-read)
@@ -980,8 +993,8 @@ Interact with language servers.
 (define-key my-map (kbd "h h") 'highlight-changes-mode)
 (define-key my-map (kbd "h r") 'my-highlight-changes-remove-all)
 (define-key my-map (kbd "j a") 'ace-link-addr)
-(define-key my-map (kbd "j c") 'ace-jump-word-mode)
 (define-key my-map (kbd "j i") 'imenu)
+(define-key my-map (kbd "j j") 'ace-jump-word-mode)
 (define-key my-map (kbd "j l") 'ace-jump-line-mode)
 (define-key my-map (kbd "j w") 'ace-window)
 (define-key my-map (kbd "L") 'emacs-lock-mode)
