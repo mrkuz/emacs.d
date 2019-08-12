@@ -874,6 +874,33 @@ Interact with language servers.
   (setq org-reverse-datetree-date-format "%Y-%m-%d %A")
   (setq org-reverse-datetree-week-format "%Y-%m KW%V")
   (setq org-reverse-datetree-year-format "%Y"))
+
+(defun my-org-html-filter (buffer)
+  (princ
+   (with-temp-buffer
+     (insert-buffer-substring buffer)
+     (shell-command-on-region (point-min) (point-max) "pandoc -s -f org -t html5" nil t)
+     (buffer-string))
+   (current-buffer)))
+
+(defun my-org-html-filter-2 (buffer)
+  (princ
+   (with-temp-buffer
+     (insert-buffer-substring buffer)
+     (shell-command-on-region (point-min) (point-max) "pandoc -s -f org -t html5" nil t)
+     (format "<!DOCTYPE html><html><title>Markdown preview</title><link rel=\"stylesheet\" href = \"https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css\"/>
+<body><article class=\"markdown-body\" style=\"box-sizing: border-box;min-width: 200px;max-width: 980px;margin: 0 auto;padding: 45px;\">%s</article></body></html>" (buffer-string)))
+   (current-buffer)))
+
+;; Show HTML preview of current org buffer
+(defun my-org-html-preview ()
+  "Preview org buffer as HTML."
+  (interactive)
+  (unless (process-status "httpd")
+    (httpd-start))
+  (impatient-mode)
+  (imp-set-user-filter 'my-org-html-filter-2)
+  (imp-visit-buffer))
 #+END_SRC
 
 * Packages: Miscellaneous modes
