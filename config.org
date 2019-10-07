@@ -445,12 +445,6 @@ Keybindings:
   :diminish which-key-mode
   :config
   (which-key-mode 1))
-
-;; Provide better help for dired
-(use-package discover
-  :defer 1
-  :config
-  (global-discover-mode))
 #+END_SRC
 
 * Packages: Navigation
