@@ -899,6 +899,10 @@ Interact with language servers.
   (setq org-reverse-datetree-week-format "%Y-%m KW%V")
   (setq org-reverse-datetree-year-format "%Y"))
 
+;; Kanban board
+(use-package org-kanban
+  :defer 1)
+
 (defun my-org-html-filter (buffer)
   (princ
    (with-temp-buffer
