@@ -173,6 +173,12 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
           (lambda ()
             (display-line-numbers-mode)
             (set-face-attribute 'line-number-current-line nil :inherit 'default :foreground "#bbc2cf")))
+;; Show only calendar week
+(setq display-time-format " W%V")
+;; Hide system load
+(setq display-time-default-load-average nil)
+;; Show date/time in modeline
+(display-time-mode 1)
 #+END_SRC
 
 ** Highlightning
