@@ -94,6 +94,8 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 (winner-mode 1)
 ;; Always follow links
 (setq vc-follow-symlinks t)
+;; Set up remember data file
+(setq remember-data-file  "~/org/notes.org")
 #+END_SRC
 
 ** Indention
@@ -202,10 +204,14 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 (setq org-startup-indented t)
 ;; Add CLOSED timestamp to DONE items
 (setq org-log-done 'time)
+;; Add tags immediate after the headline
+(setq org-tags-column 0)
 ;; Don't indent lines after editing
 (setq org-edit-src-content-indentation 0)
 ;; Don't ask for confirmation on evaluate
 (setq org-confirm-babel-evaluate nil)
+;; Insert notes into drawer
+(setq org-log-into-drawer t)
 ;; Set org directory
 (setq org-directory "~/org")
 ;; Set the default file for notes
@@ -968,6 +974,10 @@ Interact with language servers.
   :commands docker-compose-mode
   :mode (("docker-compose.yaml\\'" . docker-compose-mode)
          ("docker-compose.yml\\'" . docker-compose-mode)))
+
+;; Docker integration
+(use-package docker
+  :commands docker)
 #+END_SRC
 
 * Global keybinding
@@ -992,6 +1002,7 @@ Interact with language servers.
 (define-key my-map (kbd "f c") (lambda () (interactive) (find-file "~/.emacs.d/config.org")))
 (define-key my-map (kbd "f i") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
 (define-key my-map (kbd "f s") 'my-create-scratch)
+(define-key my-map (kbd "f n") (lambda () (interactive) (find-file (concat org-directory "/notes.org"))))
 (define-key my-map (kbd "f t") (lambda () (interactive) (find-file (concat org-directory "/todo.org"))))
 (define-key my-map (kbd "g d") 'git-gutter:popup-hunk)
 (define-key my-map (kbd "g g") 'magit-file-dispatch)
@@ -1008,6 +1019,9 @@ Interact with language servers.
 (define-key my-map (kbd "j j") 'ace-jump-word-mode)
 (define-key my-map (kbd "j l") 'ace-jump-line-mode)
 (define-key my-map (kbd "j w") 'ace-window)
+(define-key my-map (kbd "k i") 'org-kanban/initialize)
+(define-key my-map (kbd "k p") 'org-kanban/prev)
+(define-key my-map (kbd "k n") 'org-kanban/next)
 (define-key my-map (kbd "L") 'emacs-lock-mode)
 (define-key my-map (kbd "m d") 'mc/mark-all-dwim)
 (define-key my-map (kbd "m a") 'mc/mark-all-like-this)
