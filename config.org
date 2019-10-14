@@ -217,7 +217,8 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 ;; Set the default file for notes
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 ;; Add all files in the org directory to the agenda
-(setq org-agenda-files '("."))
+(setq org-agenda-files '("~/org" "~/org/mobile"))
+;; (setq org-agenda-files (directory-files-recursively "~/org/" "\.org$"))
 ;; Set archive file
 (setq org-archive-location "~/org/archive.org::* File: %s")
 ;; Enable auto-fill-mode
@@ -229,9 +230,14 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 ;; Custom templates
 (add-to-list 'org-structure-template-alist '("el" "#+BEGIN_SRC emacs-lisp :results none\n?\n#+END_SRC"))
 ;; Custom capture templates
-(setq org-capture-templates
-      '(("t" "Todo" entry (file+function "todo.org" org-reverse-datetree-goto-read-date-in-file)
-      "* TODO %?\nSCHEDULED: <%(org-read-date nil nil org-read-date-final-answer)>\n\n%i")))
+(setq org-capture-templates '(
+    ("t" "Todo" entry (file+function "todo.org" org-reverse-datetree-goto-read-date-in-file)
+     "* TODO %?\nSCHEDULED: <%(org-read-date nil nil org-read-date-final-answer)>")
+    ("b" "Backlog" entry (file+olp "todo.org" "Backlog")
+     "* TODO %?")
+    ("j" "Journal" entry (file+olp+datetree "journal.org")
+     "** %<%H:%M> %?")
+    ))
 ;; Allow setting refile targets as local file variable
 (put 'org-refile-targets 'safe-local-variable (lambda (_) t))
 ;; Load language support
@@ -1001,6 +1007,7 @@ Interact with language servers.
 (define-key my-map (kbd "D s") 'desktop-save-in-desktop-dir)
 (define-key my-map (kbd "f c") (lambda () (interactive) (find-file "~/.emacs.d/config.org")))
 (define-key my-map (kbd "f i") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
+(define-key my-map (kbd "f j") (lambda () (interactive) (find-file (concat org-directory "/journal.org"))))
 (define-key my-map (kbd "f s") 'my-create-scratch)
 (define-key my-map (kbd "f n") (lambda () (interactive) (find-file (concat org-directory "/notes.org"))))
 (define-key my-map (kbd "f t") (lambda () (interactive) (find-file (concat org-directory "/todo.org"))))
