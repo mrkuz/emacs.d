@@ -723,9 +723,8 @@ Keybindings:
 #+BEGIN_SRC emacs-lisp :results none
 ;; On-the-fly syntax checking
 (use-package flycheck
-  :defer 1
   :diminish flycheck-mode
-  :hook (prog-mode . flycheck-mode)
+  :commands flycheck-mode
   :config
   ;; Check on save and when mode gets enabled
   (setq flycheck-check-syntax-automatically '(save mode-enabled)))
@@ -910,6 +909,14 @@ Interact with language servers.
 ;; Kanban board
 (use-package org-kanban
   :defer 1)
+
+;; Show header-line with current org heading
+(use-package org-sticky-header
+  :hook (org-mode . org-sticky-header-mode)
+  :config
+  (setq org-sticky-header-always-show-header nil)
+  (setq org-sticky-header-full-path 'full)
+  (setq org-sticky-header-outline-path-separator " > "))
 
 (defun my-org-html-filter (buffer)
   (princ
