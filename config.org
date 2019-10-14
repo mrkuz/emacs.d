@@ -117,7 +117,9 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 ;; Try to keep position when scrolling pages
 (setq-default scroll-preserve-screen-position t)
 ;; Always scroll single line when cursor leaves visible area
-(setq scroll-conservatively 10000)
+;; (setq scroll-conservatively 10000)
+;; Try to keep 5 lines visible when scrolling
+(setq scroll-step 5)
 #+END_SRC
 
 ** Calendar
