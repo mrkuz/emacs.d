@@ -231,6 +231,8 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 (setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
 ;; Custom templates
 (add-to-list 'org-structure-template-alist '("el" "#+BEGIN_SRC emacs-lisp :results none\n?\n#+END_SRC"))
+;; TODO keywords
+(setq org-todo-keywords '((sequence "TODO" "WIP" "|" "DONE" "MOVED" "CANCELED")))
 ;; Custom capture templates
 (setq org-capture-templates '(
     ("t" "Todo" entry (file+function "todo.org" org-reverse-datetree-goto-read-date-in-file)
