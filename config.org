@@ -96,6 +96,10 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 (setq vc-follow-symlinks t)
 ;; Set up remember data file
 (setq remember-data-file  "~/org/notes.org")
+;; Set up diary file
+(setq diary-file "~/org/diary")
+;; Configure calendar holdays
+(setq calendar-holidays (append holiday-general-holidays holiday-christian-holidays))
 #+END_SRC
 
 ** Indention
@@ -221,6 +225,8 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 ;; Add all files in the org directory to the agenda
 (setq org-agenda-files '("~/org" "~/org/mobile"))
 ;; (setq org-agenda-files (directory-files-recursively "~/org/" "\.org$"))
+;; Include diary in agenda
+(setq org-agenda-include-diary t)
 ;; Set archive file
 (setq org-archive-location "~/org/archive.org::* File: %s")
 ;; Enable auto-fill-mode
@@ -911,6 +917,10 @@ Interact with language servers.
 ;; Kanban board
 (use-package org-kanban
   :defer 1)
+
+;; Hugo exporter
+(use-package ox-hugo
+  :after ox)
 
 ;; Show header-line with current org heading
 (use-package org-sticky-header
