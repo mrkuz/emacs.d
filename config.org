@@ -187,6 +187,8 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 (setq display-time-default-load-average nil)
 ;; Show date/time in modeline
 (display-time-mode 1)
+;; Show buffer name in frame title
+(setq-default frame-title-format '("Emacs - %b"))
 #+END_SRC
 
 ** Highlightning
