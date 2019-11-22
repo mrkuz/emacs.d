@@ -793,7 +793,7 @@ Keybindings:
   :mode ("\\.md\\'" . gfm-mode)
   :commands (markdown-mode gfm-mode)
   :config
-  (setq markdown-command "pandoc -s -t html5"))
+  (setq markdown-command "pandoc -t html5"))
 
 ;; Custom filter to render markdown like GitHub
 (defun my-markdown-filter (buffer)
