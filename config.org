@@ -258,10 +258,30 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
                                (shell . t)))
 #+END_SRC
 
+** org-present
+
+#+BEGIN_SRC emacs-lisp :results none
+(add-to-list 'load-path "~/.emacs.d/site-lisp/org-present")
+(autoload 'org-present "org-present" nil t)
+(eval-after-load "org-present"
+  '(progn
+     (add-hook 'org-present-mode-hook
+               (lambda ()
+                 (org-present-big)
+                 (org-display-inline-images)
+                 (org-present-hide-cursor)
+                 (org-present-read-only)))
+     (add-hook 'org-present-mode-quit-hook
+               (lambda ()
+                 (org-present-small)
+                 (org-remove-inline-images)
+                 (org-present-show-cursor)
+                 (org-present-read-write)))))
+#+END_SRC
+
 * Packages: Built-in
 
 #+BEGIN_SRC emacs-lisp :results none
-
 ;; Keep track of recently opened files
 (use-package recentf
   :after no-littering
@@ -536,7 +556,7 @@ Keybindings:
   :hook (after-init . doom-modeline-mode)
   :config
   ;; Set width of modeline bar
-  (setq doom-modeline-bar-width 1)
+  (setq doom-modeline-bar-width 2)
   ;; Set modeline height
   (setq doom-modeline-height 20)
   ;; Don't use icons
@@ -547,18 +567,18 @@ Keybindings:
   ;; Hack: Overwrite function make bar invisible and force the configured height
   (defun doom-modeline-refresh-bars (&optional width height)
     (setq doom-modeline--bar-active
-          (doom-modeline--make-xpm 'doom-modeline-inactive-bar
+          (doom-modeline--make-xpm 'doom-modeline-bar
                                    (or width doom-modeline-bar-width)
                                    (or height doom-modeline-height))
           doom-modeline--bar-inactive
-          (doom-modeline--make-xpm 'doom-modeline-inactive-bar
+          (doom-modeline--make-xpm 'doom-modeline-bar
                                    (or width doom-modeline-bar-width)
                                    (or height doom-modeline-height))))
 
   ;; Customize modeline
   (doom-modeline-def-modeline 'my-modeline
     '(bar workspace-name window-number modals matches buffer-info remote-host selection-info)
-    '(buffer-position objed-state misc-info persp-name debug lsp minor-modes input-method indent-info buffer-encoding major-mode process vcs checker bar))
+    '(buffer-position objed-state misc-info persp-name debug lsp minor-modes input-method indent-info buffer-encoding major-mode process vcs checker))
   (add-hook 'doom-modeline-mode-hook (lambda () (doom-modeline-set-modeline 'my-modeline 'default))))
 
 ;; Highlight surrounding parens
@@ -920,6 +940,12 @@ Interact with language servers.
 (use-package org-kanban
   :defer 1)
 
+;; Reveal.js
+(use-package ox-reveal
+  :after ox
+  :config
+  (setq org-reveal-root "file:///home/markus/opt/reveal.js/"))
+
 ;; Hugo exporter
 (use-package ox-hugo
   :after ox)
@@ -958,6 +984,16 @@ Interact with language servers.
   (impatient-mode)
   (imp-set-user-filter 'my-org-html-filter-2)
   (imp-visit-buffer))
+#+END_SRC
+
+* Packages: Web
+
+#+BEGIN_SRC emacs-lisp :results none
+;; Autocompletion for web mode
+(use-package company-web
+  :defer 1
+  :config
+  (add-to-list 'company-backends 'company-web-html))
 #+END_SRC
 
 * Packages: Miscellaneous modes
