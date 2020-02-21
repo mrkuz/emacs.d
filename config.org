@@ -230,7 +230,9 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 ;; Include diary in agenda
 (setq org-agenda-include-diary t)
 ;; Set archive file
-(setq org-archive-location "~/org/archive.org::* File: %s")
+(setq org-archive-location "~/org/.archive.org::* File: %s")
+;; No header in archive file
+(setq org-archive-file-header-format nil)
 ;; Enable auto-fill-mode
 (add-hook 'org-mode-hook 'auto-fill-mode)
 ;; Diminish
@@ -477,6 +479,11 @@ Keybindings:
   :diminish counsel-mode
   :config
   (counsel-mode 1))
+
+(use-package ivy-rich
+  :after ivy
+  :config
+  (ivy-rich-mode 1))
 
 #+END_SRC
 
