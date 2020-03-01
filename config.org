@@ -208,6 +208,8 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 * Org mode
 
 #+BEGIN_SRC emacs-lisp :results none
+;; Load org-protocol
+(require 'org-protocol)
 ;; Start org-mode indented
 (setq org-startup-indented t)
 ;; Add CLOSED timestamp to DONE items
@@ -246,7 +248,7 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 ;; Custom capture templates
 (setq org-capture-templates '(
     ("b" "Backlog" entry (file+olp "todo.org" "Backlog")
-     "* TODO %?" :prepend t)
+     "* TODO %:link%?" :prepend t)
     ("n" "Next" entry (file+olp "todo.org" "Next")
      "* TODO %?" :prepend t)
     ("t" "Todo" entry (file+function "todo.org" org-reverse-datetree-goto-read-date-in-file)
@@ -1036,6 +1038,20 @@ Keybindings:
   (impatient-mode)
   (imp-set-user-filter 'my-org-html-filter)
   (imp-visit-buffer))
+
+(defun my-org-protocol-capture-hook ()
+  (let ((name (cdr (assoc 'name (frame-parameters)))))
+    (when (equal name "org-protocol-capture")
+      (delete-other-windows)
+      (select-frame-set-input-focus (selected-frame)))))
+
+(defun my-org-protocol-after-capture-hook ()
+  (let ((name (cdr (assoc 'name (frame-parameters)))))
+    (when (equal name "org-protocol-capture")
+      (delete-frame))))
+
+(add-hook 'org-capture-mode-hook 'my-org-protocol-capture-hook)
+(add-hook 'org-capture-after-finalize-hook 'my-org-protocol-after-capture-hook)
 #+END_SRC
 
 * Fixes
