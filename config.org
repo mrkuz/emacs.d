@@ -253,7 +253,9 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
      "* TODO %?" :prepend t)
     ("t" "Todo" entry (file+function "todo.org" org-reverse-datetree-goto-read-date-in-file)
      "* TODO %?\nSCHEDULED: <%(org-read-date nil nil org-read-date-final-answer)>")
-    ("j" "Journal" entry (file+olp+datetree "journal.org")
+    ("N" "Note" entry (file+olp+datetree "notes.org")
+     "** %<%H:%M> %?")
+    ("J" "Journal" entry (file+olp+datetree "journal.org")
      "** %<%H:%M> %?")
     ))
 ;; Allow setting refile targets as local file variable
