@@ -218,7 +218,7 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 (setq org-edit-src-content-indentation 0)
 ;; Don't ask for confirmation on evaluate
 (setq org-confirm-babel-evaluate nil)
-;; Insert notes into drawer
+;; Insert log notes into drawer
 (setq org-log-into-drawer t)
 ;; Set org directory
 (setq org-directory "~/org")
@@ -245,10 +245,12 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 (setq org-todo-keywords '((sequence "TODO" "WIP" "|" "DONE" "MOVED" "CANCELED")))
 ;; Custom capture templates
 (setq org-capture-templates '(
+    ("b" "Backlog" entry (file+olp "todo.org" "Backlog")
+     "* TODO %?" :prepend t)
+    ("n" "Next" entry (file+olp "todo.org" "Next")
+     "* TODO %?" :prepend t)
     ("t" "Todo" entry (file+function "todo.org" org-reverse-datetree-goto-read-date-in-file)
      "* TODO %?\nSCHEDULED: <%(org-read-date nil nil org-read-date-final-answer)>")
-    ("b" "Backlog" entry (file+olp "todo.org" "Backlog")
-     "* TODO %?")
     ("j" "Journal" entry (file+olp+datetree "journal.org")
      "** %<%H:%M> %?")
     ))
@@ -387,10 +389,6 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 (use-package popup-kill-ring
   :commands popup-kill-ring)
 
-;; Google translate
-(use-package google-translate
-  :commands google-translate-buffer)
-
 ;; Improved folding
 (use-package fold-dwim
   :commands fold-dwim-toggle)
@@ -422,20 +420,6 @@ Keybindings:
   (global-undo-tree-mode))
 #+END_SRC
 
-** Diff
-
-#+BEGIN_SRC emacs-lisp :results none
-
-;; Alternative diff method
-(use-package vdiff
-  :commands vdiff-buffers
-  :config
-  ;; Automatically refine hunks
-  (setq vdiff-auto-refine t)
-  ;; Set up keybindings
-  (define-key vdiff-mode-map (kbd "C-c") vdiff-mode-prefix-map))
-#+END_SRC
-
 ** Terminal
 
 #+BEGIN_SRC emacs-lisp :results none
@@ -465,8 +449,6 @@ Keybindings:
           (t . ivy--regex-fuzzy)))
   ;; Add recent files and bookmarks to buffer list
   (setq ivy-use-virtual-buffers t)
-  ;; Start with empty line (remove ^)
-  (setq ivy-initial-inputs-alist nil)
   (setq magit-completing-read-function 'ivy-completing-read)
   (setq projectile-completion-system 'ivy)
   (ivy-mode 1))
@@ -599,23 +581,6 @@ Keybindings:
   (setq hl-paren-highlight-adjacent t)
   (global-highlight-parentheses-mode))
 
-;; Show fill column
-(use-package fill-column-indicator
-  :diminish fci-mode
-  :commands fci-mode
-  :config
-  ;; Customize color
-  (setq fci-rule-color "#3f444a"))
-
-;; Show indention guides
-(use-package indent-guide
-  :diminish indent-guide-mode
-  :commands indent-guide-mode
-  :custom-face (indent-guide-face ((t (:inherit line-number))))
-  :config
-  ;; Use custom character to show lines without gap
-  (setq indent-guide-char "│"))
-
 ;; Tree layout explorer
 (use-package treemacs
   :commands treemacs
@@ -726,9 +691,6 @@ Keybindings:
 (use-package yasnippet-snippets
   :after yasnippet)
 
-;; Create snippets on-the-fly
-(use-package auto-yasnippet
-  :commands (aya-create aya-expand))
 #+END_SRC
 
 * Packages: Git
@@ -858,77 +820,6 @@ Keybindings:
 ;; Org mode integration
 (use-package ob-mongo
   :defer t)
-#+END_SRC
-
-* Packages: LSP/DAP
-
-Interact with language servers.
-
-#+BEGIN_SRC emacs-lisp :results none
-;; LSP mode
-(use-package lsp-mode
-  :commands lsp
-  :bind (:map lsp-mode-map
-              ("C-c l d" . 'lsp-describe-thing-at-point)
-              ("C-c l f" . 'lsp-format-buffer)
-              ("C-c l o" . 'lsp-organize-imports)
-              ("C-c l x" .  'lsp-execute-code-action))
-  :config
-  ;; Disable auto execution of single actions
-  (setq lsp-auto-execute-action nil)
-  ;; Disable auto configuration
-  (setq lsp-auto-configure nil)
-  ;; Disable eldoc
-  (setq lsp-eldoc-enable-signature-help nil)
-  ;; Set up flycheck
-  (require 'lsp-ui-flycheck)
-  (lsp-ui-flycheck-enable t))
-
-;; Company support
-(use-package company-lsp
-  :after lsp-mode company
-  :config
-  ;; Register LSP backend
-  (add-to-list 'company-backends 'company-lsp))
-
-;; LSP UI extensions
-(use-package lsp-ui
-  :after lsp-mode)
-
-;; LSP support for java
-(use-package lsp-java
-  :after lsp-mode
-  :config
-  ;; Disable automatic build
-  (setq lsp-java-auto-build nil)
-  ;; Set server installation directory
-  (setq lsp-java-server-install-dir (no-littering-expand-var-file-name "eclipse.jdt.ls/server"))
-  ;; Set workspace directory
-  (setq lsp-java-workspace-dir (no-littering-expand-var-file-name "workspace"))
-  ;; Set cache directory
-  (setq lsp-java-workspace-cache-dir (no-littering-expand-var-file-name "workspace/cache")))
-
-;; Debugging
-(use-package dap-mode
-  :after lsp-mode
-  :hook ((lsp-mode . (lambda () (dap-mode) (dap-ui-mode))))
-  :bind (:map dap-mode-map
-              ("C-c d D" .  'dap-disconnect)
-              ("C-c d b" .  'dap-breakpoint-toggle)
-              ("C-c d B" . 'dap-ui-breakpoints)
-              ("C-c d c" . 'dap-continue)
-              ("C-c d e" . 'dap-eval)
-              ("C-c d i" . 'dap-step-in)
-              ("C-c d I" . 'dap-ui-inspect)
-              ("C-c d L" . 'dap-ui-locals)
-              ("C-c d n" . 'dap-next)
-              ("C-c d o" . 'dap-step-out)
-              ("C-c d O" . 'dap-go-to-output-buffer)
-              ("C-c d R" . 'dap-repl)
-              ("C-c d t" . 'dap-switch-thread))
-  :config
-  ;; Java support
-  (require 'dap-java))
 #+END_SRC
 
 * Packages: Org
@@ -1067,12 +958,9 @@ Interact with language servers.
 (define-key my-map (kbd "M-x") 'string-inflection-all-cycle)
 (define-key my-map (kbd "b") 'broadcast-mode)
 (define-key my-map (kbd "c") 'flyspell-mode)
-(define-key my-map (kbd "d d") 'dap-debug)
-(define-key my-map (kbd "d l") 'lsp)
 (define-key my-map (kbd "D l") 'desktop-read)
 (define-key my-map (kbd "D s") 'desktop-save-in-desktop-dir)
 (define-key my-map (kbd "f c") (lambda () (interactive) (find-file "~/.emacs.d/config.org")))
-(define-key my-map (kbd "f i") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
 (define-key my-map (kbd "f j") (lambda () (interactive) (find-file (concat org-directory "/journal.org"))))
 (define-key my-map (kbd "f s") 'my-create-scratch)
 (define-key my-map (kbd "f n") (lambda () (interactive) (find-file (concat org-directory "/notes.org"))))
@@ -1085,8 +973,6 @@ Interact with language servers.
 (define-key my-map (kbd "g r") 'git-gutter:revert-hunk)
 (define-key my-map (kbd "g t") 'git-gutter:toggle)
 (define-key my-map (kbd "G") 'google-this)
-(define-key my-map (kbd "h h") 'highlight-changes-mode)
-(define-key my-map (kbd "h r") 'my-highlight-changes-remove-all)
 (define-key my-map (kbd "j a") 'ace-link-addr)
 (define-key my-map (kbd "j i") 'imenu)
 (define-key my-map (kbd "j j") 'ace-jump-word-mode)
@@ -1103,8 +989,6 @@ Interact with language servers.
 (define-key my-map (kbd "o c") 'org-capture)
 (define-key my-map (kbd "o l") 'org-store-link)
 (define-key my-map (kbd "R") (lambda () (interactive ) (org-babel-load-file "~/.emacs.d/config.org")))
-(define-key my-map (kbd "s c") 'aya-create)
-(define-key my-map (kbd "s e") 'aya-expand)
 (define-key my-map (kbd "s i") 'company-yasnippet)
 (define-key my-map (kbd "s t") 'yas-describe-tables)
 (define-key my-map (kbd "S") 'swiper)
@@ -1113,8 +997,6 @@ Interact with language servers.
 (define-key my-map (kbd "t o") 'treemacs-select-window)
 (define-key my-map (kbd "u") 'undo-tree-visualize)
 (define-key my-map (kbd "v c") 'rainbow-mode)
-(define-key my-map (kbd "v f") 'fci-mode)
-(define-key my-map (kbd "v i") 'indent-guide-mode)
 (define-key my-map (kbd "v l") 'my-toggle-truncate-line)
 (define-key my-map (kbd "v u") 'goto-address-mode)
 (define-key my-map (kbd "v w") 'whitespace-mode)
