@@ -254,7 +254,7 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
     ("t" "Todo" entry (file+function "todo.org" org-reverse-datetree-goto-read-date-in-file)
      "* TODO %?\nSCHEDULED: <%(org-read-date nil nil org-read-date-final-answer)>")
     ("N" "Note" entry (file+olp+datetree "notes.org")
-     "** %<%H:%M> %?")
+     "** %<%H:%M> %:link%?")
     ("J" "Journal" entry (file+olp+datetree "journal.org")
      "** %<%H:%M> %?")
     ))
