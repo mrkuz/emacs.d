@@ -210,8 +210,6 @@ Banchmarks the init process. View results with ~benchmark-init/show-durations-tr
 #+BEGIN_SRC emacs-lisp :results none
 ;; Load org-protocol
 (require 'org-protocol)
-;; Start org-mode indented
-(setq org-startup-indented t)
 ;; Add CLOSED timestamp to DONE items
 (setq org-log-done 'time)
 ;; Add tags immediate after the headline
@@ -499,6 +497,10 @@ Keybindings:
   ;; Use letters instead of numbers
   (setq aw-keys '(?a ?b ?c ?d ?e ?f ?g ?h)))
 
+;; Go to last change
+(use-package goto-last-change
+  :defer 1)
+
 ;; Visit a link by using a single character
 (use-package ace-link
   :commands ace-link)
@@ -506,6 +508,13 @@ Keybindings:
 ;; Jump to definition at point
 (use-package dumb-jump
   :commands dumb-jump-go)
+
+;; Visual bookmarks
+(use-package bm
+  :bind (("<f2>" . bm-next)
+         ("S-<f2>" . bm-previous)
+         ("C-<f2>" . bm-toggle))
+)
 #+END_SRC
 
 * Packages: Search
@@ -717,6 +726,9 @@ Keybindings:
   :hook (after-save . magit-after-save-refresh-status)
   :bind ("C-c g" . 'magit-status))
 
+;; Git timemachine
+(use-package git-timemachine
+  :commands git-timemachine)
 #+END_SRC
 
 * Packages: Development
@@ -840,6 +852,9 @@ Keybindings:
   (setq org-sticky-header-full-path 'full)
   (setq org-sticky-header-outline-path-separator " > "))
 
+;; Org bullets
+(use-package org-bullets
+  :hook (org-mode . org-bullets-mode))
 #+END_SRC
 
 * Packages: Web
@@ -935,6 +950,7 @@ Keybindings:
 (define-key my-map (kbd "j i") 'imenu)
 (define-key my-map (kbd "j j") 'ace-jump-word-mode)
 (define-key my-map (kbd "j l") 'ace-jump-line-mode)
+(define-key my-map (kbd "j p") 'goto-last-change)
 (define-key my-map (kbd "j w") 'ace-window)
 (define-key my-map (kbd "k i") 'org-kanban/initialize)
 (define-key my-map (kbd "k p") 'org-kanban/prev)
