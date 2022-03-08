@@ -1,0 +1,10 @@
+(("diminish.el" . "6b7e837b0cf0129e9d7d6abae48093cf599bb9e8")
+ ("el-get" . "9353309744e4f8a7c9b1adf22ec99536fb2146b0")
+ ("emacsmirror-mirror" . "641994eed3590a39a778431a16758c2c041963a9")
+ ("gnu-elpa-mirror" . "b9591336dc6ece42784901c4c00dded50be415fa")
+ ("hydra" . "9e9e00cb240ea1903ffd36a54956b3902c379d29")
+ ("melpa" . "144364ae1ab127dd4e630a848741eb561e00ab24")
+ ("no-littering" . "e0f8daa7c374cd91d9c4e89cbdda6e0e7fe24317")
+ ("straight.el" . "af5437f2afd00936c883124d6d3098721c2d306c")
+ ("use-package" . "a7422fb8ab1baee19adb2717b5b47b9c3812a84c"))
+:beta

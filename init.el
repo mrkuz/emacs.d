@@ -8,3 +8,5 @@
 (my/load-config "behavior")
 
 ;; Modules
+(my/load-module "my")
+(my/load-module "hydra")
