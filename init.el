@@ -10,3 +10,6 @@
 ;; Modules
 (my/load-module "my")
 (my/load-module "hydra")
+(my/load-module "vertico")
+(my/load-module "orderless")
+(my/load-module "marginalia")
