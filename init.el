@@ -5,5 +5,6 @@
 
 ;; Configuration
 (my/load-config "appearance")
+(my/load-config "behavior")
 
 ;; Modules
