@@ -1,4 +1,4 @@
-;; Early modules
+;; Basic modules
 (my/load-module "straight")
 (my/load-module "no-littering")
 (my/load-module "diminish")
