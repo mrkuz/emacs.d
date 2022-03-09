@@ -34,11 +34,19 @@
   ("u" straight-use-package)
   ("q" nil))
 
+(defhydra my/hydra-toggle (:color blue :hint nil :pre (message "Toggle"))
+  "
+  _w_ Whitespace mode
+  "
+  ("w" whitespace-mode)
+  ("q" nil))
+
+
 (defhydra my/hydra (:color blue :hint nil :pre (message "General commands"))
   "
-  _c_ Create…        _x_ Expand region     
-  _o_ Open files…    _R_ Reload configuration
-  _g_ Git…
+  _c_ Create…        _x_ Expand region
+  _o_ Open files…    _t_ Toggle…
+  _g_ Git…           _R_ Reload configuration
   _S_ Straight…
   "
   ("c" my/hydra-create/body)
@@ -46,6 +54,7 @@
   ("o" my/hydra-files/body)
   ("R" (load-file user-init-file))
   ("S" my/hydra-straight/body)
+  ("t" my/hydra-toggle/body)
   ("x" er/expand-region)
   ("q" nil))
 
