@@ -14,3 +14,4 @@
 (my/load-module "vertico")
 (my/load-module "orderless")
 (my/load-module "marginalia")
+(put 'dired-find-alternate-file 'disabled nil)
