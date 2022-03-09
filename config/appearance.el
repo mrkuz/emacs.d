@@ -45,3 +45,6 @@
 (show-paren-mode 1)
 ;; Show line numbers
 (add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode)))
+;; Set fringe width
+;; (setq-default left-fringe-width 12)
+;; (setq-default right-fringe-width 12)

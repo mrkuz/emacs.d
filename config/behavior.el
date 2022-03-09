@@ -57,6 +57,17 @@
 (setq history-length 100)
 
 ;;--------------------------------------------------------------------------------------------------
+;; Buffers
+;;--------------------------------------------------------------------------------------------------
+
+(use-package ibuffer
+  :straight (:type built-in)
+  :config
+  ;; Always use new window
+  (setq ibuffer-use-other-window t)
+  :bind (([remap list-buffers] . 'ibuffer)))
+
+;;--------------------------------------------------------------------------------------------------
 ;; Backups
 ;;--------------------------------------------------------------------------------------------------
 
@@ -101,7 +112,7 @@
 ;; Reuse buffer
 (use-package dired
   :straight (:type built-in)
-  :bind (:map dired-mode-map ("RET" . 'dired-find-alternate-file)))
+  :bind (:map dired-mode-map ("RET" . dired-find-alternate-file)))
 
 ;;--------------------------------------------------------------------------------------------------
 ;; recentf
@@ -113,7 +124,18 @@
   (recentf-mode)
   :config
   (add-to-list 'recentf-exclude no-littering-var-directory)
-  (add-to-list 'recentf-exclude no-littering-etc-directory))
+  (add-to-list 'recentf-exclude no-littering-etc-directory)
+  (add-to-list 'recentf-exclude "COMMIT_EDITMSG")
+  (add-to-list 'recentf-exclude ".*-autoloads\\.el"))
+
+;;--------------------------------------------------------------------------------------------------
+;; ediff
+;;--------------------------------------------------------------------------------------------------
+
+;; Use window instead of control frame
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+;; Compare side by side
+(setq ediff-split-window-function 'split-window-horizontally)
 
 ;;--------------------------------------------------------------------------------------------------
 ;; Miscellaneous
@@ -123,15 +145,13 @@
 (setq use-dialog-box nil)
 ;; Disable bell
 (setq ring-bell-function 'ignore)
+;; Always ask for y/n instead of yes/no
+(fset 'yes-or-no-p 'y-or-n-p)
+;; Ask before exiting emacs
+;; (setq confirm-kill-emacs 'yes-or-no-p)
 
 ;; Set fill column
 (setq-default fill-column 100)
-
-;; Always ask for y/n instead of yes/no
-(fset 'yes-or-no-p 'y-or-n-p)
-
-;; Ask before exiting emacs
-;; (setq confirm-kill-emacs 'yes-or-no-p)
 
 ;; Enable all disabled commands
 (setq disabled-command-hook nil)
@@ -139,3 +159,7 @@
 
 ;; Always follow links
 (setq vc-follow-symlinks t)
+;; Automatically close parens
+(electric-pair-mode 1)
+;; Don't insert closing pair before non-whitespace characters
+(setq-default electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)

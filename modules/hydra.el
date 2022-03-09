@@ -7,11 +7,13 @@
   ("s" (my/create-scratch))
   ("q" nil))
 
-(defhydra my/hydra-files (:color blue :hint nil :pre (message "Open files"))
+(defhydra my/hydra-files (:color blue :hint nil :pre (message "Open"))
   "
-  _c_ Config
+  _c_ Emacs configuration
+  _r_ Recent files
   "
   ("c" (find-file user-init-file))
+  ("r" recentf-open-files)
   ("q" nil))
 
 (defhydra my/hydra-straight (:color blue :hint nil :pre (message "Straight"))
@@ -27,15 +29,15 @@
 
 (defhydra my/hydra (:color blue :hint nil :pre (message "General commands"))
   "
-  _c_ Create…       
-  _o_ Open files…       
+  _c_ Create…        _x_ Expand region     
+  _o_ Open files…    _R_ Reload configuration
   _S_ Straight…
-  _R_ Reload configuration
   "
   ("c" my/hydra-create/body)
   ("o" my/hydra-files/body)
   ("R" (load-file user-init-file))
   ("S" my/hydra-straight/body)
+  ("x" er/expand-region)
   ("q" nil))
 
 (global-set-key (kbd "C-;") 'my/hydra/body)

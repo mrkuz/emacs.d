@@ -13,6 +13,6 @@
 (my/load-module "vertico")
 (my/load-module "orderless")
 (my/load-module "marginalia")
-(my/load-module "hungry-delete")
+(my/load-module "behavior")
 (my/load-module "hydra")
 (put 'dired-find-alternate-file 'disabled nil)
