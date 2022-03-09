@@ -10,8 +10,9 @@
 
 ;; Modules
 (my/load-module "my")
-(my/load-module "hydra")
 (my/load-module "vertico")
 (my/load-module "orderless")
 (my/load-module "marginalia")
+(my/load-module "hungry-delete")
+(my/load-module "hydra")
 (put 'dired-find-alternate-file 'disabled nil)
