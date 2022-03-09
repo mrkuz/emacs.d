@@ -36,11 +36,12 @@
 
 (defhydra my/hydra-toggle (:color blue :hint nil :pre (message "Toggle"))
   "
+  _v_ Visual line mode
   _w_ Whitespace mode
   "
+  ("v" visual-line-mode)
   ("w" whitespace-mode)
   ("q" nil))
-
 
 (defhydra my/hydra (:color blue :hint nil :pre (message "General commands"))
   "
