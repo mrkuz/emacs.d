@@ -17,7 +17,7 @@
 (my/load-module "visual-fill-column")
 (my/load-module "which-key")
 (my/load-module "company")
+(my/load-module "flyspell")
 (my/load-module "behavior")
 (my/load-module "modes")
 (my/load-module "hydra")
-(put 'dired-find-alternate-file 'disabled nil)

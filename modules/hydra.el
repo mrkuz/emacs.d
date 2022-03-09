@@ -43,14 +43,27 @@
   ("w" whitespace-mode)
   ("q" nil))
 
+(defhydra my/hydra-flyspell (:color blue :hint nil :pre (message "Flyspell"))
+  "
+  _._ Correct at point
+  _n_ Correct next
+  _p_ Correct previous
+  "
+  ("." flyspell-correct-at-point)
+  ("n" flyspell-correct-next)
+  ("p" flyspell-correct-move)
+  ("q" nil))
+
+
 (defhydra my/hydra (:color blue :hint nil :pre (message "General commands"))
   "
   _c_ Create…        _x_ Expand region
   _o_ Open files…    _t_ Toggle…
-  _g_ Git…           _R_ Reload configuration
-  _S_ Straight…
+  _g_ Git…           _F_ Flyspell…
+  _S_ Straight…      _R_ Reload configuration
   "
   ("c" my/hydra-create/body)
+  ("F" my/hydra-flyspell/body)
   ("g" my/hydra-git/body)
   ("o" my/hydra-files/body)
   ("R" (load-file user-init-file))
