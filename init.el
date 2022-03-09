@@ -15,5 +15,6 @@
 (my/load-module "marginalia")
 (my/load-module "git-gutter")
 (my/load-module "behavior")
+(my/load-module "modes")
 (my/load-module "hydra")
 (put 'dired-find-alternate-file 'disabled nil)
