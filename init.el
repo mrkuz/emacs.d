@@ -15,6 +15,7 @@
 (my/load-module "marginalia")
 (my/load-module "git-gutter")
 (my/load-module "visual-fill-column")
+(my/load-module "which-key")
 (my/load-module "behavior")
 (my/load-module "modes")
 (my/load-module "hydra")
