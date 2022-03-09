@@ -18,9 +18,11 @@
   "
   _p_ Pull all
   _f_ Freeze versions
+  _u_ Use package
   "
   ("p" straight-pull-all)
   ("f" straight-freeze-versions)
+  ("u" straight-use-package)
   ("q" nil))
 
 (defhydra my/hydra (:color blue :hint nil :pre (message "General commands"))
