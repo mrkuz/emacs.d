@@ -16,6 +16,13 @@
   ("r" recentf-open-files)
   ("q" nil))
 
+(defhydra my/hydra-git (:color blue :hint nil :pre (message "Git"))
+  "
+  _r_ Revert hunk
+  "
+  ("r" git-gutter:revert-hunk)
+  ("q" nil))
+
 (defhydra my/hydra-straight (:color blue :hint nil :pre (message "Straight"))
   "
   _p_ Pull all
@@ -31,9 +38,11 @@
   "
   _c_ Create…        _x_ Expand region     
   _o_ Open files…    _R_ Reload configuration
+  _g_ Git…
   _S_ Straight…
   "
   ("c" my/hydra-create/body)
+  ("g" my/hydra-git/body)
   ("o" my/hydra-files/body)
   ("R" (load-file user-init-file))
   ("S" my/hydra-straight/body)
