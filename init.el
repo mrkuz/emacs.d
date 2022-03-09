@@ -4,6 +4,7 @@
 (my/load-module "diminish")
 
 ;; Configuration
+(my/load-config "user")
 (my/load-config "appearance")
 (my/load-config "behavior")
 
