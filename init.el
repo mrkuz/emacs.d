@@ -19,6 +19,7 @@
 ;;--------------------------------------------------------------------------------------------------
 
 (my/load-module "my")
+(my/load-module "org")
 (my/load-module "vertico")
 (my/load-module "orderless")
 (my/load-module "marginalia")

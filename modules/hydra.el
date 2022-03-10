@@ -2,20 +2,24 @@
 
 (defhydra my/hydra-create (:color blue :hint nil :pre (message "Create"))
   "
-  _s_ New scratch
+  _s_ Scratch buffer
+  _n_ Note
   "
+  ("n" org-roam-node-find)
   ("s" (my/create-scratch))
   ("q" nil))
 
 (defhydra my/hydra-files (:color blue :hint nil :pre (message "Open"))
   "
-  _c_ Emacs configuration
-  _p_ Project file
+  _c_ Emacs configuration    _t_ todo.org
+  _p_ Project file           _n_ Note
   _r_ Recent file
   "
   ("c" (find-file user-init-file))
+  ("n" org-roam-node-find)
   ("p" consult-project-extra-find)
   ("r" consult-recent-file)
+  ("t" my/org-find-todo)
   ("q" nil))
 
 (defhydra my/hydra-git (:color blue :hint nil :pre (message "Git"))
@@ -61,8 +65,9 @@
   "
   _c_ Create…        _e_ Embark           _g_ Git…         _R_ Reload configuration
   _o_ Open files…    _x_ Expand region    _F_ Flyspell…
-  _t_ Toggle…                           _S_ Straight…
+  _t_ Toggle…        _a_ Agenda           _S_ Straight…
   "
+  ("a" (org-agenda nil "o"))
   ("c" my/hydra-create/body)
   ("e" embark-act)
   ("F" my/hydra-flyspell/body)
