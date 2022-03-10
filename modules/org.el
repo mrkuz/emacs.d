@@ -37,7 +37,8 @@
   ;; TODO keywords
   (setq org-todo-keywords '(
                             (sequence "TODO(t)" "NEXT(n)" "WAITING(w!)" "|" "DONE(d!)" "CANCELED(c!)")
-                            (sequence "EVENT(e)" "|" "DONE(d!)" "CANCELED(c!)")))
+                            (sequence "EVENT(e)" "|" "DONE(d!)" "CANCELED(c!)")
+                            (sequence "PROJECT(p)" "|" "ON_HOLD(h!)")))
   ;; Insert log notes into LOGBOOK
   (setq org-log-into-drawer t)
 
@@ -125,7 +126,7 @@
 (use-package org-roam
   :init
   (setq org-roam-v2-ack t
-        org-roam-directory "~/Notes/"
+        org-roam-directory "~/org/notes/"
         ;; Enable completion of note links
         org-roam-completion-everywhere t)
   ;; Move org-roam boffer to the right side
