@@ -56,6 +56,11 @@
 (savehist-mode)
 (setq history-length 100)
 
+;; Add indicator when read multiple strings
+(defun my/crm-indicator (args)
+  (cons (concat "[CRM] " (car args)) (cdr args)))
+(advice-add #'completing-read-multiple :filter-args #'my/crm-indicator)
+
 ;;--------------------------------------------------------------------------------------------------
 ;; Buffers
 ;;--------------------------------------------------------------------------------------------------

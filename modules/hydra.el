@@ -10,10 +10,12 @@
 (defhydra my/hydra-files (:color blue :hint nil :pre (message "Open"))
   "
   _c_ Emacs configuration
-  _r_ Recent files
+  _p_ Project file
+  _r_ Recent file
   "
   ("c" (find-file user-init-file))
-  ("r" recentf-open-files)
+  ("p" consult-project-extra-find)
+  ("r" consult-recent-file)
   ("q" nil))
 
 (defhydra my/hydra-git (:color blue :hint nil :pre (message "Git"))
@@ -57,12 +59,12 @@
 
 (defhydra my/hydra (:color blue :hint nil :pre (message "General commands"))
   "
-  _c_ Create…        _x_ Expand region
-  _o_ Open files…    _t_ Toggle…
-  _g_ Git…           _F_ Flyspell…
-  _S_ Straight…      _R_ Reload configuration
+  _c_ Create…        _e_ Embark           _g_ Git…         _R_ Reload configuration
+  _o_ Open files…    _x_ Expand region    _F_ Flyspell…
+  _t_ Toggle…                           _S_ Straight…
   "
   ("c" my/hydra-create/body)
+  ("e" embark-act)
   ("F" my/hydra-flyspell/body)
   ("g" my/hydra-git/body)
   ("o" my/hydra-files/body)
