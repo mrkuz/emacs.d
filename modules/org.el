@@ -12,8 +12,8 @@
   :diminish org-indent-mode
   :init
   (setq org-directory "~/org")
-  ;; Open files folded
-  (setq org-startup-folded t)
+  ;; Open files with two levels open
+  (setq org-startup-folded 'show2levels)
   ;; Allow setting refile targets as local file variable
   (put 'org-refile-targets 'safe-local-variable (lambda (_) t))
 
@@ -36,9 +36,9 @@
 
   ;; TODO keywords
   (setq org-todo-keywords '(
-                            (sequence "TODO(t)" "NEXT(n)" "WAITING(w!)" "|" "DONE(d!)" "CANCELED(c!)")
-                            (sequence "EVENT(e)" "|" "DONE(d!)" "CANCELED(c!)")
-                            (sequence "PROJECT(p)" "|" "ON_HOLD(h!)")))
+                            (sequence "TODO(t!)" "NEXT(n!)" "SCHEDULED(s!)" "WAITING(w!)" "|" "DONE(d!)" "CANCELED(c!)")
+                            (sequence "EVENT(e!)" "|" "DONE(d!)" "CANCELED(c!)")
+                            (sequence "PROJECT(p!)" "ON_HOLD(h!) | DONE(d!)" "CANCELED(c!)")))
   ;; Insert log notes into LOGBOOK
   (setq org-log-into-drawer t)
 
@@ -99,24 +99,35 @@
 (defun my/org-ql-view-advice (fun &rest args)
   (if (not args)
       ""
-    (let* ((element args)
-           (properties (cadar element))
-           (result (apply fun element))
-           (filename (buffer-file-name (marker-buffer (plist-get properties :org-marker))))
-           (name (downcase (string-remove-suffix ".org"
-                            (string-remove-prefix (concat (expand-file-name org-directory) "/") filename)))))
-      (concat result " [" name "]"))))
+    (let* ((element (car args))
+           (properties (cadr element))
+           (result (apply fun args))
+           (marker (plist-get properties :org-marker))
+           (level (plist-get properties :level))
+           (filename (buffer-file-name (marker-buffer marker)))
+           (directory (concat (expand-file-name org-directory) "/"))
+           (first (string-remove-prefix directory filename))
+           (rest (when (> level 1)
+                   (with-current-buffer (marker-buffer marker)
+                     (goto-char marker)
+                     (concat ", " (org-no-properties (org-format-outline-path (org-get-outline-path))))))))
+      (concat result (propertize (concat " (" first rest ")") 'face 'shadow)))))
 
 (use-package org-ql
   :init
   (advice-add 'org-ql-view--format-element :around 'my/org-ql-view-advice)
   (setq org-agenda-custom-commands
         '(("o" "Overview"
-           ((org-ql-block '(and (todo "NEXT" "EVENT") (scheduled :on today)) ((org-ql-block-header "Today")) )
-            (org-ql-block '(and (todo "NEXT") (scheduled :to -1)) ((org-ql-block-header "Missed")))
-            (org-ql-block '(and (todo "NEXT" "EVENT") (scheduled :from 1 :to 7)) ((org-ql-block-header "Upcoming")))
-            (org-ql-block '(and (todo "NEXT") (not (scheduled))) ((org-ql-block-header "Next")))
-            (org-ql-block '(and (todo "TODO") (not (scheduled))) ((org-ql-block-header "Backlog")))
+           ((org-ql-block '(or (scheduled :on today)
+                               (todo "NEXT"))
+                          ((org-ql-block-header "Today")))
+            (org-ql-block '(and
+                            (not (todo "DONE" "CANCELED"))
+                            (scheduled :to -1))
+                          ((org-ql-block-header "Overdue")))
+            (org-ql-block '(and (todo "TODO") (not (scheduled))) ((org-ql-block-header "Staged")))
+            (org-ql-block '(todo "WAITING") ((org-ql-block-header "Waiting")))
+            (org-ql-block '(scheduled :from 1 :to 7) ((org-ql-block-header "Upcoming")))
             )))))
 
 ;;--------------------------------------------------------------------------------------------------

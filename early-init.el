@@ -25,3 +25,5 @@
 
 ;; Early appeareance
 (my/load-config "early-appearance")
+;; Show warning buffer only for errors
+(setq warning-minimum-level :error)
