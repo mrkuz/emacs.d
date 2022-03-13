@@ -26,7 +26,7 @@
   _r_ Recent file            _t_ todo.org
                            _n_ Note
   "
-  ("a" (org-agenda nil "o"))
+  ("a" my/org-ql-agenda)
   ("c" (find-file user-init-file))
   ("n" org-roam-node-find)
   ("r" consult-recent-file)
@@ -78,7 +78,7 @@
   _o_ Open…      _x_ Expand region    _F_ Flyspell…
   _e_ Edit…      _a_ Agenda           _S_ Straight…
   "
-  ("a" (org-agenda nil "o"))
+  ("a" my/org-ql-agenda)
   ("c" my/hydra-create/body)
   ("e" my/hydra-edit/body)
   ("F" my/hydra-flyspell/body)
