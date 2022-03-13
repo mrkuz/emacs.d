@@ -11,7 +11,7 @@
            (scheduled (plist-get properties :scheduled))
            ;; Format timestamp
            (timestamp (if (org-timestamp-has-time-p scheduled) (org-element-timestamp-interpreter (plist-get properties :scheduled) 'ignore)))
-           (time (if timestamp (org-format-time-string " %H:%M" (org-time-string-to-time timestamp)) " --:--"))
+           (time (if timestamp (org-format-time-string "@ %H:%M" (org-time-string-to-time timestamp)) ""))
            ;; Format file name
            (filename (buffer-file-name (marker-buffer marker)))
            (directory (concat (expand-file-name org-directory) "/"))
@@ -21,8 +21,8 @@
                    (with-current-buffer (marker-buffer marker)
                      (goto-char marker)
                      (concat ", " (org-no-properties (org-format-outline-path (org-get-outline-path))))))))
-      (concat (propertize time 'face 'shadow)
-              result
+      (concat result
+              (propertize time 'face 'bold-italic)
               (propertize (concat " (" first rest ")") 'face 'shadow)))))
 
 (defun my/org-ql-agenda ()
