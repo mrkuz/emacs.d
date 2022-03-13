@@ -25,7 +25,9 @@
 (show-paren-mode 1)
 
 ;; Enable completion with TAB
-(setq tab-always-indent 'complete)
+;; (setq tab-always-indent 'complete)
+;; Enable completion with C-TAB
+(global-set-key (kbd "<C-tab>") 'completion-at-point)
 
 ;; Set cursor color
 (set-cursor-color "#e1e1e0")
