@@ -6,13 +6,17 @@
   _n_ Note
   "
   ("n" org-roam-node-find)
-  ("s" (my/create-scratch))
+  ("s" crux-create-scratch-buffer)
   ("q" nil))
 
 (defhydra my/hydra-edit (:color blue :hint nil :pre (message "Edit"))
   "
+  _d_ Duplicate
+  _f_ Format buffer
   _x_ Expand region
   "
+  ("d" crux-duplicate-current-line-or-region)
+  ("f" crux-cleanup-buffer-or-region)
   ("x" er/expand-region)
   ("q" nil))
 

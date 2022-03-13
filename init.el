@@ -5,7 +5,6 @@
 (my/load-module "straight")
 (my/load-module "no-littering")
 (my/load-module "diminish")
-(my/load-module "my")
 
 ;;--------------------------------------------------------------------------------------------------
 ;; Configuration
@@ -38,6 +37,7 @@
 (my/load-module "orderless")
 (my/load-module "marginalia")
 (my/load-module "consult")
+(my/load-module "crux")
 ;; (my/load-module "embark")
 (my/load-module "hungry-delete")
 (my/load-module "move-text")
