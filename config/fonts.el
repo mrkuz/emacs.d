@@ -1,0 +1,5 @@
+(set-frame-font "Ubuntu Mono")
+(set-face-attribute 'default nil :family "Ubuntu Mono" :height 128)
+(set-face-attribute 'fixed-pitch nil :family "Ubuntu Mono")
+(set-face-attribute 'variable-pitch nil :family "Ubuntu")
+(setq-default line-spacing 2)

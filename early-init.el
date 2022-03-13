@@ -23,7 +23,8 @@
   "Load module by name."
   (load-file (expand-file-name (concat name ".el") (concat user-emacs-directory "/modules"))))
 
-;; Early appeareance
-(my/load-config "early-appearance")
 ;; Show warning buffer only for errors
 (setq warning-minimum-level :error)
+
+;; Early appearance
+(my/load-config "early-appearance")

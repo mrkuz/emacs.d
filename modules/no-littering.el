@@ -1,4 +1,3 @@
-;; Keep ~/.emacs.d clean
 (use-package no-littering
   :demand t
   :init

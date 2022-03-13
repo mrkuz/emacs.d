@@ -2,5 +2,3 @@
 (put 'ispell-dictionary 'safe-local-variable (lambda (_) t))
 ;; Inhibit default flyspell keymap
 (setq flyspell-mode-map (make-sparse-keymap))
-
-(use-package flyspell-correct)
