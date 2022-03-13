@@ -24,6 +24,9 @@
 ;; Show matching parens
 (show-paren-mode 1)
 
+;; Enable completion with TAB
+(setq tab-always-indent 'complete)
+
 ;; Set cursor color
 (set-cursor-color "#e1e1e0")
 ;; Disable blinking cursor
