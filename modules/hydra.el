@@ -12,12 +12,10 @@
 (defhydra my/hydra-files (:color blue :hint nil :pre (message "Open"))
   "
   _c_ Emacs configuration    _t_ todo.org
-  _p_ Project file           _n_ Note
-  _r_ Recent file
+  _r_ Recent file            _n_ Note
   "
   ("c" (find-file user-init-file))
   ("n" org-roam-node-find)
-  ("p" consult-project-extra-find)
   ("r" consult-recent-file)
   ("t" my/org-find-todo)
   ("q" nil))
