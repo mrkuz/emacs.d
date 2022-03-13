@@ -1,6 +1,6 @@
 ;; Enable recursive minibuffers
-(setq enable-recursive-minibuffers t)
-(minibuffer-depth-indicate-mode 1)
+;; (setq enable-recursive-minibuffers t)
+;; (minibuffer-depth-indicate-mode 1)
 
 ;; Keep cursor out of prompt
 (setq minibuffer-prompt-properties

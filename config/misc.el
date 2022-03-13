@@ -18,7 +18,7 @@
 (setq vc-follow-symlinks t)
 
 ;; Automatically close parens
-(electric-pair-mode 1)
+;; (electric-pair-mode 1)
 ;; Don't insert closing pair before non-whitespace characters
 (setq-default electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
 ;; Show matching parens
