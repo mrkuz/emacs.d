@@ -1,7 +1,7 @@
 (use-package org-roam
   :init
   (setq org-roam-v2-ack t
-        org-roam-directory "~/org/notes/"
+        org-roam-directory "~/Notes/"
         ;; Enable completion of note links
         org-roam-completion-everywhere t)
   ;; Move org-roam boffer to the right side
