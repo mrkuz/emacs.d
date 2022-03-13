@@ -50,6 +50,7 @@
 (my/load-module "visual-fill-column")
 ;; (my/load-module "which-key")
 (my/load-module "company")
+(my/load-module "yasnippet")
 (my/load-module "flyspell-correct")
 (my/load-module "yaml-mode")
 (my/load-module "dockerfile-mode")
