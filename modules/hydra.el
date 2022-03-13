@@ -9,11 +9,20 @@
   ("s" (my/create-scratch))
   ("q" nil))
 
-(defhydra my/hydra-files (:color blue :hint nil :pre (message "Open"))
+(defhydra my/hydra-edit (:color blue :hint nil :pre (message "Edit"))
   "
-  _c_ Emacs configuration    _t_ todo.org
-  _r_ Recent file            _n_ Note
+  _x_ Expand region
   "
+  ("x" er/expand-region)
+  ("q" nil))
+
+(defhydra my/hydra-open (:color blue :hint nil :pre (message "Open"))
+  "
+  _c_ Emacs configuration    _a_ Agenda
+  _r_ Recent file            _t_ todo.org
+                           _n_ Note
+  "
+  ("a" (org-agenda nil "o"))
   ("c" (find-file user-init-file))
   ("n" org-roam-node-find)
   ("r" consult-recent-file)
@@ -61,16 +70,16 @@
 
 (defhydra my/hydra (:color blue :hint nil :pre (message "General commands"))
   "
-  _c_ Create…        _e_ Embark           _g_ Git…         _R_ Reload configuration
-  _o_ Open files…    _x_ Expand region    _F_ Flyspell…
-  _t_ Toggle…        _a_ Agenda           _S_ Straight…
+  _c_ Create…    _t_ Toggle…          _g_ Git…         _R_ Reload configuration
+  _o_ Open…      _x_ Expand region    _F_ Flyspell…
+  _e_ Edit…      _a_ Agenda           _S_ Straight…
   "
   ("a" (org-agenda nil "o"))
   ("c" my/hydra-create/body)
-  ("e" embark-act)
+  ("e" my/hydra-edit/body)
   ("F" my/hydra-flyspell/body)
   ("g" my/hydra-git/body)
-  ("o" my/hydra-files/body)
+  ("o" my/hydra-open/body)
   ("R" (load-file user-init-file))
   ("S" my/hydra-straight/body)
   ("t" my/hydra-toggle/body)
