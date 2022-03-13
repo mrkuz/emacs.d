@@ -49,6 +49,7 @@
 (my/load-module "git-gutter")
 (my/load-module "visual-fill-column")
 ;; (my/load-module "which-key")
+(my/load-module "helpful")
 (my/load-module "company")
 (my/load-module "yasnippet")
 (my/load-module "flyspell-correct")
