@@ -38,6 +38,13 @@
   ;; Insert log notes into LOGBOOK
   (setq org-log-into-drawer t)
 
+  ;; Don't ask for confirmation on evaluate
+  (setq org-confirm-babel-evaluate nil)
+  ;; Load language support
+  (org-babel-do-load-languages 'org-babel-load-languages
+                               '((emacs-lisp . t)
+                                 (shell . t)))
+
   ;; Agenda
   (setq org-agenda-files '("~/org/todo.org" "~/org/projects/" "~/org/calendar/" "~/org/journal/" "~/org/mobile/"))
   ;; Capture
@@ -53,4 +60,3 @@
          ("C-c a" . 'org-agenda)
          ("C-c c" . 'org-capture))
   :hook (org-mode . org-indent-mode))
-
