@@ -22,15 +22,25 @@
 
 (defhydra my/hydra-open (:color blue :hint nil :pre (message "Open"))
   "
-  _c_ Emacs configuration    _a_ Agenda
-  _r_ Recent file            _t_ todo.org
-                           _n_ Note
+  _c_ Emacs configuration    _t_ todo.org    _a_ Agenda
+  _r_ Recent file            _n_ Note        _u_ Undo tree
+
   "
   ("a" my/org-ql-agenda)
   ("c" (find-file user-init-file))
   ("n" org-roam-node-find)
   ("r" consult-recent-file)
   ("t" my/org-find-todo)
+  ("u" undo-tree-visualize)
+  ("q" nil))
+
+(defhydra my/hydra-help (:color blue :hint nil :pre (message "Help"))
+  "
+  _._ Descripe at point
+  _a_ Apropos
+  "
+  ("." helpful-at-point)
+  ("a" consult-apropos)
   ("q" nil))
 
 (defhydra my/hydra-git (:color blue :hint nil :pre (message "Git"))
@@ -74,8 +84,8 @@
 
 (defhydra my/hydra (:color blue :hint nil :pre (message "General commands"))
   "
-  _c_ Create…    _t_ Toggle…          _g_ Git…         _R_ Reload configuration
-  _o_ Open…      _x_ Expand region    _F_ Flyspell…
+  _c_ Create…    _t_ Toggle…          _g_ Git…         _h_ Help…
+  _o_ Open…      _x_ Expand region    _F_ Flyspell…    _R_ Reload configuration
   _e_ Edit…      _a_ Agenda           _S_ Straight…
   "
   ("a" my/org-ql-agenda)
@@ -83,6 +93,7 @@
   ("e" my/hydra-edit/body)
   ("F" my/hydra-flyspell/body)
   ("g" my/hydra-git/body)
+  ("h" my/hydra-help/body)
   ("o" my/hydra-open/body)
   ("R" (load-file user-init-file))
   ("S" my/hydra-straight/body)
