@@ -10,8 +10,9 @@
            (level (plist-get properties :level))
            (scheduled (plist-get properties :scheduled))
            ;; Format timestamp
-           (timestamp (if (org-timestamp-has-time-p scheduled) (org-element-timestamp-interpreter (plist-get properties :scheduled) 'ignore)))
-           (time (if timestamp (org-format-time-string "@ %H:%M" (org-time-string-to-time timestamp)) ""))
+           (timestamp (org-element-timestamp-interpreter scheduled 'ignore))
+           (time (if (org-timestamp-has-time-p scheduled) (org-format-time-string " @ %H:%M" (org-time-string-to-time timestamp) (current-time-zone)) ""))
+           (date (if timestamp (org-format-time-string "%Y-%m-%d, " (org-time-string-to-time timestamp) (current-time-zone)) ""))
            ;; Format file name
            (filename (buffer-file-name (marker-buffer marker)))
            (directory (concat (expand-file-name org-directory) "/"))
@@ -23,7 +24,7 @@
                      (concat ", " (org-no-properties (org-format-outline-path (org-get-outline-path))))))))
       (concat result
               (propertize time 'face 'bold-italic)
-              (propertize (concat " (" first rest ")") 'face 'shadow)))))
+              (propertize (concat " (" date first rest ")") 'face 'shadow)))))
 
 (defun my/org-ql-agenda ()
   (interactive)
