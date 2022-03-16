@@ -22,7 +22,7 @@
 ;; Don't insert closing pair before non-whitespace characters
 (setq-default electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
 ;; Show matching parens
-(show-paren-mode 1)
+(show-paren-mode 0)
 
 ;; Enable completion with TAB
 ;; (setq tab-always-indent 'complete)

@@ -49,6 +49,8 @@
 (my/load-module "git-gutter")
 (my/load-module "visual-fill-column")
 (my/load-module "undo-tree")
+(my/load-module "highlight-parentheses")
+;; (my/load-module "highlight-symbol")
 ;; (my/load-module "which-key")
 (my/load-module "helpful")
 (my/load-module "company")
