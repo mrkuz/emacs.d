@@ -21,7 +21,7 @@
   :init
   (global-company-mode 1)
   :config
-  (setq company-backends '(company-capf company-files company-dabbrev)
+  (setq company-backends '(company-capf company-files company-dabbrev-code company-dabbrev)
         company-minimum-prefix-length 1
         company-idle-delay 0.4
         company-show-numbers t
