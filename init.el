@@ -33,6 +33,8 @@
 ;; Modules
 ;;--------------------------------------------------------------------------------------------------
 
+(my/load-module "my-symbol-at-point-overlay")
+
 (my/load-module "vertico")
 (my/load-module "orderless")
 (my/load-module "marginalia")
