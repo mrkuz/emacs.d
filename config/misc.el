@@ -23,8 +23,11 @@
 (setq-default electric-pair-inhibit-predicate
               (lambda (c)
                  (if (char-equal c ?<) t (electric-pair-conservative-inhibit c))))
-;; Show matching parens
+;; Disable how matching parens
 (show-paren-mode 0)
+
+;; Show number of matches when searching
+(setq isearch-lazy-count t)
 
 ;; Enable completion with TAB
 ;; (setq tab-always-indent 'complete)
