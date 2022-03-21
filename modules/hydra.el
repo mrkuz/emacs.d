@@ -24,7 +24,6 @@
   "
   _c_ Emacs configuration    _t_ todo.org    _a_ Agenda
   _r_ Recent file            _n_ Note        _u_ Undo tree
-
   "
   ("a" my/org-ql-agenda)
   ("c" (find-file user-init-file))
@@ -45,9 +44,14 @@
 
 (defhydra my/hydra-git (:color blue :hint nil :pre (message "Git"))
   "
+  _f_ Act on file         _s_ Show status
+  _g_ Run Git command
   _r_ Revert hunk
   "
+  ("f" magit-file-dispatch)
+  ("g" magit-dispatch)
   ("r" git-gutter:revert-hunk)
+  ("s" magit-status)
   ("q" nil))
 
 (defhydra my/hydra-straight (:color blue :hint nil :pre (message "Straight"))

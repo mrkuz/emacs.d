@@ -49,6 +49,7 @@
 (my/load-module "org-ql")
 (my/load-module "org-roam")
 (my/load-module "git-gutter")
+(my/load-module "magit")
 (my/load-module "visual-fill-column")
 (my/load-module "undo-tree")
 (my/load-module "highlight-parentheses")
