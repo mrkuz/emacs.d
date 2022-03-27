@@ -34,6 +34,7 @@
 ;;--------------------------------------------------------------------------------------------------
 
 (my/load-module "my-symbol-at-point-overlay")
+(my/load-module "my-markdown-preview")
 
 (my/load-module "vertico")
 (my/load-module "orderless")
@@ -62,5 +63,6 @@
 (my/load-module "yaml-mode")
 (my/load-module "dockerfile-mode")
 (my/load-module "docker-compose-mode")
+(my/load-module "markdown-mode")
 (my/load-module "nix-mode")
 (my/load-module "hydra")
