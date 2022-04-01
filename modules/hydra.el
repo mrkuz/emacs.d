@@ -54,15 +54,15 @@
   ("s" magit-status)
   ("q" nil))
 
-(defhydra my/hydra-straight (:color blue :hint nil :pre (message "Straight"))
+(defhydra my/hydra-packages (:color blue :hint nil :pre (message "Packages"))
   "
-  _p_ Pull all
+  _u_ Update all
   _f_ Freeze versions
-  _u_ Use package
+  _t_ Try
   "
-  ("p" straight-pull-all)
+  ("u" straight-pull-all)
   ("f" straight-freeze-versions)
-  ("u" straight-use-package)
+  ("t" straight-use-package)
   ("q" nil))
 
 (defhydra my/hydra-toggle (:color blue :hint nil :pre (message "Toggle"))
@@ -74,7 +74,7 @@
   ("w" whitespace-mode)
   ("q" nil))
 
-(defhydra my/hydra-flyspell (:color blue :hint nil :pre (message "Flyspell"))
+(defhydra my/hydra-spelling (:color blue :hint nil :pre (message "Spelling"))
   "
   _._ Correct at point
   _n_ Correct next
@@ -89,18 +89,18 @@
 (defhydra my/hydra (:color blue :hint nil :pre (message "General commands"))
   "
   _c_ Create…    _t_ Toggle…          _g_ Git…         _h_ Help…
-  _o_ Open…      _x_ Expand region    _F_ Flyspell…    _R_ Reload configuration
-  _e_ Edit…      _a_ Agenda           _S_ Straight…
+  _o_ Open…      _x_ Expand region    _P_ Packages…    _R_ Reload configuration
+  _e_ Edit…      _a_ Agenda           _S_ Spelling…
   "
   ("a" my/org-ql-agenda)
   ("c" my/hydra-create/body)
   ("e" my/hydra-edit/body)
-  ("F" my/hydra-flyspell/body)
   ("g" my/hydra-git/body)
   ("h" my/hydra-help/body)
   ("o" my/hydra-open/body)
   ("R" (load-file user-init-file))
-  ("S" my/hydra-straight/body)
+  ("S" my/hydra-spelling/body)
+  ("P" my/hydra-packages/body)
   ("t" my/hydra-toggle/body)
   ("x" er/expand-region)
   ("q" nil))
