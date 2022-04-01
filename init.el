@@ -60,6 +60,7 @@
 (my/load-module "company")
 (my/load-module "yasnippet")
 (my/load-module "flyspell-correct")
+(my/load-module "powerthesaurus")
 (my/load-module "yaml-mode")
 (my/load-module "dockerfile-mode")
 (my/load-module "docker-compose-mode")

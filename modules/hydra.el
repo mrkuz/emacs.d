@@ -88,12 +88,14 @@
 
 (defhydra my/hydra (:color blue :hint nil :pre (message "General commands"))
   "
-  _c_ Create…    _t_ Toggle…          _g_ Git…         _h_ Help…
+  _c_ Create…    _d_ Dictionary       _g_ Git…         _h_ Help…
   _o_ Open…      _x_ Expand region    _P_ Packages…    _R_ Reload configuration
   _e_ Edit…      _a_ Agenda           _S_ Spelling…
+  _t_ Toggle…
   "
   ("a" my/org-ql-agenda)
   ("c" my/hydra-create/body)
+  ("d" powerthesaurus-lookup-dwim)
   ("e" my/hydra-edit/body)
   ("g" my/hydra-git/body)
   ("h" my/hydra-help/body)
