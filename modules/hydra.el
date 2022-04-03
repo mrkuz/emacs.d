@@ -20,6 +20,13 @@
   ("x" er/expand-region)
   ("q" nil))
 
+(defhydra my/hydra-insert (:color blue :hint nil :pre (message "Insert"))
+  "
+  _n_ Link to note
+  "
+  ("n" org-roam-node-insert)
+  ("q" nil))
+
 (defhydra my/hydra-open (:color blue :hint nil :pre (message "Open"))
   "
   _c_ Emacs configuration    _t_ todo.org    _a_ Agenda
@@ -88,10 +95,10 @@
 
 (defhydra my/hydra (:color blue :hint nil :pre (message "General commands"))
   "
-  _c_ Create…    _d_ Dictionary       _g_ Git…         _h_ Help…
-  _o_ Open…      _x_ Expand region    _P_ Packages…    _R_ Reload configuration
-  _e_ Edit…      _a_ Agenda           _S_ Spelling…
-  _t_ Toggle…
+  _c_ Create…    _t_ Toggle…          _g_ Git…         _h_ Help…
+  _o_ Open…      _d_ Dictionary       _P_ Packages…    _R_ Reload configuration
+  _e_ Edit…      _x_ Expand region    _S_ Spelling…
+  _i_ Insert…    _a_ Agenda
   "
   ("a" my/org-ql-agenda)
   ("c" my/hydra-create/body)
@@ -99,6 +106,7 @@
   ("e" my/hydra-edit/body)
   ("g" my/hydra-git/body)
   ("h" my/hydra-help/body)
+  ("i" my/hydra-insert/body)
   ("o" my/hydra-open/body)
   ("R" (load-file user-init-file))
   ("S" my/hydra-spelling/body)
