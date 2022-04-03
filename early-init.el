@@ -7,6 +7,9 @@
             (setq gc-cons-threshold 16777216 ; 16 MiB
                   gc-cons-percentage 0.1)))
 
+;; Don’t compact font caches during GC
+(setq inhibit-compacting-font-caches t)
+
 ;; Prevent loading packages prior init file
 (setq package-enable-at-startup nil)
 

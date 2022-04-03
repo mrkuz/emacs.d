@@ -20,6 +20,9 @@
   ;; Never add blank lines before new entries
   (setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
 
+  ;; Stop after TODO keyword and before tags on first C-a/C-e
+  (setq org-special-ctrl-a/e t)
+
   ;; Indentation
   (add-hook 'org-mode-hook 'org-indent-mode)
   (setq org-indent-indentation-per-level 1)
@@ -56,6 +59,10 @@
                                 ("p" "Capture primary selection" entry (file "capture.org")
                                  "* %?\nCREATED: %U\n\n%(gui-get-primary-selection)" :prepend t)
                                 ))
+  :config
+  ;; Customize ellipsis
+  (setq org-ellipsis " …")
+  (set-face-attribute 'org-ellipsis nil :underline nil)
   :bind (("C-c l" . 'org-store-link)
          ("C-c a" . 'org-agenda)
          ("C-c c" . 'org-capture))
