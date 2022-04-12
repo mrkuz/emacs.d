@@ -49,7 +49,7 @@
                                  (shell . t)))
 
   ;; Agenda
-  (setq org-agenda-files '("~/org/todo.org" "~/org/projects/" "~/org/calendar/" "~/org/journal/" "~/org/mobile/"))
+  (setq org-agenda-files '("~/org/todo.org" "~/org/roles/" "~/org/projects/" "~/org/calendar/" "~/org/journal/" "~/org/mobile/"))
   ;; Capture
   (setq org-capture-templates '(
                                 ("b" "New backlog entry" entry (file+olp "todo.org" "Backlog")
