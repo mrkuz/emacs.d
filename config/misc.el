@@ -14,6 +14,9 @@
 (setq disabled-command-hook nil)
 (setq disabled-command-function nil)
 
+;; Disable suspend-frame keybinding
+(global-unset-key (kbd "C-z"))
+
 ;; Always follow links
 (setq vc-follow-symlinks t)
 
