@@ -1,6 +1,10 @@
+(use-package  emacsql-sqlite3)
+
 (use-package org-roam
   :init
   (setq org-roam-v2-ack t
+        ;; Use sqlite3 instead of emacs-sqlite
+        org-roam-database-connector 'sqlite3
         org-roam-directory "~/Notes/"
         ;; Enable completion of note links
         org-roam-completion-everywhere t)
