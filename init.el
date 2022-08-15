@@ -66,4 +66,5 @@
 (my/load-module "docker-compose-mode")
 (my/load-module "markdown-mode")
 (my/load-module "nix-mode")
+(my/load-module "fish-mode")
 (my/load-module "hydra")
