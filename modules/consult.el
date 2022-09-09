@@ -4,7 +4,11 @@
   :init
   (setq completion-in-region-function #'consult-completion-in-region)
   :config
-  (consult-customize consult--source-recent-file
+  (consult-customize consult-ripgrep
+                     consult-git-grep
+                     consult-grep
+                     consult--source-recent-file
                      consult--source-project-recent-file
                      consult-recent-file
+                     my/search-notes
                      :preview-key (kbd "M-.")))

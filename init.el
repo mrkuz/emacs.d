@@ -49,6 +49,7 @@
 (my/load-module "org-bullets")
 (my/load-module "org-ql")
 (my/load-module "org-roam")
+(my/load-module "my-search-notes")
 (my/load-module "git-gutter")
 (my/load-module "magit")
 (my/load-module "visual-fill-column")
