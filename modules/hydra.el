@@ -9,6 +9,15 @@
   ("s" crux-create-scratch-buffer)
   ("q" nil))
 
+(defhydra my/hydra-desktop (:color blue :hint nil :pre (message "Desktop"))
+  "
+  _s_ Save
+  _r_ Restore
+  "
+  ("s" (desktop-save desktop-dirname))
+  ("r" desktop-read)
+  ("q" nil))
+
 (defhydra my/hydra-edit (:color blue :hint nil :pre (message "Edit"))
   "
   _d_ Duplicate
@@ -96,13 +105,14 @@
 (defhydra my/hydra (:color blue :hint nil :pre (message "General commands"))
   "
   _c_ Create…    _t_ Toggle…          _g_ Git…         _h_ Help…
-  _o_ Open…      _d_ Dictionary       _P_ Packages…    _R_ Reload configuration
-  _e_ Edit…      _x_ Expand region    _S_ Spelling…
+  _o_ Open…      _d_ Dictionary       _P_ Packages…    _D_ Desktop…
+  _e_ Edit…      _x_ Expand region    _S_ Spelling…    _R_ Reload configuration
   _i_ Insert…    _a_ Agenda
   "
   ("a" my/org-ql-agenda)
   ("c" my/hydra-create/body)
   ("d" powerthesaurus-lookup-dwim)
+  ("D" my/hydra-desktop/body)
   ("e" my/hydra-edit/body)
   ("g" my/hydra-git/body)
   ("h" my/hydra-help/body)
