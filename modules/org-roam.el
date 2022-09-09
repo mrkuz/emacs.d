@@ -1,4 +1,4 @@
-(use-package  emacsql-sqlite3)
+(use-package emacsql-sqlite3)
 
 (use-package org-roam
   :init

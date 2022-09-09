@@ -56,6 +56,7 @@
 (my/load-module "highlight-parentheses")
 ;; (my/load-module "highlight-symbol")
 ;; (my/load-module "which-key")
+(my/load-module "dumb-jump")
 (my/load-module "helpful")
 (my/load-module "company")
 (my/load-module "yasnippet")
