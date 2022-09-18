@@ -28,6 +28,9 @@
   (setq org-indent-indentation-per-level 1)
   (diminish 'org-indent-mode)
 
+  ;; Don't auto-indent source
+  (setq org-src-preserve-indentation t)
+
   ;; Archive
   (setq org-archive-location "~/org/.archive.org::* File: %s")
   ;; Don't add header to archive file
@@ -35,7 +38,8 @@
 
   ;; TODO keywords
   (setq org-todo-keywords '(
-                            (sequence "TODO(t!)" "NEXT(n!)" "SCHEDULED(s!)" "WAITING(w!)" "|" "DONE(d!)" "CANCELED(c!)")
+                            (sequence "TODO(t!)" "STAGED(.!)" "SCHEDULED(:!)" "NEXT(n!)" "|" "DONE(d!)" "CANCELED(c!)")
+                            (sequence "WAITING(w!)" "|" "DONE(d!)" "CANCELED(c!)")
                             (sequence "EVENT(e!)" "|" "DONE(d!)" "CANCELED(c!)")
                             (sequence "PROJECT(p!)" "ON_HOLD(h!) | DONE(d!)" "CANCELED(c!)")))
   ;; Insert log notes into LOGBOOK
