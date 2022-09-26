@@ -1,4 +1,5 @@
 (use-package highlight-parentheses
+  :diminish highlight-parentheses-mode
   :init
   (setq highlight-parentheses-delay 0)
   ;; Highlight parens right before cursor
