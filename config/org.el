@@ -3,6 +3,12 @@
   (interactive)
   (find-file (concat org-directory "/todo.org")))
 
+(defun my/org-schedule ()
+  "Schedule a task"
+  (interactive)
+  (org-schedule t)
+  (org-todo "SCHEDULED"))
+
 (use-package org
   :straight (:type built-in)
   :diminish org-indent-mode
@@ -69,5 +75,7 @@
   (set-face-attribute 'org-ellipsis nil :underline nil)
   :bind (("C-c l" . 'org-store-link)
          ("C-c a" . 'org-agenda)
-         ("C-c c" . 'org-capture))
+         ("C-c c" . 'org-capture)
+         :map org-mode-map
+         ("C-c C-s" . 'my/org-schedule))
   :hook (org-mode . org-indent-mode))
