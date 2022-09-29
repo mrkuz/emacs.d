@@ -4,9 +4,11 @@
   "
   _s_ Scratch buffer
   _n_ Note
+  _t_ Terminal
   "
   ("n" org-roam-capture)
   ("s" crux-create-scratch-buffer)
+  ("t" multi-term)
   ("q" nil))
 
 (defhydra my/hydra-desktop (:color blue :hint nil :pre (message "Desktop"))
@@ -60,7 +62,7 @@
 
 (defhydra my/hydra-help (:color blue :hint nil :pre (message "Help"))
   "
-  _._ Descripe at point
+  _._ Describe at point
   _a_ Apropos
   "
   ("." helpful-at-point)
@@ -110,13 +112,12 @@
   ("p" flyspell-correct-move)
   ("q" nil))
 
-
 (defhydra my/hydra (:color blue :hint nil :pre (message "General commands"))
   "
   _c_ Create…    _g_ Go to…           _G_ Git…         _h_ Help…
   _o_ Open…      _t_ Toggle…          _P_ Packages…    _D_ Desktop…
-  _e_ Edit…      _x_ Expand region    _S_ Spelling…    _R_ Reload configuration
-  _i_ Insert…
+  _e_ Edit…      _x_ Expand region    _S_ Spelling…    _M_ Run menu command
+  _i_ Insert…                                      _R_ Reload configuration
   "
   ("c" my/hydra-create/body)
   ("D" my/hydra-desktop/body)
@@ -125,6 +126,7 @@
   ("G" my/hydra-git/body)
   ("h" my/hydra-help/body)
   ("i" my/hydra-insert/body)
+  ("M" lacarte-execute-menu-command)
   ("o" my/hydra-open/body)
   ("R" (load-file user-init-file))
   ("S" my/hydra-spelling/body)
