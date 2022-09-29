@@ -9,6 +9,12 @@
   (org-schedule t)
   (org-todo "SCHEDULED"))
 
+(defun my/org-trigger-hook (args)
+  (setq new-state (plist-get args :to))
+  (when (string-equal new-state "SCHEDULED")
+    (run-with-timer 0 nil (lambda () (org-schedule t)))))
+(add-hook 'org-trigger-hook 'my/org-trigger-hook)
+
 (use-package org
   :straight (:type built-in)
   :diminish org-indent-mode
