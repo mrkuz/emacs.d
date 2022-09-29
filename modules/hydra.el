@@ -5,7 +5,7 @@
   _s_ Scratch buffer
   _n_ Note
   "
-  ("n" org-roam-node-find)
+  ("n" org-roam-capture)
   ("s" crux-create-scratch-buffer)
   ("q" nil))
 
@@ -27,6 +27,15 @@
   ("d" crux-duplicate-current-line-or-region)
   ("f" crux-cleanup-buffer-or-region)
   ("x" er/expand-region)
+  ("q" nil))
+
+(defhydra my/hydra-goto (:color blue :hint nil :pre (message "Go to"))
+  "
+  _d_ Dictionary
+  _l_ Last change
+  "
+  ("d" powerthesaurus-lookup-dwim)
+  ("l" goto-last-change)
   ("q" nil))
 
 (defhydra my/hydra-insert (:color blue :hint nil :pre (message "Insert"))
@@ -104,17 +113,16 @@
 
 (defhydra my/hydra (:color blue :hint nil :pre (message "General commands"))
   "
-  _c_ Create…    _t_ Toggle…          _g_ Git…         _h_ Help…
-  _o_ Open…      _d_ Dictionary       _P_ Packages…    _D_ Desktop…
+  _c_ Create…    _g_ Go to…           _G_ Git…         _h_ Help…
+  _o_ Open…      _t_ Toggle…          _P_ Packages…    _D_ Desktop…
   _e_ Edit…      _x_ Expand region    _S_ Spelling…    _R_ Reload configuration
-  _i_ Insert…    _a_ Agenda
+  _i_ Insert…
   "
-  ("a" my/org-ql-agenda)
   ("c" my/hydra-create/body)
-  ("d" powerthesaurus-lookup-dwim)
   ("D" my/hydra-desktop/body)
   ("e" my/hydra-edit/body)
-  ("g" my/hydra-git/body)
+  ("g" my/hydra-goto/body)
+  ("G" my/hydra-git/body)
   ("h" my/hydra-help/body)
   ("i" my/hydra-insert/body)
   ("o" my/hydra-open/body)

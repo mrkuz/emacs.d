@@ -45,6 +45,7 @@
 (my/load-module "hungry-delete")
 (my/load-module "move-text")
 (my/load-module "expand-region")
+(my/load-module "goto-last-change")
 (my/load-module "org-protocol")
 (my/load-module "org-bullets")
 (my/load-module "org-ql")
