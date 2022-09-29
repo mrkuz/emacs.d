@@ -59,8 +59,9 @@
 ;; (my/load-module "highlight-symbol")
 ;; (my/load-module "which-key")
 (my/load-module "dumb-jump")
-(my/load-module "helpful")
-(my/load-module "company")
+(my/load-module "yafolding")
+(my/load-module "helpful") ;; depends on yafolding
+(my/load-module "company") ;; depends on helpful
 (my/load-module "yasnippet")
 (my/load-module "flyspell-correct")
 (my/load-module "powerthesaurus")
