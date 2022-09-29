@@ -2,10 +2,11 @@
 
 (defhydra my/hydra-create (:color blue :hint nil :pre (message "Create"))
   "
-  _s_ Scratch buffer
+  _s_ Scratch buffer   _j_ Journal entry
   _n_ Note
   _t_ Terminal
   "
+  ("j" org-journal-new-entry)
   ("n" org-roam-capture)
   ("s" crux-create-scratch-buffer)
   ("t" multi-term)
@@ -51,9 +52,11 @@
   "
   _c_ Emacs configuration    _t_ todo.org    _a_ Agenda
   _r_ Recent file            _n_ Note        _u_ Undo tree
+                           _j_ Journal
   "
   ("a" my/org-ql-agenda)
   ("c" (find-file user-init-file))
+  ("j" (org-journal-new-entry t))
   ("n" org-roam-node-find)
   ("r" consult-recent-file)
   ("t" my/org-find-todo)

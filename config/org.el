@@ -15,6 +15,10 @@
     (run-with-timer 0 nil (lambda () (org-schedule t)))))
 (add-hook 'org-trigger-hook 'my/org-trigger-hook)
 
+(defun my/org-find-journal-location ()
+  (org-journal-new-entry t)
+  (goto-char (point-max)))
+
 (use-package org
   :straight (:type built-in)
   :diminish org-indent-mode
@@ -68,6 +72,8 @@
   (setq org-agenda-files '("~/org/todo.org" "~/org/roles/" "~/org/projects/" "~/org/calendar/" "~/org/journal/" "~/org/mobile/"))
   ;; Capture
   (setq org-capture-templates '(
+                                ("j" "Journal entry" plain (function my/org-find-journal-location)
+                                 "** %(format-time-string org-journal-time-format) %?\n%i")
                                 ("b" "New backlog entry" entry (file+olp "todo.org" "Backlog")
                                  "* %?\nCREATED: %U" :prepend t)
                                 ("w" "Capture web page" entry (file "capture.org")

@@ -27,7 +27,7 @@
 (my/load-config "dired")
 (my/load-config "ediff")
 (my/load-config "flyspell")
-(my/load-config "org")
+(my/load-config "org") ;; depends on org-journal
 
 ;;--------------------------------------------------------------------------------------------------
 ;; Modules
@@ -50,6 +50,7 @@
 (my/load-module "org-protocol")
 (my/load-module "org-bullets")
 (my/load-module "org-ql")
+(my/load-module "org-journal")
 (my/load-module "org-roam")
 (my/load-module "my-search-notes")
 (my/load-module "git-gutter")
