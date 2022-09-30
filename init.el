@@ -42,7 +42,7 @@
 (my/load-module "consult")
 (my/load-module "crux")
 ;; (my/load-module "embark")
-(my/load-module "lacarte")
+(my/load-module "lacarte") ;; depends on marginalia
 (my/load-module "hungry-delete")
 (my/load-module "move-text")
 (my/load-module "expand-region")

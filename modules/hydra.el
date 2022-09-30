@@ -129,7 +129,7 @@
   ("G" my/hydra-git/body)
   ("h" my/hydra-help/body)
   ("i" my/hydra-insert/body)
-  ("M" lacarte-execute-menu-command)
+  ("M" my/lacarte)
   ("o" my/hydra-open/body)
   ("R" (load-file user-init-file))
   ("S" my/hydra-spelling/body)
