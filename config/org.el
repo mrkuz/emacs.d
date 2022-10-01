@@ -4,18 +4,20 @@
   (find-file (concat org-directory "/todo.org")))
 
 (defun my/org-schedule ()
-  "Schedule a task"
+  "Schedule a task."
   (interactive)
   (org-schedule t)
   (org-todo "SCHEDULED"))
 
-(defun my/org-trigger-hook (args)
+;; As for timestamp for SCHEDULED and EVENT items
+(defun my//org-trigger-hook (args)
   (setq new-state (plist-get args :to))
-  (when (string-equal new-state "SCHEDULED")
+  (when (or (string-equal new-state "SCHEDULED")
+            (string-equal new-state "EVENT"))
     (run-with-timer 0 nil (lambda () (org-schedule t)))))
-(add-hook 'org-trigger-hook 'my/org-trigger-hook)
+(add-hook 'org-trigger-hook 'my//org-trigger-hook)
 
-(defun my/org-find-journal-location ()
+(defun my//org-find-journal-location ()
   (org-journal-new-entry t)
   (goto-char (point-max)))
 
@@ -72,7 +74,7 @@
   (setq org-agenda-files '("~/org/todo.org" "~/org/roles/" "~/org/projects/" "~/org/calendar/" "~/org/journal/" "~/org/mobile/"))
   ;; Capture
   (setq org-capture-templates '(
-                                ("j" "Journal entry" plain (function my/org-find-journal-location)
+                                ("j" "Journal entry" plain (function my//org-find-journal-location)
                                  "** %(format-time-string org-journal-time-format) %?\n%i")
                                 ("b" "New backlog entry" entry (file+olp "todo.org" "Backlog")
                                  "* %?\nCREATED: %U" :prepend t)

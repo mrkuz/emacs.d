@@ -1,14 +1,15 @@
-(defconst my/helpful-buffer "*Helpful*")
+(defconst my//helpful-buffer "*Helpful*")
 
 ;; Re-use one buffer instead of creating new ones
-(defun my/helpful-switch-buffer (source)
-  (with-help-window my/helpful-buffer
-    (with-current-buffer my/helpful-buffer
+(defun my//helpful-switch-buffer (source)
+  (with-help-window my//helpful-buffer
+    (with-current-buffer my//helpful-buffer
       (insert-buffer-substring source)
       (kill-buffer source))))
 
-(defun my/helpful-show-hook ()
-  (when (string-equal (buffer-name) my/helpful-buffer)
+;; Fold some sections
+(defun my//helpful-show-hook ()
+  (when (string-equal (buffer-name) my//helpful-buffer)
     (goto-char (point-min))
     (setq sections '("References" "Debugging" "Aliases" "Source Code" "Alias Source Code" "Symbol Properties")
           start 0
@@ -30,10 +31,10 @@
     (yafolding-hide-region start (point-max))
     (goto-char (point-min))))
 
-(add-hook 'temp-buffer-window-show-hook 'my/helpful-show-hook)
+(add-hook 'temp-buffer-window-show-hook 'my//helpful-show-hook)
 
 (use-package helpful
   :demand t
   :config
-  (setq helpful-switch-buffer-function 'my/helpful-switch-buffer))
+  (setq helpful-switch-buffer-function 'my//helpful-switch-buffer))
 

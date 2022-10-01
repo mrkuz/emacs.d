@@ -1,5 +1,5 @@
 ;; Add filename/olp after agenda element
-(defun my/org-ql-view-advice (fun &rest args)
+(defun my//org-ql-view-advice (fun &rest args)
   (if (not args)
       ""
     (let* ((element (car args))
@@ -27,6 +27,7 @@
               (propertize (concat " (" date first rest ")") 'face 'shadow)))))
 
 (defun my/org-ql-agenda ()
+  "Show agenda."
   (interactive)
   (let ((one-week-from-today (format-time-string "%Y-%m-%d" (org-read-date nil t "+8d"))))
     (org-ql-search (org-agenda-files)
@@ -50,4 +51,4 @@
 
 (use-package org-ql
   :init
-  (advice-add 'org-ql-view--format-element :around 'my/org-ql-view-advice))
+  (advice-add 'org-ql-view--format-element :around 'my//org-ql-view-advice))

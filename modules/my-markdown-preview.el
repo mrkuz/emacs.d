@@ -5,7 +5,8 @@
 
 (use-package impatient-mode)
 
-(defun my/markdown-filter (buffer)
+;; Render GitHub-style
+(defun my//markdown-filter (buffer)
   (princ
    (with-temp-buffer
      (let ((tmp (buffer-name)))
@@ -33,5 +34,5 @@
   (unless (process-status "httpd")
     (httpd-start))
   (impatient-mode)
-  (imp-set-user-filter 'my/markdown-filter)
+  (imp-set-user-filter 'my//markdown-filter)
   (imp-visit-buffer))

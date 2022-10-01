@@ -1,4 +1,5 @@
-(defun my/hide-region ()
+(defun my/yafolding-hide-region ()
+  "Fold selected region."
   (interactive)
   (yafolding-hide-region (region-beginning) (region-end)))
 
