@@ -1,3 +1,5 @@
+(defvar my//selected "")
+
 ;; Set up completion styles
 (defun my//company-advice (fn &rest args)
   (let ((completion-styles '(basic partial-completion flex)))
@@ -7,15 +9,29 @@
 (defun my/company-show-doc ()
   "Show documentation for seletion."
   (interactive)
-  (let ((selected (nth company-selection company-candidates)))
-    (if (intern-soft selected)
-        (helpful-symbol (intern-soft selected))
-      (ignore-error user-error (company-show-doc-buffer)))))
+  (let* (
+        (selected (nth company-selection company-candidates))
+        (symbol (intern-soft selected)))
+    (if symbol
+        (if (string-equal selected my//selected)
+            ;; Scroll if symbol is already shown
+            (with-current-buffer my//helpful-buffer
+              (with-selected-window (get-buffer-window)
+                (ignore-error scan-error (scroll-up-command 1))))
+          (helpful-symbol symbol))
+      (ignore-error user-error (company-show-doc-buffer)))
+    (setq my//selected selected)))
 
 ;; Update helpful buffer when select candidate
 (defun my//company-doc-frontend (command)
   (pcase command
-    ('post-command (if (get-buffer-window my//helpful-buffer) (my/company-show-doc)))))
+    ('post-command
+     (when (and (get-buffer-window my//helpful-buffer)
+                ;; On first <C-h> company-doc-frontend gets called twice (not sure why),
+                ;; but we want to call my/company-show-doc only once.
+                (not (string-equal (nth company-selection company-candidates) my//selected)))
+       (setq my//selected "")
+       (my/company-show-doc)))))
 
 (use-package company
   :diminish company-mode
