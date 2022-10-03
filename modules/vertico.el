@@ -3,7 +3,7 @@
                       :includes (vertico-directory))
   :init
   (vertico-mode)
-  ;; Ido-like direcotry navigation
+  ;; Ido-like directory navigation
   :bind (:map vertico-map
               ("RET" . vertico-directory-enter)
               ("DEL" . vertico-directory-delete-char)

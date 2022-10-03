@@ -23,12 +23,13 @@
 
 (defhydra my/hydra-edit (:color blue :hint nil :pre (message "Edit"))
   "
-  _d_ Duplicate
-  _f_ Format buffer
+  _d_ Duplicate        _f_ Format buffer
   _x_ Expand region
+  _m_ Multiple cursors
   "
   ("d" crux-duplicate-current-line-or-region)
   ("f" crux-cleanup-buffer-or-region)
+  ("m" mc/mark-next-like-this)
   ("x" er/expand-region)
   ("q" nil))
 
