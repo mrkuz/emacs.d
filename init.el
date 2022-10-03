@@ -49,6 +49,7 @@
 (my/load-module "move-text")
 (my/load-module "expand-region")
 (my/load-module "multiple-cursors") ;; depends on hungry delete
+(my/load-module "avy")
 (my/load-module "goto-last-change")
 (my/load-module "org-protocol")
 (my/load-module "org-bullets")

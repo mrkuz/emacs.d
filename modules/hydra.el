@@ -35,11 +35,14 @@
 
 (defhydra my/hydra-goto (:color blue :hint nil :pre (message "Go to"))
   "
-  _d_ Dictionary
-  _l_ Last change
+  _L_ Last change   _d_ Dictionary
+  _w_ Word
+  _l_ Link
   "
   ("d" powerthesaurus-lookup-dwim)
-  ("l" goto-last-change)
+  ("l" ace-link)
+  ("L" goto-last-change)
+  ("w" avy-goto-word-1)
   ("q" nil))
 
 (defhydra my/hydra-insert (:color blue :hint nil :pre (message "Insert"))
