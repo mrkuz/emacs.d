@@ -79,5 +79,8 @@
 (my/load-module "markdown-mode")
 (my/load-module "nix-mode")
 (my/load-module "fish-mode")
+(my/load-module "groovy-mode")
+(my/load-module "kotlin-mode")
+
 
 (my/load-module "hydra")
