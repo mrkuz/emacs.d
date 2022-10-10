@@ -59,7 +59,7 @@
 (my/load-module "my-search-notes")
 (my/load-module "git-gutter")
 (my/load-module "magit")
-(my/load-module "multi-term")
+(my/load-module "multi-vterm")
 (my/load-module "visual-fill-column")
 (my/load-module "undo-tree")
 (my/load-module "highlight-parentheses")

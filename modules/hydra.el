@@ -9,7 +9,7 @@
   ("j" org-journal-new-entry)
   ("n" org-roam-capture)
   ("s" crux-create-scratch-buffer)
-  ("t" multi-term)
+  ("t" multi-vterm)
   ("q" nil))
 
 (defhydra my/hydra-desktop (:color blue :hint nil :pre (message "Desktop"))
