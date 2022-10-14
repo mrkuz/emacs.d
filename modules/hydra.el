@@ -123,8 +123,8 @@
   "
   _c_ Create…    _g_ Go to…           _G_ Git…         _h_ Help…
   _o_ Open…      _t_ Toggle…          _P_ Packages…    _D_ Desktop…
-  _e_ Edit…      _x_ Expand region    _S_ Spelling…    _M_ Run menu command
-  _i_ Insert…                                      _R_ Reload configuration
+  _e_ Edit…      _j_ Journal capture  _S_ Spelling…    _M_ Run menu command
+  _i_ Insert…    _x_ Expand region                   _R_ Reload configuration
   "
   ("c" my/hydra-create/body)
   ("D" my/hydra-desktop/body)
@@ -133,6 +133,7 @@
   ("G" my/hydra-git/body)
   ("h" my/hydra-help/body)
   ("i" my/hydra-insert/body)
+  ("j" (org-capture nil "j"))
   ("M" my/lacarte)
   ("o" my/hydra-open/body)
   ("R" (load-file user-init-file))
