@@ -75,7 +75,7 @@
   ;; Capture
   (setq org-capture-templates '(
                                 ("j" "Journal entry" plain (function my//org-find-journal-location)
-                                 "** %(format-time-string org-journal-time-format) %?\n%i")
+                                 "** %(format-time-string org-journal-time-format)%?\n%i")
                                 ("b" "New backlog entry" entry (file+olp "todo.org" "Backlog")
                                  "* %?\nCREATED: %U" :prepend t)
                                 ("w" "Capture web page" entry (file "capture.org")
