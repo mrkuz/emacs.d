@@ -28,8 +28,8 @@
 
 ;; Show warning buffer only for errors
 (setq warning-minimum-level :error)
-;; Enter debugger on error
-(setq debug-on-error t)
+;; Don't enter debugger on error
+(setq debug-on-error nil)
 
 ;; Early appearance
 (my/load-config "early-appearance")
