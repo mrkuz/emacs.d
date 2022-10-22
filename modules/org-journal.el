@@ -1,3 +1,9 @@
+(defun my//org-journal-file-header-func (time)
+  (concat
+   "#+TITLE: Weekly Journal"
+   (format-time-string " (W%V)" time)
+   "\n* Staged"))
+
 (use-package org-journal
   :demand t
   :config
@@ -5,5 +11,6 @@
   (setq org-journal-dir (concat org-directory "/journal")
         org-journal-file-type 'weekly
         org-journal-file-format "%Y%m%d_W%V.org"
-        org-journal-date-format "%Y-%m-%d, %A"
+        org-journal-file-header 'my//org-journal-file-header-func
+        org-journal-date-format "OPEN %Y-%m-%d, %A"
         org-journal-carryover-items nil))

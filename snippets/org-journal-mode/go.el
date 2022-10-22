@@ -2,7 +2,7 @@
 # name: go
 # key: <go
 # --
-** Priorities
+** Staged
 - [ ] $0
 ** Schedule
 ** `(format-time-string org-journal-time-format)`Go!
