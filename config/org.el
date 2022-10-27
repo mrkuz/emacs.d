@@ -59,8 +59,8 @@
                             (sequence "TODO(t!)" "STAGED(.!)" "SCHEDULED(:!)" "NEXT(n!)" "|" "DONE(d!)" "CANCELED(c!)")
                             (sequence "WAITING(w!)" "|" "DONE(d!)" "CANCELED(c!)")
                             (sequence "EVENT(e!)" "|" "DONE(d!)" "CANCELED(c!)")
-                            (sequence "OPEN(o!)""ON_HOLD(h!) | DONE(d!)" "CANCELED(c!)")
-                            (sequence "PROJECT(p!)""ON_HOLD(h!) | DONE(d!)" "CANCELED(c!)")))
+                            (sequence "OPEN(o!)" "ON_HOLD(h!)" "|" "DONE(d!)" "CANCELED(c!)")
+                            (sequence "PROJECT(p!)" "ON_HOLD(h!)" "|" "DONE(d!)" "CANCELED(c!)")))
   ;; Insert log notes into LOGBOOK
   (setq org-log-into-drawer t)
 
