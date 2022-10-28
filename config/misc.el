@@ -25,7 +25,10 @@
 ;; Don't insert closing pair before non-whitespace characters and for '<'
 (setq-default electric-pair-inhibit-predicate
               (lambda (c)
-                 (if (char-equal c ?<) t (electric-pair-conservative-inhibit c))))
+                (cond
+                 ((eq (char-syntax c) ?<) t)
+                 ((eq (char-after) nil) nil)
+                 ((eq (char-syntax (char-after)) ?w) t))))
 ;; Disable show matching parens
 (show-paren-mode 0)
 
