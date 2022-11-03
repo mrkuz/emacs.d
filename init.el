@@ -3,6 +3,7 @@
 ;;--------------------------------------------------------------------------------------------------
 
 (my/load-module "straight")
+;; (my/load-module "benchmark-init")
 (my/load-module "no-littering")
 (my/load-module "diminish")
 
