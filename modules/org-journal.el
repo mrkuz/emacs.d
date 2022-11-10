@@ -1,8 +1,7 @@
 (defun my//org-journal-file-header-func (time)
   (concat
    "#+TITLE: Weekly Journal"
-   (format-time-string " (W%V)" time)
-   "\n* Staged"))
+   (format-time-string " (W%V)" time)))
 
 (use-package org-journal
   :demand t
