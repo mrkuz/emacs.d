@@ -26,7 +26,7 @@
 (setq-default electric-pair-inhibit-predicate
               (lambda (c)
                 (cond
-                 ((eq (char-syntax c) ?<) t)
+                 ((char-equal c ?<) t)
                  ((eq (char-after) nil) nil)
                  ((eq (char-syntax (char-after)) ?w) t))))
 ;; Disable show matching parens
