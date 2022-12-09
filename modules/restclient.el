@@ -7,3 +7,4 @@
   :hook (restclient-mode . my//restclient-mode-hook))
 
 (use-package company-restclient)
+(use-package ob-restclient)
