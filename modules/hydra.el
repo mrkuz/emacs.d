@@ -56,9 +56,10 @@
   "
   _c_ Emacs configuration    _t_ todo.org    _a_ Agenda
   _r_ Recent file            _n_ Note        _u_ Undo tree
-                           _j_ Journal
+                           _j_ Journal     _b_ Backups
   "
   ("a" my/org-ql-agenda)
+  ("b" backup-walker-start)
   ("c" (find-file user-init-file))
   ("j" (org-journal-new-entry t))
   ("n" org-roam-node-find)

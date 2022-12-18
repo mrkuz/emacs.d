@@ -49,6 +49,7 @@
 (my/load-module "hungry-delete")
 (my/load-module "move-text")
 (my/load-module "expand-region")
+(my/load-module "backup-walker")
 (my/load-module "multiple-cursors") ;; depends on hungry delete
 (my/load-module "avy")
 (my/load-module "goto-last-change")
