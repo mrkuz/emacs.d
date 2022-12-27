@@ -1,11 +1,12 @@
 (require 'notifications)
 
 (defun my//appt-display (min-to-app new-time msg)
-  (setq pretty (replace-regexp-in-string "\\(SCHEDULED\\|EVENT\\) " "" msg))
+  (setq time (substring msg 0 5))
+  (setq content (substring msg 6))
   (notifications-notify
-   :title (format "Appointment in %s minutes" min-to-app)
-   :body (format "%s" pretty)
-   :timeout -1))
+   :title (format "%s" content)
+   :body (format "in %s minutes (%s)" min-to-app time)
+   :timeout 60))
 
 (setq appt-message-warning-time 15
       appt-display-duration 60
