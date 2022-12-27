@@ -60,7 +60,6 @@
 (my/load-module "org-journal")
 (my/load-module "org-roam")
 ;; (my/load-module "org-alert")
-(my/load-module "my-search-notes")
 (my/load-module "git-gutter")
 (my/load-module "magit")
 (my/load-module "multi-vterm")
