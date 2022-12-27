@@ -2,12 +2,9 @@
 
 (defhydra my/hydra-create (:color blue :hint nil :pre (message "Create"))
   "
-  _s_ Scratch buffer   _j_ Journal entry
-  _n_ Note
+  _s_ Scratch buffer
   _t_ Terminal
   "
-  ("j" org-journal-new-entry)
-  ("n" org-roam-capture)
   ("s" crux-create-scratch-buffer)
   ("t" multi-vterm)
   ("q" nil))
@@ -56,7 +53,7 @@
   "
   _c_ Emacs configuration    _t_ todo.org    _a_ Agenda
   _r_ Recent file            _n_ Note        _u_ Undo tree
-                           _j_ Journal     _b_ Backups
+                           _j_ Journal     _b_ Backup
   "
   ("a" my/org-ql-agenda)
   ("b" backup-walker-start)
@@ -126,8 +123,8 @@
   "
   _c_ Create…    _g_ Go to…           _G_ Git…         _h_ Help…
   _o_ Open…      _t_ Toggle…          _P_ Packages…    _D_ Desktop…
-  _e_ Edit…      _j_ Journal capture  _S_ Spelling…    _M_ Run menu command
-  _i_ Insert…    _x_ Expand region                   _R_ Reload configuration
+  _e_ Edit…      _x_ Expand region    _S_ Spelling…    _M_ Run menu command
+  _i_ Insert…                                      _R_ Reload configuration
   "
   ("c" my/hydra-create/body)
   ("D" my/hydra-desktop/body)
@@ -136,7 +133,6 @@
   ("G" my/hydra-git/body)
   ("h" my/hydra-help/body)
   ("i" my/hydra-insert/body)
-  ("j" (org-capture nil "j"))
   ("M" my/lacarte)
   ("o" my/hydra-open/body)
   ("R" (load-file user-init-file))
