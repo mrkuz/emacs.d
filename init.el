@@ -38,6 +38,7 @@
 
 (my/load-module "my-symbol-at-point-overlay")
 (my/load-module "my-markdown-preview")
+(my/load-module "my-appt")
 
 (my/load-module "vertico")
 (my/load-module "orderless")
@@ -58,6 +59,7 @@
 (my/load-module "org-ql")
 (my/load-module "org-journal")
 (my/load-module "org-roam")
+;; (my/load-module "org-alert")
 (my/load-module "my-search-notes")
 (my/load-module "git-gutter")
 (my/load-module "magit")

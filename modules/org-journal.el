@@ -12,4 +12,5 @@
         org-journal-file-format "%Y%m%d_W%V.org"
         org-journal-file-header 'my//org-journal-file-header-func
         org-journal-date-format "OPEN %Y-%m-%d, %A"
-        org-journal-carryover-items nil))
+        org-journal-carryover-items nil)
+  (add-to-list 'org-agenda-files (org-journal--get-entry-path) t))

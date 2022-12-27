@@ -77,6 +77,8 @@
   (setq org-capture-templates '(
                                 ("j" "Journal entry" plain (function my//org-find-journal-location)
                                  "** %(format-time-string org-journal-time-format)%?\n%i")
+                                ("r" "Reminder" plain (function my//org-find-journal-location)
+                                 "** %(format-time-string org-journal-time-format)Reminder: %?\nSCHEDULED: %^T\n%i")
                                 ("w" "Capture web page" plain (function my//org-find-journal-location)
                                  "** %(format-time-string org-journal-time-format)%?\nTITLE: %:description\nURL: %:link\n\n%i")
                                 ("p" "Capture primary selection" plain (function my//org-find-journal-location)
