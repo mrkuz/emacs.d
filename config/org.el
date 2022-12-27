@@ -9,6 +9,12 @@
   (org-schedule t)
   (org-todo "SCHEDULED"))
 
+(defun my/org-focus ()
+  "Focus on current header."
+  (interactive)
+  (org-overview)
+  (org-fold-show-children))
+
 ;; As for timestamp for SCHEDULED and EVENT items
 (defun my//org-trigger-hook (args)
   (setq new-state (plist-get args :to))

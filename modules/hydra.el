@@ -102,9 +102,11 @@
 
 (defhydra my/hydra-toggle (:color blue :hint nil :pre (message "Toggle"))
   "
+  _f_ Focus
   _v_ Visual line mode
   _w_ Whitespace mode
   "
+  ("f" my/org-focus)
   ("v" visual-line-mode)
   ("w" whitespace-mode)
   ("q" nil))
