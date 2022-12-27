@@ -77,12 +77,10 @@
   (setq org-capture-templates '(
                                 ("j" "Journal entry" plain (function my//org-find-journal-location)
                                  "** %(format-time-string org-journal-time-format)%?\n%i")
-                                ("b" "New backlog entry" entry (file+olp "todo.org" "Backlog")
-                                 "* %?\nCREATED: %U" :prepend t)
-                                ("w" "Capture web page" entry (file "capture.org")
-                                 "* %?\nCREATED: %U\nTITLE: %:description%\nURL: %:link\n\n%i" :prepend t)
-                                ("p" "Capture primary selection" entry (file "capture.org")
-                                 "* %?\nCREATED: %U\n\n%(gui-get-primary-selection)" :prepend t)
+                                ("w" "Capture web page" plain (function my//org-find-journal-location)
+                                 "** %(format-time-string org-journal-time-format)%?\nTITLE: %:description\nURL: %:link\n\n%i")
+                                ("p" "Capture primary selection" plain (function my//org-find-journal-location)
+                                 "** %(format-time-string org-journal-time-format)%?\n\n%(gui-get-primary-selection)")
                                 ))
   :config
   ;; Customize ellipsis
