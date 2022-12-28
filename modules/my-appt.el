@@ -17,5 +17,6 @@
       appt-display-format 'window)
 (setq appt-disp-window-function 'my//appt-display)
 
-(appt-activate 1)
-(run-with-idle-timer 10 t 'org-agenda-to-appt)
+(when (daemonp)
+  (appt-activate 1)
+  (run-with-idle-timer 10 t 'org-agenda-to-appt))
