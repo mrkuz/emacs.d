@@ -40,8 +40,6 @@
 ;; Enable completion with C-TAB
 (global-set-key (kbd "<C-tab>") 'completion-at-point)
 
-;; Set cursor color
-(set-cursor-color "#e1e1e0")
 ;; Disable blinking cursor
 (blink-cursor-mode 0)
 ;; Set cursor to bar
