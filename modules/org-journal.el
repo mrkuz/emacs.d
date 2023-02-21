@@ -13,4 +13,7 @@
         org-journal-file-header 'my//org-journal-file-header-func
         org-journal-date-format "OPEN %Y-%m-%d, %A"
         org-journal-carryover-items nil)
-  (add-to-list 'org-agenda-files (org-journal--get-entry-path) t))
+  (let ((journal-file (org-journal--get-entry-path)))
+    (when (not (file-exists-p journal-file))
+      (make-empty-file journal-file))
+    (add-to-list 'org-agenda-files journal-file t)))
