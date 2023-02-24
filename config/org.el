@@ -13,7 +13,8 @@
   "Focus on current header."
   (interactive)
   (org-overview)
-  (org-fold-show-children))
+  (outline-back-to-heading)
+  (org-show-children))
 
 ;; As for timestamp for SCHEDULED and EVENT items
 (defun my//org-trigger-hook (args)

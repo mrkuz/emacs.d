@@ -3,6 +3,12 @@
    "#+TITLE: Weekly Journal"
    (format-time-string " (W%V)" time)))
 
+(defun my/open-journal-file ()
+  "Open current journal file"
+  (interactive)
+  (org-journal-new-entry t)
+  (my/org-focus))
+
 (use-package org-journal
   :demand t
   :config

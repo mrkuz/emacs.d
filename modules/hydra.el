@@ -58,7 +58,7 @@
   ("a" my/org-ql-agenda)
   ("b" backup-walker-start)
   ("c" (find-file user-init-file))
-  ("j" (org-journal-new-entry t))
+  ("j" my/open-journal-file)
   ("n" org-roam-node-find)
   ("r" consult-recent-file)
   ("t" my/org-find-todo)
@@ -99,11 +99,9 @@
 
 (defhydra my/hydra-toggle (:color blue :hint nil :pre (message "Toggle"))
   "
-  _f_ Focus
   _v_ Visual line mode
   _w_ Whitespace mode
   "
-  ("f" my/org-focus)
   ("v" visual-line-mode)
   ("w" whitespace-mode)
   ("q" nil))
