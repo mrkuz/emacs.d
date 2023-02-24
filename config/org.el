@@ -85,7 +85,7 @@
                                 ("j" "Journal entry" plain (function my//org-find-journal-location)
                                  "** %(format-time-string org-journal-time-format)%?\n%i")
                                 ("r" "Reminder" plain (function my//org-find-journal-location)
-                                 "** %(format-time-string org-journal-time-format)Reminder: %?\nSCHEDULED: %^T\n%i")
+                                 "** %(format-time-string org-journal-time-format)Reminder: %?\nSCHEDULED: %^T\n:PROPERTIES:\n:APPT_WARNTIME: 0\n:END:\n%i")
                                 ("w" "Capture web page" plain (function my//org-find-journal-location)
                                  "** %(format-time-string org-journal-time-format)%?\nTITLE: %:description\nURL: %:link\n\n%i")
                                 ("p" "Capture primary selection" plain (function my//org-find-journal-location)

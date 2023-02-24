@@ -2,9 +2,10 @@
 
 (defhydra my/hydra-create (:color blue :hint nil :pre (message "Create"))
   "
-  _s_ Scratch buffer
+  _s_ Scratch buffer   _r_ Reminder
   _t_ Terminal
   "
+  ("r" my/reminder)
   ("s" crux-create-scratch-buffer)
   ("t" multi-vterm)
   ("q" nil))
