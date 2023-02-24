@@ -44,6 +44,7 @@
                       (:name "Overdue\n" :and (:scheduled past :not (:todo "EVENT")))
                       (:name "Staged\n" :and (:scheduled nil :todo "STAGED"))
                       (:name "Backlog\n" :and (:scheduled nil :todo "TODO"))
+                      (:name "Journal\n" :todo "OPEN")
                       (:name "Waiting\n" :todo "WAITING")
                       (:name "Upcoming\n" :scheduled (before ,one-week-from-today))
                       (:discard (:anything t)))
