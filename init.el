@@ -74,6 +74,7 @@
 (my/load-module "company") ;; depends on helpful
 (my/load-module "yasnippet")
 (my/load-module "flyspell-correct")
+(my/load-module "age")
 (my/load-module "powerthesaurus")
 (my/load-module "restclient")
 

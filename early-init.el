@@ -31,5 +31,8 @@
 ;; Don't enter debugger on error
 (setq debug-on-error nil)
 
+;; Workaround for void variable error
+(defvar native-comp-deferred-compilation-deny-list nil)
+
 ;; Early appearance
 (my/load-config "early-appearance")
