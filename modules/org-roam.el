@@ -13,7 +13,7 @@
         org-roam-directory "~/Notes/"
         ;; Enable completion of note links
         org-roam-completion-everywhere t)
-  ;; Move org-roam boffer to the right side
+  ;; Move org-roam buffer to the right side
   (add-to-list 'display-buffer-alist
               '("\\*org-roam\\*"
                 (display-buffer-in-direction)

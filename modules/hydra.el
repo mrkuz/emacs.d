@@ -21,14 +21,11 @@
 
 (defhydra my/hydra-edit (:color blue :hint nil :pre (message "Edit"))
   "
-  _d_ Duplicate        _f_ Format buffer
-  _x_ Expand region
-  _m_ Multiple cursors
+  _d_ Duplicate
+  _f_ Format buffer
   "
   ("d" crux-duplicate-current-line-or-region)
   ("f" crux-cleanup-buffer-or-region)
-  ("m" mc/mark-next-like-this)
-  ("x" er/expand-region)
   ("q" nil))
 
 (defhydra my/hydra-goto (:color blue :hint nil :pre (message "Go to"))
@@ -122,7 +119,7 @@
   "
   _c_ Create…    _g_ Go to…           _G_ Git…         _h_ Help…
   _o_ Open…      _t_ Toggle…          _P_ Packages…    _D_ Desktop…
-  _e_ Edit…      _x_ Expand region    _S_ Spelling…    _M_ Run menu command
+  _e_ Edit…                         _S_ Spelling…    _M_ Run menu command
   _i_ Insert…                                      _R_ Reload configuration
   "
   ("c" my/hydra-create/body)
@@ -138,7 +135,6 @@
   ("S" my/hydra-spelling/body)
   ("P" my/hydra-packages/body)
   ("t" my/hydra-toggle/body)
-  ("x" er/expand-region)
   ("q" nil))
 
 (global-set-key (kbd "C-;") 'my/hydra/body)
