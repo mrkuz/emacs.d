@@ -63,11 +63,10 @@
 
   ;; TODO keywords
   (setq org-todo-keywords '(
-                            (sequence "TODO(t!)" "STAGED(.!)" "SCHEDULED(:!)" "NEXT(n!)" "|" "DONE(d!)" "CANCELED(c!)")
-                            (sequence "WAITING(w!)" "|" "DONE(d!)" "CANCELED(c!)")
-                            (sequence "EVENT(e!)" "|" "DONE(d!)" "CANCELED(c!)")
-                            (sequence "OPEN(o!)" "ON_HOLD(h!)" "|" "DONE(d!)" "CANCELED(c!)")
-                            (sequence "PROJECT(p!)" "ON_HOLD(h!)" "|" "DONE(d!)" "CANCELED(c!)")))
+                            (sequence "TODO(t!)" "STAGED(.!)" "SCHEDULED(:!)" "WAITING(w!)" "|" "DONE(d!)")
+                            (sequence "EVENT(e!)" "|" "CANCELED(c!)")
+                            (sequence "OPEN(o!)" "|" "DONE(d!)")
+                            (sequence "PROJECT(p!)" "ON_HOLD(h!)" "|" "DONE(d!)")))
   ;; Insert log notes into LOGBOOK
   (setq org-log-into-drawer t)
 

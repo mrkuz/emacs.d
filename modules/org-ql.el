@@ -40,7 +40,7 @@
       :title "Agenda"
       :super-groups `(
                       (:name "*** Scheduled without timestamp ***\n" :and (:scheduled nil :todo "SCHEDULED"))
-                      (:name "Today\n" :scheduled today :todo "NEXT")
+                      (:name "Today\n" :scheduled today)
                       (:name "Overdue\n" :and (:scheduled past :not (:todo "EVENT")))
                       (:name "Staged\n" :and (:scheduled nil :todo "STAGED"))
                       (:name "Backlog\n" :and (:scheduled nil :todo "TODO"))
