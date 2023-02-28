@@ -3,12 +3,6 @@
   (interactive)
   (find-file (concat org-directory "/todo.org")))
 
-(defun my/org-schedule ()
-  "Schedule a task."
-  (interactive)
-  (org-schedule t)
-  (org-todo "SCHEDULED"))
-
 (defun my/org-focus ()
   "Focus on current header."
   (interactive)
@@ -21,7 +15,9 @@
   (setq new-state (plist-get args :to))
   (when (or (string-equal new-state "SCHEDULED")
             (string-equal new-state "EVENT"))
-    (run-with-timer 0 nil (lambda () (org-schedule t)))))
+    (run-with-timer 0 nil (lambda () (org-schedule t))))
+  (when (string-equal new-state "STAGED")
+    (run-with-timer 0 nil (lambda () (org-deadline t)))))
 (add-hook 'org-trigger-hook 'my//org-trigger-hook)
 
 (defun my//org-find-journal-location ()
@@ -96,7 +92,5 @@
   (set-face-attribute 'org-ellipsis nil :underline nil)
   :bind (("C-c l" . 'org-store-link)
          ("C-c a" . 'org-agenda)
-         ("C-c c" . 'org-capture)
-         :map org-mode-map
-         ("C-c C-s" . 'my/org-schedule))
+         ("C-c c" . 'org-capture))
   :hook (org-mode . org-indent-mode))

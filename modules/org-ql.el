@@ -40,13 +40,13 @@
       :title "Agenda"
       :super-groups `(
                       (:name "*** Scheduled without timestamp ***\n" :and (:scheduled nil :todo "SCHEDULED"))
-                      (:name "Today\n" :scheduled today)
-                      (:name "Overdue\n" :and (:scheduled past :not (:todo "EVENT")))
+                      (:name "Today\n" :scheduled today :deadline today)
+                      (:name "Overdue\n" :and (:scheduled past :not (:todo "EVENT")) :deadline past)
                       (:name "Staged\n" :and (:scheduled nil :todo "STAGED"))
-                      (:name "Backlog\n" :and (:scheduled nil :todo "TODO"))
-                      (:name "Journal\n" :todo "OPEN")
                       (:name "Waiting\n" :todo "WAITING")
                       (:name "Upcoming\n" :scheduled (before ,one-week-from-today))
+                      (:name "Journal\n" :todo "OPEN")
+                      (:name "Backlog\n" :and (:scheduled nil :todo "TODO"))
                       (:discard (:anything t)))
       :sort 'scheduled)))
 
