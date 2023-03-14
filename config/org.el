@@ -28,6 +28,7 @@
   :straight (:type built-in)
   :diminish org-indent-mode
   :init
+  (require 'org-mouse)
   (setq org-directory "~/org")
   ;; Open files with two levels open
   (setq org-startup-folded 'show2levels)
