@@ -19,10 +19,10 @@
 (my/load-config "scrolling")
 (my/load-config "undo")
 (my/load-config "whitespace")
-(my/load-config "backups")
+(my/load-config "backups") ;; depends on no-littering
 (my/load-config "calendar")
 (my/load-config "misc")
-(my/load-config "recentf")
+(my/load-config "recentf") ;; depends on no-littering
 (my/load-config "projects")
 (my/load-config "ibuffer")
 (my/load-config "dired")

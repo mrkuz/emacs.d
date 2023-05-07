@@ -6,6 +6,4 @@
         no-littering-var-directory
     (expand-file-name "var/" user-emacs-directory))
   :config
-  (setq auto-save-file-name-transforms
-    `((".*" ,(no-littering-expand-var-file-name "auto-save/") t))
-        custom-file (no-littering-expand-etc-file-name "custom.el")))
+  (setq custom-file (no-littering-expand-etc-file-name "custom.el")))
