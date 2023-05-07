@@ -11,4 +11,4 @@
                      consult--source-project-recent-file
                      consult-recent-file
                      my/search-notes
-                     :preview-key (kbd "M-.")))
+                     :preview-key "M-."))
