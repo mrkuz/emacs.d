@@ -66,9 +66,10 @@
 
   ;; TODO keywords
   (setq org-todo-keywords '(
-                            (sequence "TODO(t!)" "STAGED(.!)" "SCHEDULED(:!)" "WAITING(w!)" "|" "DONE(d!)")
+                            (sequence "TODO(t!)" "SCHEDULED(.!)" "STAGED(:!)" "WAITING(w!)" "|" "DONE(d!)")
                             (sequence "EVENT(e!)" "|" "CANCELED(c!)")
                             (sequence "OPEN(o!)" "|" "DONE(d!)")
+                            (sequence "REMINDER(r!)" "|" "DONE(d!)")
                             (sequence "PROJECT(p!)" "ON_HOLD(h!)" "|" "DONE(d!)")))
   ;; Insert log notes into LOGBOOK
   (setq org-log-into-drawer t)
@@ -86,8 +87,10 @@
   (setq org-capture-templates '(
                                 ("j" "Journal entry" plain (function my//org-find-journal-location)
                                  "** %(format-time-string org-journal-time-format)%?\n%i")
-                                ("r" "Reminder" plain (function my//org-find-journal-location)
-                                 "** %(format-time-string org-journal-time-format)Reminder: %?\nSCHEDULED: %^T\n:PROPERTIES:\n:APPT_WARNTIME: 0\n:END:\n%i")
+                                ("b" "Backlog entry" entry (file+olp "todo.org" "Backlog")
+                                 "** %?\n:LOGBOOK:\n- State \"CREATED\"                      %U\n:END:\n%i" :prepend t)
+                                ("r" "Reminder" entry (file+olp "todo.org" "Backlog")
+                                 "** REMINDER %?\nSCHEDULED: %^T\n:PROPERTIES:\n:APPT_WARNTIME: 0\n:END:\n%i" :prepend t)
                                 ("w" "Capture web page" plain (function my//org-find-journal-location)
                                  "** %(format-time-string org-journal-time-format)%?\nTITLE: %:description\nURL: %:link\n\n%i")
                                 ("p" "Capture primary selection" plain (function my//org-find-journal-location)
