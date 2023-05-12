@@ -50,12 +50,13 @@
 (defhydra my/hydra-open (:color blue :hint nil :pre (message "Open"))
   "
   _c_ Emacs configuration    _t_ todo.org    _a_ Agenda
-  _r_ Recent file            _n_ Note        _u_ Undo tree
-                           _j_ Journal     _b_ Backup
+  _r_ Recent file            _n_ Note        _C_ Calendar   _u_ Undo tree
+                           _j_ Journal                  _b_ Backups
   "
   ("a" my/org-ql-agenda)
   ("b" backup-walker-start)
   ("c" (find-file user-init-file))
+  ("C" cfw:open-org-calendar)
   ("j" my/open-journal-file)
   ("n" org-roam-node-find)
   ("r" consult-recent-file)

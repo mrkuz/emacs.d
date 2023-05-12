@@ -59,6 +59,7 @@
 (my/load-module "org-ql")
 (my/load-module "org-journal")
 (my/load-module "org-roam")
+(my/load-module "calfw")
 ;; (my/load-module "org-alert")
 (my/load-module "git-gutter")
 (my/load-module "magit")
