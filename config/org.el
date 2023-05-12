@@ -24,6 +24,9 @@
   (org-journal-new-entry t)
   (goto-char (point-max)))
 
+(defun my//get-primary-selection ()
+  (ignore-errors (gui-get-primary-selection)))
+
 (use-package org
   :straight (:type built-in)
   :diminish org-indent-mode
@@ -85,7 +88,7 @@
                                 ("w" "Capture web page" plain (function my//org-find-journal-location)
                                  "** %(format-time-string org-journal-time-format)%?\nTITLE: %:description\nURL: %:link\n\n%i")
                                 ("p" "Capture primary selection" plain (function my//org-find-journal-location)
-                                 "** %(format-time-string org-journal-time-format)%?\n\n%(gui-get-primary-selection)")
+                                 "** %(format-time-string org-journal-time-format)%?\n\n%(my//get-primary-selection)")
                                 ))
   :config
   ;; Customize ellipsis
