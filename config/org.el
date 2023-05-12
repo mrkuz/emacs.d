@@ -27,6 +27,9 @@
 (defun my//get-primary-selection ()
   (ignore-errors (gui-get-primary-selection)))
 
+(defun my//get-archive-location ()
+  (concat "~/org/archive/" (format-time-string "%Y_W%V.org" (current-time)) "::* File: %s"))
+
 (use-package org
   :straight (:type built-in)
   :diminish org-indent-mode
@@ -57,7 +60,7 @@
   (setq org-src-preserve-indentation t)
 
   ;; Archive
-  (setq org-archive-location "~/org/.archive.org::* File: %s")
+  (setq org-archive-location (my//get-archive-location))
   ;; Don't add header to archive file
   (setq org-archive-file-header-format nil)
 
