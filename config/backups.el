@@ -22,3 +22,5 @@
          ,(concat temporary-file-directory "\\2") t)
         ("\\`\\(/tmp\\|/dev/shm\\)\\([^/]*/\\)*\\(.*\\)\\'" "\\3")
         (".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+;; Auto-save on focus change
+(add-function :after after-focus-change-function 'do-auto-save)
