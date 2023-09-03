@@ -31,10 +31,11 @@
 (defhydra my/hydra-goto (:color blue :hint nil :pre (message "Go to"))
   "
   _L_ Last change   _d_ Dictionary
-  _w_ Word
+  _w_ Word          _i_ Interactive menu
   _l_ Link
   "
   ("d" powerthesaurus-lookup-dwim)
+  ("i" consult-imenu)
   ("l" ace-link)
   ("L" goto-last-change)
   ("w" avy-goto-word-1)

@@ -14,6 +14,7 @@
 (defun my//org-trigger-hook (args)
   (setq new-state (plist-get args :to))
   (when (or (string-equal new-state "SCHEDULED")
+            (string-equal new-state "REMINDER")
             (string-equal new-state "EVENT"))
     (run-with-timer 0 nil (lambda () (org-schedule t))))
   (when (string-equal new-state "STAGED")
@@ -40,6 +41,10 @@
   (setq org-startup-folded 'show2levels)
   ;; Allow setting refile targets as local file variable
   (put 'org-refile-targets 'safe-local-variable (lambda (_) t))
+  ;; Use full path for refile
+  (setq org-refile-use-outline-path t)
+  ;; Show full path in completion
+  (setq org-outline-path-complete-in-steps nil)
 
   ;; Add tags immediate after the headline
   (setq org-tags-column 0)
@@ -66,11 +71,11 @@
 
   ;; TODO keywords
   (setq org-todo-keywords '(
-                            (sequence "TODO(t!)" "SCHEDULED(.!)" "STAGED(:!)" "WAITING(w!)" "|" "DONE(d!)")
+                            (sequence "TODO(t!)" "SCHEDULED(.!)" "STAGED(:!)" "WAITING(w!)" "|" "DONE(d!)" "CANCELED(c!)")
                             (sequence "EVENT(e!)" "|" "CANCELED(c!)")
                             (sequence "OPEN(o!)" "|" "DONE(d!)")
                             (sequence "REMINDER(r!)" "|" "DONE(d!)")
-                            (sequence "PROJECT(p!)" "ON_HOLD(h!)" "|" "DONE(d!)")))
+                            (sequence "PROJECT(p!)" "ON_HOLD(h!)" "|" "DONE(d!)" "CANCELED(c!)")))
   ;; Insert log notes into LOGBOOK
   (setq org-log-into-drawer t)
 
