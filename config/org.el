@@ -94,12 +94,6 @@
                                  "** %(format-time-string org-journal-time-format)%?\n%i")
                                 ("b" "Backlog entry" entry (file+olp "todo.org" "Backlog")
                                  "** %?\n:LOGBOOK:\n- State \"CREATED\"                      %U\n:END:\n%i" :prepend t)
-                                ("r" "Reminder" entry (file+olp "todo.org" "Backlog")
-                                 "** REMINDER %?\nSCHEDULED: %^T\n:PROPERTIES:\n:APPT_WARNTIME: 0\n:END:\n%i" :prepend t)
-                                ("w" "Capture web page" plain (function my//org-find-journal-location)
-                                 "** %(format-time-string org-journal-time-format)%?\nTITLE: %:description\nURL: %:link\n\n%i")
-                                ("p" "Capture primary selection" plain (function my//org-find-journal-location)
-                                 "** %(format-time-string org-journal-time-format)%?\n\n%(my//get-primary-selection)")
                                 ))
   :config
   ;; Customize ellipsis

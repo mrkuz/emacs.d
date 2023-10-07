@@ -2,8 +2,4 @@
 (set-face-attribute 'default nil :family "Ubuntu Mono" :height 128)
 (set-face-attribute 'fixed-pitch nil :family "Ubuntu Mono")
 (set-face-attribute 'variable-pitch nil :family "Ubuntu")
-;; (set-frame-font "Monaco")
-;; (set-face-attribute 'default nil :family "Monaco" :height 128)
-;; (set-face-attribute 'fixed-pitch nil :family "Monaco")
-;; (set-face-attribute 'variable-pitch nil :family "Ubuntu")
 (setq-default line-spacing 2)
