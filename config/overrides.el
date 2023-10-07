@@ -4,3 +4,7 @@
   (set-face-attribute 'default nil :family "Ubuntu Mono" :height 120)
   (setq-default line-spacing 4))
 
+
+(when (eq system-type 'darwin)
+  (set-face-attribute 'default nil :family "Ubuntu Mono" :height 160)
+  (setq-default line-spacing 4))
