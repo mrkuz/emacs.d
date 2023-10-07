@@ -8,4 +8,5 @@
 (when (eq system-type 'darwin)
   (set-face-attribute 'default nil :family "Ubuntu Mono" :height 160)
   (setq-default line-spacing 4)
-  (add-hook 'emacs-startup-hook (lambda () (x-focus-frame nil))))
+  (add-hook 'emacs-startup-hook (lambda () (x-focus-frame nil)))
+  (add-hook 'server-after-make-frame-hook (lambda () (x-focus-frame nil))))
