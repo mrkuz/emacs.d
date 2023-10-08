@@ -98,9 +98,11 @@
 
 (defhydra my/hydra-toggle (:color blue :hint nil :pre (message "Toggle"))
   "
+  _d_ Dired sidebar
   _v_ Visual line mode
   _w_ Whitespace mode
   "
+  ("d" dired-sidebar-toggle-sidebar)
   ("v" visual-line-mode)
   ("w" whitespace-mode)
   ("q" nil))
