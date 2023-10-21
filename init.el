@@ -50,7 +50,7 @@
 (my/load-module "hungry-delete")
 (my/load-module "move-text")
 ;; (my/load-module "expand-region")
-(my/load-module "backup-walker")
+;; (my/load-module "backup-walker")
 ;; (my/load-module "multiple-cursors") ;; depends on hungry delete
 (my/load-module "avy")
 (my/load-module "goto-last-change")
@@ -78,7 +78,7 @@
 (my/load-module "age")
 (my/load-module "dired-sidebar")
 (my/load-module "powerthesaurus")
-(my/load-module "restclient")
+;; (my/load-module "restclient")
 
 (my/load-module "yaml-mode")
 (my/load-module "dockerfile-mode")
