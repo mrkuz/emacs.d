@@ -71,7 +71,7 @@
 
   ;; TODO keywords
   (setq org-todo-keywords '(
-                            (sequence "TODO(t!)" "SCHEDULED(.!)" "STAGED(:!)" "WAITING(w!)" "|" "DONE(d!)" "CANCELED(c!)")
+                            (sequence "TODO(t!)" "NEXT(n!)" "SCHEDULED(.!)" "STAGED(:!)" "WAITING(w!)" "|" "DONE(d!)" "CANCELED(c!)")
                             (sequence "EVENT(e!)" "|" "CANCELED(c!)")
                             (sequence "OPEN(o!)" "|" "DONE(d!)")
                             (sequence "REMINDER(r!)" "|" "DONE(d!)")

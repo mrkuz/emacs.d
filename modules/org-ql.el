@@ -42,12 +42,13 @@
                       (:name "Today\n" :and (:scheduled today :not (:todo "WAITING")) :and (:deadline today :not (:todo "WAITING")))
                       (:name "Overdue\n" :and (:scheduled past :not (:todo "EVENT" :todo "WAITING")) :deadline past)
                       (:name "Upcoming\n" :and (:scheduled (before ,one-week-from-today) :not (:todo "WAITING")) :and (:deadline (before ,one-week-from-today) :not (:todo "WAITING")))
+                      (:name "Next\n" :and (:scheduled nil :deadline nil :todo "NEXT"))
                       (:name "Staged\n" :and (:scheduled nil :deadline nil :todo "STAGED"))
                       (:name "Backlog\n" :and (:scheduled nil :deadline nil :todo "TODO"))
                       (:name "Waiting\n" :todo "WAITING")
-                      (:name "Journal\n" :todo "OPEN")
+                      (:name "Open\n" :todo "OPEN")
                       (:discard (:anything t)))
-      :sort 'scheduled)))
+      :sort '(date priority todo))))
 
 (use-package org-ql
   :init

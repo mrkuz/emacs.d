@@ -2,7 +2,14 @@
 # name: go
 # key: <go
 # --
-** Staged
-- [ ] $0
-** Schedule
 ** `(format-time-string org-journal-time-format)`Go!
+*** What is bothering you?
+
+$0
+
+*** What are you proud of?
+
+*** What did you learn?
+
+*** How would a successful day look like?
+
