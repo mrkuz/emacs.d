@@ -107,7 +107,7 @@
 ;; (my/load-module "markdown-mode")
 ;; (my/load-module "fish-mode")
 ;; (my/load-module "kotlin-mode")
-;; (my/load-module "lua-mode")
+(my/load-module "lua-mode")
 
 (elpaca-wait)
 (my/load-module "hydra")
