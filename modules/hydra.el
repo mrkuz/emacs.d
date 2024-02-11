@@ -55,10 +55,8 @@
 
 (defhydra my/hydra-insert (:color blue :hint nil :pre (message "Insert"))
   "
-  _n_ Link to note
   _s_ Snippet
   "
-  ("n" org-roam-node-insert)
   ("s" yas-insert-snippet)
   ("q" nil))
 
@@ -170,4 +168,3 @@
 (global-set-key (kbd "C-;") 'my/hydra/body)
 (global-set-key (kbd "C-ö") 'my/hydra/body)
 
-;; Eglot, olivetti, undro-tree, ChatGPT, Power Thesaurus, DevDocs
