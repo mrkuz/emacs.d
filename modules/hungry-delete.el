@@ -2,5 +2,5 @@
   :diminish hungry-delete-mode
   :init
   (global-hungry-delete-mode)
-  :config
+  ;; Limit hungry delete to space character
   (setq hungry-delete-chars-to-skip " "))

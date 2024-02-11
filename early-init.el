@@ -13,11 +13,31 @@
 ;; Prevent loading packages prior init file
 (setq package-enable-at-startup nil)
 
-;; Move gccemacs eln-cache to var/
-(when (boundp 'native-comp-eln-load-path)
-  (add-to-list 'native-comp-eln-load-path (expand-file-name "var/eln-cache" user-emacs-directory)))
+;; Move eln-cache to var/
+;; See: https://github.com/emacscollective/no-littering/tree/main
+(when (fboundp 'startup-redirect-eln-cache)
+  (startup-redirect-eln-cache
+   (convert-standard-filename
+    (expand-file-name  "var/eln-cache/" user-emacs-directory))))
 
-;; Core functions for loading configs and modules
+
+;; Show warning buffer only for errors
+(setq warning-minimum-level :error)
+;; Enter debugger on error
+(setq debug-on-error t)
+;; Workaround for void variable error
+;; (defvar native-comp-deferred-compilation-deny-list nil)
+
+;; Show initialization time on startup
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "Started in %s seconds"
+                     (emacs-init-time "%.2f"))))
+
+;;--------------------------------------------------------------------------------------------------
+;; Custom functions
+;;--------------------------------------------------------------------------------------------------
+
 (defun my/load-config (name)
   "Load config by name."
   (load-file (expand-file-name (concat name ".el") (concat user-emacs-directory "/config"))))
@@ -26,13 +46,23 @@
   "Load module by name."
   (load-file (expand-file-name (concat name ".el") (concat user-emacs-directory "/modules"))))
 
-;; Show warning buffer only for errors
-(setq warning-minimum-level :error)
-;; Don't enter debugger on error
-(setq debug-on-error nil)
+;;--------------------------------------------------------------------------------------------------
+;; Appearance
+;;--------------------------------------------------------------------------------------------------
 
-;; Workaround for void variable error
-(defvar native-comp-deferred-compilation-deny-list nil)
+;; Set up initial frame position and size
+(setq default-frame-alist '(
+                            (width . 140)
+                            (height . 50)
+                            ;; (cursor-color . "#e1e1e0")
+                            (internal-border-width . 10)
+                            ))
+;; Show buffer name in frame title
+(setq-default frame-title-format '("%b"))
 
-;; Early appearance
-(my/load-config "early-appearance")
+;; Disable toolbar
+(tool-bar-mode 0)
+;; Disable menu bar
+(menu-bar-mode 0)
+;; Disable scroll bar
+(scroll-bar-mode 0)

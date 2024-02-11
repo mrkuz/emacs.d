@@ -29,7 +29,9 @@
 (defun my/org-ql-agenda ()
   "Show agenda."
   (interactive)
-  (let ((one-week-from-today (format-time-string "%Y-%m-%d" (org-read-date nil t "+8d"))))
+  (let (
+        (tomorrow (format-time-string "%Y-%m-%d" (org-read-date nil t "+2d")))
+        (one-week-from-today (format-time-string "%Y-%m-%d" (org-read-date nil t "+8d"))))
     (org-ql-search (org-agenda-files)
       '(and (todo)
             (not (todo "PROJECT"))
@@ -40,7 +42,8 @@
       :super-groups `(
                       (:name "*** Scheduled without timestamp ***\n" :and (:scheduled nil :todo "SCHEDULED"))
                       (:name "Today\n" :and (:scheduled today :not (:todo "WAITING")) :and (:deadline today :not (:todo "WAITING")))
-                      (:name "Overdue\n" :and (:scheduled past :not (:todo "EVENT" :todo "WAITING")) :deadline past)
+                      (:name "Overdue\n" :and (:scheduled past :deadline past :not (:todo "WAITING")))
+                      (:name "Tomorrow\n" :and (:scheduled (before ,tomorrow) :not (:todo "WAITING")) :and (:deadline (before ,tomorrow) :not (:todo "WAITING")))
                       (:name "Upcoming\n" :and (:scheduled (before ,one-week-from-today) :not (:todo "WAITING")) :and (:deadline (before ,one-week-from-today) :not (:todo "WAITING")))
                       (:name "Next\n" :and (:scheduled nil :deadline nil :todo "NEXT"))
                       (:name "Staged\n" :and (:scheduled nil :deadline nil :todo "STAGED"))

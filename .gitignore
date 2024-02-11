@@ -1,5 +1,9 @@
 straight/**
 !straight/versions
 !straight/versions/default.el
+elpaca/**
+!elpaca/packages.lock
 var/**
 **/*~
+.DS_Store
+tree-sitter/**

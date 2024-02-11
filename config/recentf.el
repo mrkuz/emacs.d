@@ -1,8 +1,7 @@
 (use-package recentf
-  :straight (:type built-in)
+  :elpaca nil
   :init
   (recentf-mode)
-  :config
   (add-to-list 'recentf-exclude no-littering-var-directory)
   (add-to-list 'recentf-exclude no-littering-etc-directory)
   (add-to-list 'recentf-exclude "COMMIT_EDITMSG")

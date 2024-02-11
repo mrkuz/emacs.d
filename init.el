@@ -2,10 +2,13 @@
 ;; Basic modules
 ;;--------------------------------------------------------------------------------------------------
 
-(my/load-module "straight")
-;; (my/load-module "benchmark-init")
+(my/load-module "elpaca")
+(elpaca-wait)
 (my/load-module "no-littering")
+(elpaca-wait)
+(my/load-module "exec-path-from-shell")
 (my/load-module "diminish")
+(elpaca-wait)
 
 ;;--------------------------------------------------------------------------------------------------
 ;; Configuration
@@ -19,16 +22,28 @@
 (my/load-config "scrolling")
 (my/load-config "undo")
 (my/load-config "whitespace")
-(my/load-config "backups") ;; depends on no-littering
+(my/load-config "backups")
 (my/load-config "calendar")
-(my/load-config "misc")
-(my/load-config "recentf") ;; depends on no-littering
-(my/load-config "projects")
+(my/load-config "isearch")
+(my/load-config "electric")
+(my/load-config "recentf")
+(my/load-config "dabbrev")
 (my/load-config "ibuffer")
 (my/load-config "dired")
-(my/load-config "ediff")
+(my/load-config "treesit")
+(my/load-config "eglot")
+(my/load-config "misc")
 (my/load-config "flyspell")
-(my/load-config "org") ;; depends on org-journal
+(my/load-config "ediff")
+;; (my/load-config "projects")
+(my/load-config "org")
+(my/load-config "org-agenda")
+(my/load-config "org-archive")
+;; (my/load-config "org-babel")
+(my/load-config "org-capture")
+(my/load-config "org-indent")
+(my/load-config "org-protocol")
+(my/load-config "org-refile")
 
 (my/load-config "overrides")
 
@@ -37,57 +52,63 @@
 ;;--------------------------------------------------------------------------------------------------
 
 (my/load-module "my-symbol-at-point-overlay")
-(my/load-module "my-markdown-preview")
-;; (my/load-module "my-appt")
+;; (my/load-module "my-markdown-preview")
 
 (my/load-module "vertico")
 (my/load-module "orderless")
 (my/load-module "marginalia")
+
+(my/load-module "nerd-icons")
+(my/load-module "monokai-pro-theme")
+(my/load-module "doom-modeline")
+
 (my/load-module "consult")
+(my/load-module "embark")
 (my/load-module "crux")
-;; (my/load-module "embark")
-(my/load-module "lacarte") ;; depends on marginalia
 (my/load-module "hungry-delete")
 (my/load-module "move-text")
-;; (my/load-module "expand-region")
-;; (my/load-module "backup-walker")
-;; (my/load-module "multiple-cursors") ;; depends on hungry delete
-(my/load-module "avy")
+(my/load-module "expand-region")
 (my/load-module "goto-last-change")
-(my/load-module "org-protocol")
+(my/load-module "avy")
+(my/load-module "dumb-jump")
+(my/load-module "helpful")
+(my/load-module "which-key")
+(my/load-module "highlight-parentheses")
+(my/load-module "olivetti")
+
+(my/load-module "undo-tree")
+(my/load-module "dired-sidebar")
+(my/load-module "ibuffer-sidebar")
+
+(my/load-module "corfu")
+(my/load-module "cape")
+(my/load-module "flyspell-correct")
+(my/load-module "yasnippet")
+
 (my/load-module "org-bullets")
 (my/load-module "org-ql")
 (my/load-module "org-journal")
 (my/load-module "org-roam")
-(my/load-module "calfw")
-;; (my/load-module "org-alert")
+(my/load-module "org-appear")
+
 (my/load-module "git-gutter")
 (my/load-module "magit")
-(my/load-module "multi-vterm")
-(my/load-module "visual-fill-column")
-(my/load-module "undo-tree")
-(my/load-module "highlight-parentheses")
-;; (my/load-module "highlight-symbol")
-;; (my/load-module "which-key")
-(my/load-module "dumb-jump")
-(my/load-module "yafolding")
-(my/load-module "helpful") ;; depends on yafolding
-(my/load-module "company") ;; depends on helpful
-(my/load-module "yasnippet")
-(my/load-module "flyspell-correct")
+
 (my/load-module "age")
-(my/load-module "dired-sidebar")
+(my/load-module "multi-vterm")
+(my/load-module "chatgpt-shell")
 (my/load-module "powerthesaurus")
-;; (my/load-module "restclient")
+(my/load-module "devdocs")
 
-(my/load-module "yaml-mode")
-(my/load-module "dockerfile-mode")
-(my/load-module "docker-compose-mode")
-(my/load-module "markdown-mode")
-(my/load-module "nix-mode")
-(my/load-module "fish-mode")
-(my/load-module "groovy-mode")
-(my/load-module "kotlin-mode")
-(my/load-module "lua-mode")
+(my/load-module "nix-ts-mode")
+;; (my/load-module "yaml-mode")
+;; (my/load-module "dockerfile-mode")
+;; (my/load-module "docker-compose-mode")
+;; (my/load-module "markdown-mode")
+;; (my/load-module "fish-mode")
+;; (my/load-module "kotlin-mode")
+;; (my/load-module "lua-mode")
 
+(elpaca-wait)
 (my/load-module "hydra")
+

@@ -6,4 +6,6 @@
         no-littering-var-directory
     (expand-file-name "var/" user-emacs-directory))
   :config
+  ;; Store backup and auto-save files in 'var'
+  (no-littering-theme-backups)
   (setq custom-file (no-littering-expand-etc-file-name "custom.el")))

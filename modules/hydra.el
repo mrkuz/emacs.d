@@ -1,4 +1,19 @@
 (use-package hydra)
+(elpaca-wait)
+
+(defun my/toggle-sidebar ()
+  "Toggle sidebar"
+  (interactive)
+  (dired-sidebar-toggle-sidebar)
+  (ibuffer-sidebar-toggle-sidebar))
+
+(defun my/writer-mode ()
+  "Mode for writing"
+  (interactive)
+  (text-mode)
+  (display-line-numbers-mode -1)
+  (flyspell-mode)
+  (olivetti-mode))
 
 (defhydra my/hydra-create (:color blue :hint nil :pre (message "Create"))
   "
@@ -29,82 +44,82 @@
 
 (defhydra my/hydra-goto (:color blue :hint nil :pre (message "Go to"))
   "
-  _L_ Last change   _d_ Dictionary
-  _w_ Word          _i_ Interactive menu
-  _l_ Link
+  _l_ Last change
+  _w_ Word
+  _i_ Interactive menu
   "
-  ("d" powerthesaurus-lookup-dwim)
   ("i" consult-imenu)
-  ("l" ace-link)
-  ("L" goto-last-change)
+  ("l" goto-last-change)
   ("w" avy-goto-word-1)
   ("q" nil))
 
 (defhydra my/hydra-insert (:color blue :hint nil :pre (message "Insert"))
   "
   _n_ Link to note
+  _s_ Snippet
   "
   ("n" org-roam-node-insert)
+  ("s" yas-insert-snippet)
   ("q" nil))
 
 (defhydra my/hydra-open (:color blue :hint nil :pre (message "Open"))
   "
   _c_ Emacs configuration    _t_ todo.org    _a_ Agenda
-  _r_ Recent file            _n_ Note        _C_ Calendar   _u_ Undo tree
-                           _j_ Journal                  _b_ Backups
+  _r_ Recent file            _n_ Note
+                           _j_ Journal
   "
   ("a" my/org-ql-agenda)
-  ("b" backup-walker-start)
   ("c" (find-file user-init-file))
-  ("C" cfw:open-org-calendar)
   ("j" my/open-journal-file)
   ("n" org-roam-node-find)
   ("r" consult-recent-file)
   ("t" my/org-find-todo)
-  ("u" undo-tree-visualize)
   ("q" nil))
 
 (defhydra my/hydra-help (:color blue :hint nil :pre (message "Help"))
   "
   _._ Describe at point
-  _a_ Apropos
+  _s_ Describe symbol
   "
   ("." helpful-at-point)
-  ("a" consult-apropos)
+  ("s" helpful-symbol)
   ("q" nil))
 
 (defhydra my/hydra-git (:color blue :hint nil :pre (message "Git"))
   "
-  _f_ Act on file         _s_ Show status
-  _g_ Run Git command
-  _r_ Revert hunk
+  _f_ Act on file     _d_ Diff hunk
+  _c_ Run command     _r_ Revert hunk     
+  _s_ Show status
   "
+  ("d" git-gutter:popup-hunk)
   ("f" magit-file-dispatch)
-  ("g" magit-dispatch)
+  ("c" magit-dispatch)
   ("r" git-gutter:revert-hunk)
   ("s" magit-status)
   ("q" nil))
 
 (defhydra my/hydra-packages (:color blue :hint nil :pre (message "Packages"))
   "
-  _u_ Update all
-  _f_ Freeze versions
+  _u_ Update all       _m_ Manage packages
+  _l_ Write lockfile
   _t_ Try
   "
-  ("u" straight-pull-all)
-  ("f" straight-freeze-versions)
-  ("t" straight-use-package)
+  ("l" (elpaca-write-lockfile (expand-file-name "elpaca/packages.lock" user-emacs-directory)))
+  ("m" elpaca-manager)
+  ("t" elpaca-try)
+  ("u" (elpaca-update-all t))
   ("q" nil))
 
 (defhydra my/hydra-toggle (:color blue :hint nil :pre (message "Toggle"))
   "
-  _d_ Dired sidebar
+  _s_ Sidebar           _W_ Writer mode
   _v_ Visual line mode
   _w_ Whitespace mode
   "
-  ("d" dired-sidebar-toggle-sidebar)
+  ("s" my/toggle-sidebar)
   ("v" visual-line-mode)
   ("w" whitespace-mode)
+  ("W" my/writer-mode)
   ("q" nil))
 
 (defhydra my/hydra-spelling (:color blue :hint nil :pre (message "Spelling"))
@@ -118,13 +133,24 @@
   ("p" flyspell-correct-move)
   ("q" nil))
 
+(defhydra my/hydra-tools (:color blue :hint nil :pre (message "Tools"))
+  "
+  _c_ ChatGPT
+  _p_ Power Thesaurus
+  _d_ DevDocs
+  "
+  ("c" chatgpt-shell)
+  ("d" devdocs-lookup)
+  ("p" powerthesaurus-lookup-dwim)
+  ("q" nil))
+
 (defhydra my/hydra (:color blue :hint nil :pre (message "General commands"))
   "
-  _c_ Create…    _g_ Go to…           _G_ Git…         _h_ Help…
-  _o_ Open…      _t_ Toggle…          _P_ Packages…    _D_ Desktop…
-  _e_ Edit…                         _S_ Spelling…    _M_ Run menu command
-  _i_ Insert…                                      _R_ Reload configuration
+  _c_ Create…   _e_ Edit…     _G_ Git…        _P_ Packages…   _x_ Expand region
+  _o_ Open…     _i_ Insert…   _s_ Spelling…   _h_ Help…       _;_ Embark
+  _g_ Go to…    _t_ Toggle…   _T_ Tools…      _D_ Desktop…    _R_ Reload configuration
   "
+  (";" embark-act)
   ("c" my/hydra-create/body)
   ("D" my/hydra-desktop/body)
   ("e" my/hydra-edit/body)
@@ -132,13 +158,16 @@
   ("G" my/hydra-git/body)
   ("h" my/hydra-help/body)
   ("i" my/hydra-insert/body)
-  ("M" my/lacarte)
   ("o" my/hydra-open/body)
   ("R" (load-file user-init-file))
-  ("S" my/hydra-spelling/body)
+  ("s" my/hydra-spelling/body)
   ("P" my/hydra-packages/body)
   ("t" my/hydra-toggle/body)
+  ("T" my/hydra-tools/body)
+  ("x" er/expand-region)
   ("q" nil))
 
 (global-set-key (kbd "C-;") 'my/hydra/body)
 (global-set-key (kbd "C-ö") 'my/hydra/body)
+
+;; Eglot, olivetti, undro-tree, ChatGPT, Power Thesaurus, DevDocs

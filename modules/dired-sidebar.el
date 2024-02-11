@@ -1,6 +1,12 @@
+(defun my/dired-sidebar-follow-file ()
+  "Show current file in sidebar"
+  (interactive)
+  (dired-sidebar-follow-file))
+
 (use-package dired-sidebar
-  :config
-  (setq dired-sidebar-theme 'none
-        dired-sidebar-should-follow-file t
-        dired-sidebar-follow-file-idle-delay 1
+  :init
+  (setq dired-sidebar-should-follow-file nil
+        dired-sidebar-mode-line-format '("")
+        dired-use-ls-dired nil
+        dired-sidebar-no-delete-other-windows t
         dired-sidebar-pop-to-sidebar-on-toggle-open nil))

@@ -3,15 +3,15 @@
   (interactive)
   (consult-ripgrep org-roam-directory))
 
-(use-package emacsql-sqlite-builtin)
-
 (use-package org-roam
   :init
-  (setq org-roam-v2-ack t
-        org-roam-database-connector 'sqlite-builtin
-        org-roam-directory "~/Notes/"
-        ;; Enable completion of note links
-        org-roam-completion-everywhere t)
+  (setq org-roam-directory "~/Notes/")
+  (setq org-roam-completion-everywhere t)
+  (setq org-roam-completion-functions
+        (list (cape-capf-super
+               #'org-roam-complete-everywhere
+               #'org-roam-complete-link-at-point
+               #'cape-dabbrev)))
   ;; Move org-roam buffer to the right side
   (add-to-list 'display-buffer-alist
               '("\\*org-roam\\*"

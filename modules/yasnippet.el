@@ -1,7 +1,7 @@
-(setq yas-snippet-dirs `(,(expand-file-name "snippets" user-emacs-directory)))
 (use-package yasnippet
   :diminish yas-minor-mode
   :init
-  (yas-global-mode 1)
-  :config
-  (setq yas-prompt-functions '(yas-completing-prompt)))
+  (setq yas-snippet-dirs `(,(expand-file-name "snippets" user-emacs-directory)))
+  ;; Use completion-read to select snippets
+  (setq yas-prompt-functions '(yas-completing-prompt))
+  (yas-global-mode 1))

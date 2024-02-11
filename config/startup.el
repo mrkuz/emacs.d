@@ -1,4 +1,4 @@
-;; Don't load default init
+;; Don't load 'default.el'
 (setq inhibit-default-init t)
 ;; Disable splash screen
 (setq inhibit-splash-screen t)
