@@ -65,16 +65,22 @@
 (my/load-module "consult")
 (my/load-module "embark")
 (my/load-module "crux")
+
 (my/load-module "hungry-delete")
 (my/load-module "move-text")
 (my/load-module "expand-region")
+
 (my/load-module "goto-last-change")
 (my/load-module "avy")
+(my/load-module "ace-window")
 (my/load-module "dumb-jump")
+
 (my/load-module "helpful")
 (my/load-module "which-key")
+
 (my/load-module "highlight-parentheses")
 (my/load-module "olivetti")
+(my/load-module "golden-ratio")
 
 (my/load-module "undo-tree")
 (my/load-module "dired-sidebar")
@@ -100,10 +106,8 @@
 (my/load-module "powerthesaurus")
 (my/load-module "devdocs")
 
+(my/load-module "treesit-auto")
 (my/load-module "nix-ts-mode")
-;; (my/load-module "yaml-mode")
-;; (my/load-module "dockerfile-mode")
-;; (my/load-module "docker-compose-mode")
 ;; (my/load-module "markdown-mode")
 ;; (my/load-module "fish-mode")
 ;; (my/load-module "kotlin-mode")

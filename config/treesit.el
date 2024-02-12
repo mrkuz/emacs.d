@@ -7,3 +7,4 @@
   (dolist (lang treesit-language-source-alist)
     (unless (treesit-language-available-p (car lang))
       (treesit-install-language-grammar (car lang)))))
+

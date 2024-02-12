@@ -44,13 +44,14 @@
 
 (defhydra my/hydra-goto (:color blue :hint nil :pre (message "Go to"))
   "
-  _l_ Last change
+  _l_ Last change   _i_ Interactive menu
   _w_ Word
-  _i_ Interactive menu
+  _W_ Window
   "
   ("i" consult-imenu)
   ("l" goto-last-change)
   ("w" avy-goto-word-1)
+  ("W" ace-window)
   ("q" nil))
 
 (defhydra my/hydra-insert (:color blue :hint nil :pre (message "Insert"))
@@ -110,10 +111,11 @@
 
 (defhydra my/hydra-toggle (:color blue :hint nil :pre (message "Toggle"))
   "
-  _s_ Sidebar           _W_ Writer mode
-  _v_ Visual line mode
+  _s_ Sidebar            _W_ Writer mode
+  _v_ Visual line mode   _g_ Golden ratio
   _w_ Whitespace mode
   "
+  ("g" golden-ratio)
   ("s" my/toggle-sidebar)
   ("v" visual-line-mode)
   ("w" whitespace-mode)
