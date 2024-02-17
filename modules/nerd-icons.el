@@ -8,6 +8,8 @@
   (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
 
 (use-package nerd-icons-dired
+  :init
+  (advice-add 'dired-subtree-toggle :after (lambda () (revert-buffer)))
   :hook (dired-mode . nerd-icons-dired-mode))
 
 ;; Don't activate nerd-icons for derived modes

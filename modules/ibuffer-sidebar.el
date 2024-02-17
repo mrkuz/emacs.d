@@ -7,7 +7,8 @@
 (defun my//ibuffer-sidebar-mode-hook ()
   (with-current-buffer ibuffer-sidebar-name
     (make-local-variable 'ibuffer-never-show-predicates)
-    (add-to-list 'ibuffer-never-show-predicates #'my//file-buffer-p)))
+    (add-to-list 'ibuffer-never-show-predicates #'my//file-buffer-p)
+    (revert-buffer)))
 
 (use-package ibuffer-sidebar
   :init
