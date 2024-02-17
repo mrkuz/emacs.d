@@ -3,7 +3,7 @@
 (diminish 'abbrev-mode)
 
 ;; Show date in modeline
-(setq display-time-format "%Y-%m-%d W%V ")
+(setq display-time-format "%Y-%m-%d W%V")
 (setq display-time-default-load-average nil)
 (display-time-mode 1)
 
