@@ -1,5 +1,4 @@
 (use-package simple-httpd
-  :straight (simple-httpd :type git :host github :repo "skeeto/emacs-web-server")
   :config
   (setq httpd-port 7070))
 
@@ -28,7 +27,7 @@
                  </script>\
               </body>\
             </html>"
-            "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.css"
+            "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-light.css"
             "https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"
             (buffer-substring-no-properties (point-min) (point-max))))
          (current-buffer)))
@@ -41,3 +40,4 @@
   (impatient-mode)
   (imp-set-user-filter 'my//markdown-filter)
   (imp-visit-buffer))
+

@@ -52,7 +52,7 @@
 ;;--------------------------------------------------------------------------------------------------
 
 (my/load-module "my-symbol-at-point-overlay")
-;; (my/load-module "my-markdown-preview")
+(my/load-module "my-markdown-preview")
 
 (my/load-module "vertico")
 (my/load-module "orderless")
