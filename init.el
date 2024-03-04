@@ -108,7 +108,7 @@
 
 (my/load-module "treesit-auto")
 (my/load-module "nix-ts-mode")
-;; (my/load-module "markdown-mode")
+(my/load-module "markdown-mode")
 ;; (my/load-module "fish-mode")
 ;; (my/load-module "kotlin-mode")
 (my/load-module "lua-mode")
