@@ -21,7 +21,7 @@
                    style=\"box-sizing: border-box; min-width: 200px ;max-width: 980px; margin: 0 auto; padding: 45px;\">%s\
                  </div>\
                  <script>\
-                 var converter = new showdown.Converter();\
+                 var converter = new showdown.Converter({ tables: true });\
                  var markdown = document.getElementById('content').innerHTML;\
                  document.getElementById('content').innerHTML = converter.makeHtml(markdown);\
                  </script>\
