@@ -14,6 +14,8 @@
                  <title>Markdown preview</title>\
                  <link rel=\"stylesheet\" type=\"text/css\" href=\"%s\"/>\
                  <script src=\"%s\"></script>\
+                 <link rel=\"stylesheet\" type=\"text/css\" href=\"%s\"/>\
+                 <script src=\"%s\"></script>\
                </head>\
                <body>\
                  <div id=\"content\"\
@@ -24,11 +26,14 @@
                  var converter = new showdown.Converter({ tables: true });\
                  var markdown = document.getElementById('content').innerHTML;\
                  document.getElementById('content').innerHTML = converter.makeHtml(markdown);\
+                 hljs.highlightAll()
                  </script>\
               </body>\
             </html>"
             "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-light.css"
             "https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"
+            "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+            "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
             (buffer-substring-no-properties (point-min) (point-max))))
          (current-buffer)))
 
