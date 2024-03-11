@@ -24,7 +24,7 @@
                  </div>\
                  <script>\
                  var converter = new showdown.Converter({ tables: true });\
-                 var markdown = document.getElementById('content').innerHTML;\
+                 var markdown = document.getElementById('content').textContent;\
                  document.getElementById('content').innerHTML = converter.makeHtml(markdown);\
                  hljs.highlightAll()
                  </script>\
