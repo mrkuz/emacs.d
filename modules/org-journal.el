@@ -4,14 +4,16 @@
    (format-time-string " (W%V)" time)))
 
 (defun my//org-find-journal-location ()
-  (org-journal-new-entry t)
+  (my/open-journal-file)
   (goto-char (point-max)))
 
 (defun my/open-journal-file ()
   "Open current journal file"
   (interactive)
-  (org-journal-new-entry t)
-  (my/org-focus))
+  (let ((org-journal-file (org-journal--get-entry-path (current-time))))
+    (if (file-exists-p org-journal-file)
+        (find-file org-journal-file)
+      (org-journal-new-entry t))))
 
 (use-package org-journal
   :init
