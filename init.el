@@ -112,6 +112,7 @@
 ;; (my/load-module "fish-mode")
 ;; (my/load-module "kotlin-mode")
 (my/load-module "lua-mode")
+(my/load-module "terraform-mode")
 
 (elpaca-wait)
 (my/load-module "hydra")
