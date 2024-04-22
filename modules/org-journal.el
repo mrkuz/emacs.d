@@ -12,8 +12,10 @@
   (interactive)
   (let ((org-journal-file (org-journal--get-entry-path (current-time))))
     (if (file-exists-p org-journal-file)
-        (find-file org-journal-file)
-      (org-journal-new-entry t))))
+        (if (eq (file-attribute-size (file-attributes org-journal-file)) 0)
+            (org-journal-new-entry t)
+          (find-file org-journal-file))
+          (org-journal-new-entry t))))
 
 (use-package org-journal
   :init
