@@ -1,7 +1,8 @@
 ;; Force backup on each save
 (defun my//force-backup-buffer ()
-  (let ((buffer-backed-up nil))
-    (backup-buffer)))
+  (if buffer-backed-up
+    (let ((buffer-backed-up nil))
+      (backup-buffer))))
 (add-hook 'before-save-hook 'my//force-backup-buffer)
 
 ;; Disable backup files
