@@ -20,7 +20,7 @@
 (my/load-config "modeline")
 (my/load-config "minibuffer")
 (my/load-config "scrolling")
-(my/load-config "undo")
+;; (my/load-config "undo")
 (my/load-config "whitespace")
 (my/load-config "backups")
 (my/load-config "calendar")
@@ -69,6 +69,7 @@
 (my/load-module "hungry-delete")
 (my/load-module "move-text")
 (my/load-module "expand-region")
+(my/load-module "undo-fu")
 
 (my/load-module "goto-last-change")
 (my/load-module "avy")
@@ -82,7 +83,8 @@
 (my/load-module "olivetti")
 (my/load-module "golden-ratio")
 
-(my/load-module "undo-tree")
+;; (my/load-module "undo-tree")
+(my/load-module "vundo")
 (my/load-module "dired-sidebar")
 (my/load-module "ibuffer-sidebar")
 

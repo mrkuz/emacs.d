@@ -65,7 +65,7 @@
   "
   _c_ Emacs configuration    _t_ todo.org    _a_ Agenda
   _r_ Recent file            _n_ Note
-                           _j_ Journal
+  _u_ Undo history           _j_ Journal
   "
   ("a" my/org-ql-agenda)
   ("c" (find-file user-init-file))
@@ -73,6 +73,7 @@
   ("n" org-roam-node-find)
   ("r" consult-recent-file)
   ("t" my/org-find-todo)
+  ("u" vundo)
   ("q" nil))
 
 (defhydra my/hydra-help (:color blue :hint nil :pre (message "Help"))
