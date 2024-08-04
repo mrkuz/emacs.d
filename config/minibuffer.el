@@ -11,7 +11,7 @@
 
 ;; Persist history over restarts
 (use-package savehist
-  :elpaca nil
+  :ensure nil
   :init
   (savehist-mode)
   (setq history-length 100))

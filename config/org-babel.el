@@ -1,5 +1,5 @@
-(use-package org-babel
-  :elpaca nil
+(use-package ob
+  :ensure nil
   :init
   ;; Don't auto-indent source
   (setq org-src-preserve-indentation t)

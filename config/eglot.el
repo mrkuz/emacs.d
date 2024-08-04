@@ -1,5 +1,5 @@
 (use-package eglot
-  :elpaca nil
+  :ensure nil
   :init
   (with-eval-after-load 'eglot
     (add-to-list 'eglot-server-programs

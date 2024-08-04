@@ -12,7 +12,7 @@
 ;; See: https://github.com/minad/vertico
 (use-package vertico-directory
   :after vertico
-  :elpaca nil
+  :ensure nil
   ;; Ido-like directory navigation
   :bind (:map vertico-map
               ("RET" . vertico-directory-enter)

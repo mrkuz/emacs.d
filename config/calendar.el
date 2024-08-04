@@ -1,5 +1,5 @@
 (use-package calendar
-  :elpaca nil
+  :ensure nil
   :init
   ;; Configure calendar holidays
   (setq calendar-holidays (append holiday-general-holidays holiday-christian-holidays))

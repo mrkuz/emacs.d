@@ -1,5 +1,5 @@
 (use-package recentf
-  :elpaca nil
+  :ensure nil
   :init
   (recentf-mode)
   (add-to-list 'recentf-exclude no-littering-var-directory)

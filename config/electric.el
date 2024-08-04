@@ -1,5 +1,5 @@
 (use-package electric
-  :elpaca nil
+  :ensure nil
   :init
   ;; Automatically close parens
   (electric-pair-mode 1)

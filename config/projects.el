@@ -5,6 +5,6 @@
       (ignore-errors (project-try-vc dir)))))
 
 (use-package project
-  :elpaca nil
+  :ensure nil
   :config
   (setq project-find-functions '(my//project-find-root)))

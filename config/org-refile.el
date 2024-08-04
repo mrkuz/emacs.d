@@ -1,5 +1,5 @@
 (use-package org-refile
-  :elpaca nil
+  :ensure nil
   :init
   ;; Allow setting refile targets as local file variable
   (put 'org-refile-targets 'safe-local-variable (lambda (_) t))

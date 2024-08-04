@@ -21,7 +21,7 @@
 (add-hook 'org-trigger-hook 'my//org-trigger-hook)
 
 (use-package org
-  :elpaca nil
+  :ensure nil
   :init
   (require 'org-mouse)
   (setq org-directory "~/org")

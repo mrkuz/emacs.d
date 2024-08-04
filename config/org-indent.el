@@ -1,5 +1,5 @@
 (use-package org-indent
-  :elpaca nil
+  :ensure nil
   :diminish org-indent-mode
   :init
   ;; Indentation

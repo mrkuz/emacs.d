@@ -1,5 +1,5 @@
 (use-package ibuffer
-  :elpaca nil
+  :ensure nil
   :init
   ;; Always use new window
   (setq ibuffer-use-other-window t)

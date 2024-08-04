@@ -39,7 +39,7 @@
 (my/load-config "org")
 (my/load-config "org-agenda")
 (my/load-config "org-archive")
-;; (my/load-config "org-babel")
+(my/load-config "org-babel")
 (my/load-config "org-capture")
 (my/load-config "org-indent")
 (my/load-config "org-protocol")
@@ -104,7 +104,7 @@
 
 (my/load-module "age")
 (my/load-module "multi-vterm")
-(my/load-module "chatgpt-shell")
+;; (my/load-module "chatgpt-shell")
 (my/load-module "powerthesaurus")
 (my/load-module "devdocs")
 
