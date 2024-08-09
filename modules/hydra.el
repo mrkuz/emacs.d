@@ -15,6 +15,13 @@
   (flyspell-mode)
   (olivetti-mode))
 
+(defun my/elpaca-update ()
+  "Update Elpaca packages"
+  (interactive)
+  (elpaca-update-menus)
+  (elpaca-update-all t)
+  (elpaca-write-lockfile (expand-file-name "elpaca/packages.lock" user-emacs-directory)))
+
 (defhydra my/hydra-create (:color blue :hint nil :pre (message "Create"))
   "
   _s_ Scratch buffer
@@ -101,13 +108,11 @@
 (defhydra my/hydra-packages (:color blue :hint nil :pre (message "Packages"))
   "
   _u_ Update all       _m_ Manage packages
-  _l_ Write lockfile
   _t_ Try
   "
-  ("l" (elpaca-write-lockfile (expand-file-name "elpaca/packages.lock" user-emacs-directory)))
   ("m" elpaca-manager)
   ("t" elpaca-try)
-  ("u" (elpaca-update-all t))
+  ("u" my/elpaca-update)
   ("q" nil))
 
 (defhydra my/hydra-toggle (:color blue :hint nil :pre (message "Toggle"))
