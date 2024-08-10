@@ -4,6 +4,7 @@
   (with-current-buffer buffer
     (not (buffer-file-name buffer))))
 
+;; Show only file buffers
 (defun my//ibuffer-sidebar-mode-hook ()
   (with-current-buffer ibuffer-sidebar-name
     (make-local-variable 'ibuffer-never-show-predicates)

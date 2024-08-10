@@ -141,12 +141,8 @@
 
 (defhydra my/hydra-tools (:color blue :hint nil :pre (message "Tools"))
   "
-  _c_ ChatGPT
   _p_ Power Thesaurus
-  _d_ DevDocs
   "
-  ("c" chatgpt-shell)
-  ("d" devdocs-lookup)
   ("p" powerthesaurus-lookup-dwim)
   ("q" nil))
 

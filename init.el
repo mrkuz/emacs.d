@@ -107,7 +107,7 @@
 (my/load-module "multi-vterm")
 ;; (my/load-module "chatgpt-shell")
 (my/load-module "powerthesaurus")
-(my/load-module "devdocs")
+;; (my/load-module "devdocs")
 
 (my/load-module "treesit-auto")
 (my/load-module "nix-ts-mode")
