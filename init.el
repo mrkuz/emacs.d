@@ -76,6 +76,7 @@
 (my/load-module "ace-window")
 (my/load-module "dumb-jump")
 
+(my/load-module "god-mode")
 (my/load-module "helpful")
 (my/load-module "which-key")
 
