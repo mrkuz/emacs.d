@@ -3,7 +3,7 @@
   :hook (after-init . doom-modeline-mode)
   :init
   (setq doom-modeline-height 28
-        doom-modeline-bar-width 4
+        doom-modeline-bar-width 1
         doom-modeline-project-detection 'project
         doom-modeline-buffer-file-name-style 'auto
         doom-modeline-highlight-modified-buffer-name t
@@ -19,11 +19,8 @@
         doom-modeline-battery nil
         doom-modeline-env-version nil)
   ;; Use same background color for active and inactive mode-line
-  (add-hook 'doom-modeline-mode-hook (lambda() (set-face-attribute 'mode-line-inactive nil :background (face-background 'mode-line))))
-  :config
-  ;; Avoid cut-off on right side
-  ;; See: https://github.com/doomemacs/doomemacs/issues/2967
-  ;; And: https://github.com/seagle0128/doom-modeline/blob/master/doom-modeline.el#L90
-  (doom-modeline-def-modeline 'main
-    '(eldoc bar workspace-name window-number modals matches follow buffer-info remote-host buffer-position word-count parrot selection-info)
-    '(compilation objed-state misc-info persp-name battery grip irc mu4e gnus github debug repl lsp minor-modes input-method indent-info buffer-encoding major-mode process vcs checker time " ")))
+  (add-hook 'doom-modeline-mode-hook (lambda()
+                                       (set-face-attribute 'mode-line-inactive nil :background (face-background 'mode-line))
+                                       (set-face-attribute 'mode-line nil :box (list :line-width 5 :color (face-background 'default)))
+                                       (set-face-attribute 'mode-line-inactive nil :box (list :line-width 5 :color (face-background 'default))))))
+
