@@ -18,9 +18,8 @@
         doom-modeline-irc nil
         doom-modeline-battery nil
         doom-modeline-env-version nil)
-  ;; Use same background color for active and inactive mode-line
   (add-hook 'doom-modeline-mode-hook (lambda()
-                                       (set-face-attribute 'mode-line-inactive nil :background (face-background 'mode-line))
+                                       (set-face-attribute 'mode-line-inactive nil :background nil)
                                        (set-face-attribute 'mode-line nil :box (list :line-width 5 :color (face-background 'default)))
                                        (set-face-attribute 'mode-line-inactive nil :box (list :line-width 5 :color (face-background 'default))))))
 

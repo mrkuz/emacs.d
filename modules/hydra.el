@@ -117,11 +117,12 @@
 
 (defhydra my/hydra-toggle (:color blue :hint nil :pre (message "Toggle"))
   "
-  _s_ Sidebar            _W_ Writer mode
-  _v_ Visual line mode   _g_ Golden ratio
-  _w_ Whitespace mode
+  _s_ Sidebar            _w_ Whitespace mode
+  _m_ Mode-Line          _v_ Visual line mode
+  _g_ Golden ratio       _W_ Writer mode
   "
   ("g" golden-ratio)
+  ("m" hide-mode-line-mode)
   ("s" my/toggle-sidebar)
   ("v" visual-line-mode)
   ("w" whitespace-mode)

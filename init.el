@@ -61,6 +61,8 @@
 (my/load-module "nerd-icons")
 (my/load-module "monokai-pro-theme")
 (my/load-module "doom-modeline")
+(my/load-module "pulsar")
+(my/load-module "hide-mode-line")
 
 (my/load-module "consult")
 (my/load-module "embark")
