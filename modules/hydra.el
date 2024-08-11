@@ -10,8 +10,10 @@
 (defun my/writer-mode ()
   "Mode for writing"
   (interactive)
+  (setq-local cursor-type 'bar)
   (text-mode)
   (display-line-numbers-mode -1)
+  (variable-pitch-mode)
   (flyspell-mode)
   (olivetti-mode))
 
