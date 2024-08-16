@@ -17,9 +17,5 @@
         doom-modeline-gnus nil
         doom-modeline-irc nil
         doom-modeline-battery nil
-        doom-modeline-env-version nil)
-  (add-hook 'doom-modeline-mode-hook (lambda()
-                                       (set-face-attribute 'mode-line-inactive nil :background nil)
-                                       (set-face-attribute 'mode-line nil :box (list :line-width 5 :color (face-background 'default)))
-                                       (set-face-attribute 'mode-line-inactive nil :box (list :line-width 5 :color (face-background 'default))))))
+        doom-modeline-env-version nil))
 

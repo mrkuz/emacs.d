@@ -36,6 +36,10 @@
 ;; Highlight current line
 ;; (global-hl-line-mode 1)
 
+;; Prettify symbols
+(setq prettify-symbols-unprettify-at-point t)
+(global-prettify-symbols-mode)
+
 ;; Show line numbers
 (add-hook 'prog-mode-hook (lambda ()
                             (display-line-numbers-mode)
@@ -55,4 +59,12 @@
       window-divider-default-bottom-width 1)
 (add-hook 'after-init-hook (lambda ()
                              (set-face-foreground 'window-divider (face-attribute 'vertical-border :foreground))))
-;; (window-divider-mode)
+(window-divider-mode)
+
+;; Use header-line to create some space at the top of each window
+(setq-default header-line-format "")
+(add-hook 'after-init-hook (lambda ()
+                             (set-face-attribute 'header-line nil :background (face-background 'default) :height 100 :box nil)))
+
+;; Message buffer name after switching
+(add-hook 'buffer-list-update-hook (lambda () (message (buffer-name (current-buffer)))))
