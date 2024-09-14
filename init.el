@@ -18,9 +18,9 @@
 (my/load-config "startup")
 (my/load-config "fonts")
 (my/load-config "modeline")
+(my/load-config "tab-bar")
 (my/load-config "minibuffer")
 (my/load-config "scrolling")
-;; (my/load-config "undo")
 (my/load-config "whitespace")
 (my/load-config "backups")
 (my/load-config "calendar")
@@ -35,7 +35,7 @@
 (my/load-config "misc")
 (my/load-config "flyspell")
 (my/load-config "ediff")
-;; (my/load-config "projects")
+(my/load-config "projects")
 (my/load-config "org")
 (my/load-config "org-agenda")
 (my/load-config "org-archive")
@@ -46,6 +46,8 @@
 (my/load-config "org-refile")
 
 (my/load-config "overrides")
+
+;; (my/load-config "undo")
 
 ;;--------------------------------------------------------------------------------------------------
 ;; Modules
@@ -86,7 +88,6 @@
 (my/load-module "olivetti")
 (my/load-module "golden-ratio")
 
-;; (my/load-module "undo-tree")
 (my/load-module "vundo")
 (my/load-module "dired-sidebar")
 (my/load-module "ibuffer-sidebar")
@@ -107,9 +108,8 @@
 
 (my/load-module "age")
 (my/load-module "multi-vterm")
-;; (my/load-module "chatgpt-shell")
+
 (my/load-module "powerthesaurus")
-;; (my/load-module "devdocs")
 
 (my/load-module "treesit-auto")
 (my/load-module "nix-ts-mode")
@@ -122,3 +122,23 @@
 (elpaca-wait)
 (my/load-module "hydra")
 
+;; (my/load-module "backup-walker.el")
+;; (my/load-module "benchmark-init")
+;; (my/load-module "calfw")
+;; (my/load-module "chatgpt-shell")
+;; (my/load-module "company")
+;; (my/load-module "devdocs")
+;; (my/load-module "docker-compose-mode")
+;; (my/load-module "dockerfile-mode")
+;; (my/load-module "groovy-mode")
+;; (my/load-module "highlight-symbol")
+;; (my/load-module "lacarte")
+;; (my/load-module "lua-mode")
+;; (my/load-module "my-appt")
+;; (my/load-module "nix-mode")
+;; (my/load-module "org-alert")
+;; (my/load-module "restclient")
+;; (my/load-module "straight")
+;; (my/load-module "undo-tree")
+;; (my/load-module "visual-fill-column")
+;; (my/load-module "yaml-mode")
