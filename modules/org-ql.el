@@ -55,4 +55,7 @@
 
 (use-package org-ql
   :init
-  (advice-add 'org-ql-view--format-element :around 'my//org-ql-view-advice))
+  (advice-add 'org-ql-view--format-element :around 'my//org-ql-view-advice)
+  ;; Delete window when closing view
+  (require 'org-ql-view)
+  (keymap-set org-ql-view-map "q" 'delete-window))

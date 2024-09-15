@@ -62,9 +62,9 @@
 
 (my/load-module "nerd-icons")
 (my/load-module "monokai-pro-theme")
+(my/load-module "hide-mode-line")
 (my/load-module "doom-modeline")
 (my/load-module "pulsar")
-(my/load-module "hide-mode-line")
 
 (my/load-module "consult")
 (my/load-module "embark")
@@ -104,7 +104,7 @@
 (my/load-module "org-appear")
 
 (my/load-module "git-gutter")
-(my/load-module "magit")
+;; (my/load-module "magit")
 
 (my/load-module "age")
 (my/load-module "multi-vterm")
