@@ -80,7 +80,6 @@
 (my/load-module "ace-window")
 (my/load-module "dumb-jump")
 
-(my/load-module "god-mode")
 (my/load-module "helpful")
 (my/load-module "which-key")
 
@@ -111,11 +110,8 @@
 
 (my/load-module "powerthesaurus")
 
-(my/load-module "treesit-auto")
 (my/load-module "nix-ts-mode")
 (my/load-module "markdown-mode")
-;; (my/load-module "fish-mode")
-;; (my/load-module "kotlin-mode")
 (my/load-module "lua-mode")
 (my/load-module "terraform-mode")
 
@@ -130,15 +126,18 @@
 ;; (my/load-module "devdocs")
 ;; (my/load-module "docker-compose-mode")
 ;; (my/load-module "dockerfile-mode")
+;; (my/load-module "fish-mode")
+;; (my/load-module "god-mode")
 ;; (my/load-module "groovy-mode")
 ;; (my/load-module "highlight-symbol")
 ;; (my/load-module "lacarte")
-;; (my/load-module "lua-mode")
+;; (my/load-module "kotlin-mode")
 ;; (my/load-module "my-appt")
 ;; (my/load-module "nix-mode")
 ;; (my/load-module "org-alert")
 ;; (my/load-module "restclient")
 ;; (my/load-module "straight")
+;; (my/load-module "treesit-auto")
 ;; (my/load-module "undo-tree")
 ;; (my/load-module "visual-fill-column")
 ;; (my/load-module "yaml-mode")

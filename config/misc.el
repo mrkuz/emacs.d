@@ -62,9 +62,15 @@
 (window-divider-mode)
 
 ;; Use header-line to create some space at the top of each window
-(setq-default header-line-format "")
-(add-hook 'after-init-hook (lambda ()
-                             (set-face-attribute 'header-line nil :background (face-background 'default) :height 100 :box nil)))
+;; (setq-default header-line-format "")
+;; (add-hook 'after-init-hook (lambda ()
+;;                             (set-face-attribute 'header-line nil :background (face-background 'default) :height 100 :box nil)))
+
+;; Use tab-line to create some space at the top of each window
+;; (setq tab-line-tabs-function (lambda '()))
+;; (global-tab-line-mode)
+;; (add-hook 'after-init-hook (lambda ()
+;;                              (set-face-attribute 'tab-line nil :background (face-background 'default) :height 100)))
 
 ;; Message buffer name after switching
-(add-hook 'buffer-list-update-hook (lambda () (message (buffer-name (current-buffer)))))
+;; (add-hook 'buffer-list-update-hook (lambda () (message (buffer-name (current-buffer)))))

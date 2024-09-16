@@ -55,7 +55,8 @@
                             (width . 140)
                             (height . 50)
                             ;; (cursor-color . "#e1e1e0")
-                            (internal-border-width . 10)
+                            (internal-border-width . 8)
+                            (undecorated-round . t)
                             ))
 ;; Show buffer name in frame title
 (setq-default frame-title-format '("%b"))
