@@ -41,9 +41,9 @@
 (global-prettify-symbols-mode)
 
 ;; Show line numbers
-(add-hook 'prog-mode-hook (lambda ()
-                            (display-line-numbers-mode)
-                            (set-face-attribute 'line-number-current-line nil :background 'unspecified)))
+;; (add-hook 'prog-mode-hook (lambda ()
+;;                             (display-line-numbers-mode)
+;;                             (set-face-attribute 'line-number-current-line nil :background 'unspecified)))
 
 ;; Configure fringe
 (setq-default left-fringe-width 10)

@@ -62,8 +62,6 @@
 
 (my/load-module "nerd-icons")
 (my/load-module "monokai-pro-theme")
-(my/load-module "hide-mode-line")
-(my/load-module "doom-modeline")
 (my/load-module "pulsar")
 
 (my/load-module "consult")
@@ -126,9 +124,11 @@
 ;; (my/load-module "devdocs")
 ;; (my/load-module "docker-compose-mode")
 ;; (my/load-module "dockerfile-mode")
+;; (my/load-module "doom-modeline")
 ;; (my/load-module "fish-mode")
 ;; (my/load-module "god-mode")
 ;; (my/load-module "groovy-mode")
+;; (my/load-module "hide-mode-line")
 ;; (my/load-module "highlight-symbol")
 ;; (my/load-module "lacarte")
 ;; (my/load-module "kotlin-mode")
