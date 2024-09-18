@@ -14,7 +14,8 @@
 ;; Configuration
 ;;--------------------------------------------------------------------------------------------------
 
-(my/load-config "user")
+(my/load-config "bookmark")
+
 (my/load-config "startup")
 (my/load-config "fonts")
 (my/load-config "modeline")
@@ -45,6 +46,7 @@
 (my/load-config "org-protocol")
 (my/load-config "org-refile")
 
+(my/load-config "user")
 (my/load-config "overrides")
 
 ;; (my/load-config "undo")
@@ -67,6 +69,7 @@
 (my/load-module "consult")
 (my/load-module "embark")
 (my/load-module "crux")
+(my/load-module "bufferlo")
 
 (my/load-module "hungry-delete")
 (my/load-module "move-text")
