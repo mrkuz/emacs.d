@@ -1,20 +1,13 @@
 (use-package hydra)
 (elpaca-wait)
 
-(defun my/toggle-sidebar ()
-  "Toggle sidebar"
-  (interactive)
-  (dired-sidebar-toggle-sidebar)
-  (ibuffer-sidebar-toggle-sidebar))
-
-(defun my/writer-mode ()
-  "Mode for writing"
+(defun my/zen-mode ()
+  "Mode for distraction free editing"
   (interactive)
   (setq-local cursor-type 'bar)
-  (text-mode)
-  (display-line-numbers-mode -1)
-  (variable-pitch-mode)
-  (flyspell-mode)
+  (setq mode-line-format "")
+  (setq header-line-format "")
+  (tab-bar-mode -1)
   (olivetti-mode))
 
 (defun my/elpaca-update ()
@@ -55,12 +48,10 @@
   "
   _l_ Last change   _i_ Interactive menu
   _w_ Word
-  _W_ Window
   "
   ("i" consult-imenu)
   ("l" goto-last-change)
   ("w" avy-goto-word-1)
-  ("W" ace-window)
   ("q" nil))
 
 (defhydra my/hydra-insert (:color blue :hint nil :pre (message "Insert"))
@@ -119,16 +110,13 @@
 
 (defhydra my/hydra-toggle (:color blue :hint nil :pre (message "Toggle"))
   "
-  _s_ Sidebar            _w_ Whitespace mode
-  _m_ Mode-Line          _v_ Visual line mode
-  _g_ Golden ratio       _W_ Writer mode
+  _w_ Whitespace mode
+  _v_ Visual line mode
+  _z_ Zen mode
   "
-  ("g" golden-ratio)
-  ("m" hide-mode-line-mode)
-  ("s" my/toggle-sidebar)
   ("v" visual-line-mode)
   ("w" whitespace-mode)
-  ("W" my/writer-mode)
+  ("z" my/zen-mode)
   ("q" nil))
 
 (defhydra my/hydra-spelling (:color blue :hint nil :pre (message "Spelling"))

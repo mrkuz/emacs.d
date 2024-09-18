@@ -75,7 +75,6 @@
 
 (my/load-module "goto-last-change")
 (my/load-module "avy")
-(my/load-module "ace-window")
 (my/load-module "dumb-jump")
 
 (my/load-module "helpful")
@@ -83,11 +82,8 @@
 
 (my/load-module "highlight-parentheses")
 (my/load-module "olivetti")
-(my/load-module "golden-ratio")
 
 (my/load-module "vundo")
-(my/load-module "dired-sidebar")
-(my/load-module "ibuffer-sidebar")
 
 (my/load-module "corfu")
 (my/load-module "cape")
@@ -116,20 +112,24 @@
 (elpaca-wait)
 (my/load-module "hydra")
 
+;; (my/load-module "ace-window")
 ;; (my/load-module "backup-walker.el")
 ;; (my/load-module "benchmark-init")
 ;; (my/load-module "calfw")
 ;; (my/load-module "chatgpt-shell")
 ;; (my/load-module "company")
 ;; (my/load-module "devdocs")
+;; (my/load-module "dired-sidebar")
 ;; (my/load-module "docker-compose-mode")
 ;; (my/load-module "dockerfile-mode")
 ;; (my/load-module "doom-modeline")
 ;; (my/load-module "fish-mode")
 ;; (my/load-module "god-mode")
+;; (my/load-module "golden-ratio")
 ;; (my/load-module "groovy-mode")
 ;; (my/load-module "hide-mode-line")
 ;; (my/load-module "highlight-symbol")
+;; (my/load-module "ibuffer-sidebar")
 ;; (my/load-module "lacarte")
 ;; (my/load-module "kotlin-mode")
 ;; (my/load-module "my-appt")

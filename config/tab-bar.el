@@ -9,8 +9,6 @@
       tab-bar-separator "  "
       tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
 
-;; (setq tab-bar-new-tab-choice 'crux-create-scratch-buffer)
-
 (add-hook 'after-init-hook (lambda ()
                              (set-face-attribute 'tab-bar nil :box (list :line-width 8 :color (face-background 'default)))
                              (set-face-attribute 'tab-bar-tab nil :underline nil)))
