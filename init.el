@@ -15,6 +15,7 @@
 ;;--------------------------------------------------------------------------------------------------
 
 (my/load-config "bookmark")
+(my/load-config "project")
 
 (my/load-config "startup")
 (my/load-config "fonts")
@@ -36,7 +37,6 @@
 (my/load-config "misc")
 (my/load-config "flyspell")
 (my/load-config "ediff")
-(my/load-config "projects")
 (my/load-config "org")
 (my/load-config "org-agenda")
 (my/load-config "org-archive")
