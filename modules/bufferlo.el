@@ -1,5 +1,5 @@
 (use-package bufferlo
-  :bind (([remap switch-to-buffer] . bufferlo-switch-to-buffer)
-         ("C-x B" . bufferlo-find-buffer-switch))
+  :bind (([remap switch-to-buffer] . bufferlo-find-buffer-switch)
+         ("C-x B" . bufferlo-switch-to-buffer))
   :config
   (bufferlo-mode 1))

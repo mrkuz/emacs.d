@@ -17,13 +17,25 @@
   (elpaca-update-all t)
   (elpaca-write-lockfile (expand-file-name "elpaca/packages.lock" user-emacs-directory)))
 
+(defun my/terminal ()
+  "Create new terminal"
+  (interactive)
+  (tab-bar-switch-to-tab "Terminal")
+  (multi-vterm))
+
+(defun my/find-note ()
+  "Find note"
+  (interactive)
+  (tab-bar-switch-to-tab "Notes")
+  (org-roam-node-find))
+
 (defhydra my/hydra-create (:color blue :hint nil :pre (message "Create"))
   "
   _s_ Scratch buffer
   _t_ Terminal
   "
   ("s" crux-create-scratch-buffer)
-  ("t" multi-vterm)
+  ("t" my/terminal)
   ("q" nil))
 
 (defhydra my/hydra-desktop (:color blue :hint nil :pre (message "Desktop"))
@@ -70,7 +82,7 @@
   ("a" my/org-ql-agenda)
   ("c" (find-file user-init-file))
   ("j" my/open-journal-file)
-  ("n" org-roam-node-find)
+  ("n" my/find-note)
   ("r" consult-recent-file)
   ("t" my/org-find-todo)
   ("u" vundo)

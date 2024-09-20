@@ -10,6 +10,7 @@
 (defun my/open-journal-file ()
   "Open current journal file"
   (interactive)
+  (tab-bar-switch-to-tab "Org")
   (let ((org-journal-file (org-journal--get-entry-path (current-time))))
     (if (file-exists-p org-journal-file)
         (if (eq (file-attribute-size (file-attributes org-journal-file)) 0)

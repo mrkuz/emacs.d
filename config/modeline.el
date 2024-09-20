@@ -16,7 +16,7 @@
                              (set-face-attribute 'mode-line-inactive nil :background (face-background 'default) :box (list :line-width 8 :color (face-background 'default)))))
 
 ;; Keep mode-line simple per default, but show more info if minibuffer is visible
-(setq my//mode-line-format-short '("%e" " %*%* " mode-line-format-right-align " L:%l C:%c"))
+(setq my//mode-line-format-short '("%e" " %*%* %b " mode-line-format-right-align " L:%l C:%c"))
 (setq my//mode-line-format-long '("%e" " %*%* %b" mode-line-format-right-align mode-name " L:%l C:%c"))
 (setq-default mode-line-format my//mode-line-format-short)
 
