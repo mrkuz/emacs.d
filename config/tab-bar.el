@@ -1,5 +1,4 @@
 (tab-bar-mode)
-(tab-rename "*Main*")
 ;; Always show tab bar
 (setq tab-bar-show t
       ;; Hide close button

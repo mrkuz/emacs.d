@@ -15,11 +15,11 @@
 ;;--------------------------------------------------------------------------------------------------
 
 (my/load-config "bookmark")
+(my/load-config "modeline")
 (my/load-config "project")
 
 (my/load-config "startup")
 (my/load-config "fonts")
-(my/load-config "modeline")
 (my/load-config "tab-bar")
 (my/load-config "minibuffer")
 (my/load-config "scrolling")
