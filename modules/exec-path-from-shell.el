@@ -1,3 +1,3 @@
 (use-package exec-path-from-shell
-  :init
+  :config
   (exec-path-from-shell-initialize))

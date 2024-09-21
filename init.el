@@ -15,12 +15,13 @@
 ;;--------------------------------------------------------------------------------------------------
 
 (my/load-config "bookmark")
+(my/load-config "ediff")
 (my/load-config "modeline")
 (my/load-config "project")
+(my/load-config "tab-bar")
 
 (my/load-config "startup")
 (my/load-config "fonts")
-(my/load-config "tab-bar")
 (my/load-config "minibuffer")
 (my/load-config "scrolling")
 (my/load-config "whitespace")
@@ -36,7 +37,6 @@
 (my/load-config "eglot")
 (my/load-config "misc")
 (my/load-config "flyspell")
-(my/load-config "ediff")
 (my/load-config "org")
 (my/load-config "org-agenda")
 (my/load-config "org-archive")
@@ -100,7 +100,7 @@
 (my/load-module "org-appear")
 
 (my/load-module "git-gutter")
-;; (my/load-module "magit")
+(my/load-module "magit")
 
 (my/load-module "age")
 (my/load-module "multi-vterm")
