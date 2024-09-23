@@ -1,7 +1,7 @@
 (defun my/org-find-todo ()
   "Open configuration file."
   (interactive)
-  (tab-bar-switch-to-tab "Org")
+  (tab-bar-switch-to-tab "org")
   (find-file (concat org-directory "/todo.org")))
 
 (defun my/org-focus ()
