@@ -115,8 +115,9 @@
 (elpaca-wait)
 (my/load-module "hydra")
 
+(my/load-module "backup-walker")
+
 ;; (my/load-module "ace-window")
-;; (my/load-module "backup-walker.el")
 ;; (my/load-module "benchmark-init")
 ;; (my/load-module "calfw")
 ;; (my/load-module "chatgpt-shell")
