@@ -1,1 +1,1 @@
-(setq project-vc-extra-root-markers '(".project" ".project.el"))
+(setq project-vc-extra-root-markers '(".project" ".project.el" ".dir-locals.el"))
