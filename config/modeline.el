@@ -3,9 +3,9 @@
 (diminish 'abbrev-mode)
 
 ;; Show date in modeline
-(setq display-time-format "%Y-%m-%d W%V "
+(setq display-time-format "%Y-%m-%d W%V"
       display-time-default-load-average nil)
-;; (display-time-mode 1)
+(display-time-mode 1)
 
 ;; Show column number
 (column-number-mode 1)
@@ -17,7 +17,7 @@
 
 ;; Keep mode-line simple per default, but show more info if minibuffer is visible
 (setq my//mode-line-format-short '("%e" " %*%* %b " mode-line-format-right-align " %p L:%l C:%c"))
-(setq my//mode-line-format-long '("%e" " %*%* %b" mode-line-format-right-align mode-name " %p L:%l C:%c"))
+(setq my//mode-line-format-long '("%e" " %*%* %b" mode-line-format-right-align mode-name " | " display-time-string "| %p L:%l C:%c"))
 (setq-default mode-line-format my//mode-line-format-short)
 
 (defun my//minibuffer-setup-mode-line-hook ()

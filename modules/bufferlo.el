@@ -14,8 +14,7 @@
 
 (use-package bufferlo
   :demand t
-  :bind (([remap switch-to-buffer] . bufferlo-find-buffer-switch)
-         ("C-x F" . my//find-file)
+  :bind (("C-x F" . my//find-file)
          ("C-x B" . bufferlo-switch-to-buffer))
   :config
   (bufferlo-mode 1))

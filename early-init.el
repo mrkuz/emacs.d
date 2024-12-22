@@ -55,7 +55,7 @@
                             (width . 140)
                             (height . 50)
                             ;; (cursor-color . "#e1e1e0")
-                            (internal-border-width . 8)
+                            (internal-border-width . 12)
                             (undecorated-round . t)
                             ))
 ;; Show buffer name in frame title

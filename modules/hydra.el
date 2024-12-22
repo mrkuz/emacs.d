@@ -20,13 +20,11 @@
 (defun my/terminal ()
   "Create new terminal"
   (interactive)
-  (tab-bar-switch-to-tab "Terminal")
   (multi-vterm))
 
 (defun my/find-note ()
   "Find note"
   (interactive)
-  (tab-bar-switch-to-tab "Notes")
   (org-roam-node-find))
 
 (defhydra my/hydra-create (:color blue :hint nil :pre (message "Create"))
