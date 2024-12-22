@@ -1,3 +1,0 @@
-(use-package ace-window
-  :config
-  (setq aw-keys '(?a ?b ?c ?d ?e ?f ?g ?h ?i ?j)))

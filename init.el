@@ -49,8 +49,6 @@
 (my/load-config "user")
 (my/load-config "overrides")
 
-;; (my/load-config "undo")
-
 ;;--------------------------------------------------------------------------------------------------
 ;; Modules
 ;;--------------------------------------------------------------------------------------------------
@@ -114,34 +112,3 @@
 
 (elpaca-wait)
 (my/load-module "hydra")
-
-(my/load-module "backup-walker")
-
-;; (my/load-module "ace-window")
-;; (my/load-module "benchmark-init")
-;; (my/load-module "calfw")
-;; (my/load-module "chatgpt-shell")
-;; (my/load-module "company")
-;; (my/load-module "devdocs")
-;; (my/load-module "dired-sidebar")
-;; (my/load-module "docker-compose-mode")
-;; (my/load-module "dockerfile-mode")
-;; (my/load-module "doom-modeline")
-;; (my/load-module "fish-mode")
-;; (my/load-module "god-mode")
-;; (my/load-module "golden-ratio")
-;; (my/load-module "groovy-mode")
-;; (my/load-module "hide-mode-line")
-;; (my/load-module "highlight-symbol")
-;; (my/load-module "ibuffer-sidebar")
-;; (my/load-module "lacarte")
-;; (my/load-module "kotlin-mode")
-;; (my/load-module "my-appt")
-;; (my/load-module "nix-mode")
-;; (my/load-module "org-alert")
-;; (my/load-module "restclient")
-;; (my/load-module "straight")
-;; (my/load-module "treesit-auto")
-;; (my/load-module "undo-tree")
-;; (my/load-module "visual-fill-column")
-;; (my/load-module "yaml-mode")
