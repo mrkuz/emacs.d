@@ -1,5 +1,6 @@
 (my//load-module "elpaca")
 
+(use-package transient)
 (use-package hydra)
 (elpaca-wait)
 
@@ -11,6 +12,8 @@
 (my//load-module "editing")
 (my//load-module "ediff")
 (my//load-module "help")
+(my//load-module "markdown")
+(my//load-module "gptel")
 
 ;; -------------------------------------------------------------------------------------------------
 ;; Keybindings
@@ -28,11 +31,12 @@ _c_ Emacs configuration
 
 (defhydra my//hydra (:color blue :hint nil)
   "
-^Files^       ^Miscellaneous^
----------------------------------------
-_o_ Open…     _x_ Expand region
-^ ^           _R_ Reload configuration
+^Files^       ^Tools^       ^Miscellaneous^
+----------------------------------------------------
+_o_ Open…     _g_ gptel     _x_ Expand region
+^ ^           ^ ^           _R_ Reload configuration
 "
+  ("g" my//hydra-gptel/body)
   ("o" my//hydra-open/body)
   ("R" (load-file user-init-file))
   ("x" er/expand-region)

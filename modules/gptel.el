@@ -1,0 +1,136 @@
+(defvar my//gptel-default-chat "*Copilot*")
+(defvar my//gptel-code-directive
+  "
+# Code
+
+You are a senior software engineer.
+
+Instructions:
+- Focus on correctness and readability
+
+Output:
+- Return the complete code
+- Return only code and comments
+- Do NOT use markdown
+")
+(defvar my//gptel-rewrite-directive my//gptel-code-directive)
+(defvar my//gptel-history nil)
+
+;; -------------------------------------------------------------------------------------------------
+;; Packages
+;; -------------------------------------------------------------------------------------------------
+
+(use-package gptel
+  :demand t
+  :hook ((gptel-mode . markdown-toggle-markup-hiding))
+  :bind (:map gptel-mode-map
+              ("C-c C-c" . gptel-send))
+  :config
+  (require 'gptel-rewrite)
+  (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
+  (gptel-make-preset 'code
+		     :system my//gptel-code-directive)
+  (setq gptel-backend (gptel-make-gh-copilot my//gptel-default-chat))
+  :custom
+  (gptel-model 'claude-sonnet-4.5)
+  (gptel-prompt-prefix-alist
+	'((markdown-mode . "### > ")
+          (org-mode . "*** ")
+          (text-mode . "### ")))
+  (gptel-rewrite-default-action 'merge)
+  (add-to-list 'gptel-directives `(rewrite . ,my//gptel-rewrite-directive)))
+
+;; -------------------------------------------------------------------------------------------------
+;; Functions
+;; -------------------------------------------------------------------------------------------------
+
+(defun my//gptel-process-prompt (prompt)
+  "Replace presets from prompt and returnand split into system and user prompts"
+  (let ((system-prompts '())
+        (user-prompt prompt))
+    (while (string-match "@\\([a-z]+\\)" user-prompt)
+      (let* ((preset-name (match-string 1 user-prompt))
+             (preset-plist (alist-get preset-name gptel--known-presets nil nil #'string=))
+             (system-prompt (plist-get preset-plist :system)))
+        (when system-prompt
+          (push system-prompt system-prompts))
+        (setq user-prompt (replace-match "" nil nil user-prompt))))
+    (setq user-prompt (string-trim user-prompt))
+    (list :system (when system-prompts
+                    (string-join (nreverse system-prompts) "\n\n"))
+          :user (unless (string-empty-p user-prompt)
+                  user-prompt))))
+
+(defun my/gptel-chat ()
+  "Open gptel chat"
+  (interactive)
+  (pop-to-buffer (gptel my//gptel-default-chat)))
+
+(defun my/gptel-send-to-chat (prompt region)
+  "Send prompt to gptel chat"
+  (interactive (list (read-string "Prompt: " nil my//gptel-history)
+                     (when (use-region-p)
+                       (filter-buffer-substring (region-beginning) (region-end)))))
+  (gptel my//gptel-default-chat)
+  (with-current-buffer my//gptel-default-chat
+    (insert prompt)
+    (when region
+      (insert "\n" region))
+    (gptel-send)
+    (pop-to-buffer (current-buffer))))
+
+(defun my/gptel-ask (prompt region)
+  "Ask gptel"
+  (interactive (list (read-string "Prompt: " nil my//gptel-history)
+                     (when (use-region-p)
+                       (filter-buffer-substring (region-beginning) (region-end)))))
+  (let* ((prompts (my//gptel-process-prompt prompt))
+	 (user-prompt (plist-get prompts :user))
+	 (full-prompt (if region (concat user-prompt "\n" region) user-prompt)))
+    (gptel-request full-prompt
+      :system (plist-get prompts :system)
+      :callback (lambda (response info)
+                  (when response
+                    (let ((buf (get-buffer-create "*gptel-response*")))
+                      (with-current-buffer buf
+			(read-only-mode -1)
+			(erase-buffer)
+			(insert response)
+			(goto-char (point-min))
+			(markdown-view-mode))
+                      (pop-to-buffer buf)))))))
+
+(defun my/gptel-insert (prompt)
+  "Ask gptel to generate content"
+  (interactive (list (read-string "Insert: " nil my//gptel-history)))
+  (let* ((prompts (my//gptel-process-prompt prompt))
+	 (user-prompt (plist-get prompts :user)))
+    (gptel-request user-prompt
+      :system (plist-get prompts :system)
+      :callback (lambda (response info)
+                  (when response
+                    (insert response))))))
+
+(defun my/gptel-rewrite (prompt)
+  "Ask gptel to rewrite"
+  (interactive (list (read-string "Rewrite: " nil my//gptel-history)))
+  (gptel--suffix-rewrite prompt))
+
+;; -------------------------------------------------------------------------------------------------
+;; Keybindings
+;; -------------------------------------------------------------------------------------------------
+
+(defhydra my//hydra-gptel (:color blue :hint nil)
+  "
+ ^Chat^                ^Edit^
+ ----------------------------------
+ _o_: Open chat        _a_: Ask
+ _s_: Send to chat     _i_: Insert
+ ^ ^                   _r_: Rewrite
+ "
+  ("o" my/gptel-chat)
+  ("s" my/gptel-send-to-chat)
+  ("r" my/gptel-rewrite)
+  ("i" my/gptel-insert)
+  ("a" my/gptel-ask)
+  ("q" nil))
