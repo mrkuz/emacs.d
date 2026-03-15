@@ -28,16 +28,28 @@ _c_ Emacs configuration
   ("c" (find-file user-init-file))
   ("q" nil))
 
+(defhydra my//hydra-elpaca (:color blue :hint nil)
+  "
+^Packages^
+-----------------------
+_u_ Update all
+_t_ Try
+ "
+  ("t" elpaca-try)
+  ("u" my/elpaca-update)
+  ("q" nil))
 
 (defhydra my//hydra (:color blue :hint nil)
   "
 ^Files^       ^Tools^       ^Miscellaneous^
 ----------------------------------------------------
 _o_ Open…     _g_ gptel     _x_ Expand region
+^ ^           ^ ^           _P_ Packages
 ^ ^           ^ ^           _R_ Reload configuration
 "
   ("g" my//hydra-gptel/body)
   ("o" my//hydra-open/body)
+  ("P" my//hydra-elpaca/body)
   ("R" (load-file user-init-file))
   ("x" er/expand-region)
   ("q" nil))
