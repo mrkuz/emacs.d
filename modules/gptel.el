@@ -32,7 +32,7 @@ Output:
 		     :system my//gptel-code-directive)
   (setq gptel-backend (gptel-make-gh-copilot my//gptel-default-chat))
   :custom
-  (gptel-model 'claude-sonnet-4.5)
+  (gptel-model 'gpt-4.1)
   (gptel-prompt-prefix-alist
 	'((markdown-mode . "### > ")
           (org-mode . "*** ")
@@ -45,7 +45,7 @@ Output:
 ;; -------------------------------------------------------------------------------------------------
 
 (defun my//gptel-process-prompt (prompt)
-  "Replace presets from prompt and returnand split into system and user prompts"
+  "Replace presets from prompt and split into system and user prompts"
   (let ((system-prompts '())
         (user-prompt prompt))
     (while (string-match "@\\([a-z]+\\)" user-prompt)
