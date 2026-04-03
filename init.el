@@ -9,6 +9,7 @@
 ;; -------------------------------------------------------------------------------------------------
 
 (my//load-module "scratch")
+(my//load-module "backups")
 (my//load-module "editing")
 (my//load-module "ediff")
 (my//load-module "help")
