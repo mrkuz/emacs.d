@@ -1,5 +1,6 @@
 (my//load-module "elpaca")
 
+(use-package compat)
 (use-package transient)
 (use-package hydra)
 (elpaca-wait)

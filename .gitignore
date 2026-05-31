@@ -1,1 +1,5 @@
-var/autosave
+var/autosave/
+var/elpaca/builds/
+var/elpaca/cache/
+var/elpaca/repos/
+var/elpaca/sources/
