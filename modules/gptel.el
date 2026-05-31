@@ -1,4 +1,4 @@
-(defvar my//gptel-default-chat "*Copilot*")
+(defvar my//gptel-default-chat "*Chat*")
 (defvar my//gptel-code-directive
   "
 # Code
@@ -22,22 +22,32 @@ Output:
 
 (use-package gptel
   :demand t
-  :hook ((gptel-mode . markdown-toggle-markup-hiding))
+  ;; :hook ((gptel-mode . markdown-toggle-markup-hiding))
   :bind (:map gptel-mode-map
               ("C-c C-c" . gptel-send))
   :config
   (require 'gptel-rewrite)
-  (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
+  (add-hook 'gptel-post-response-functions 'my/gptel-clean-blank-lines)
   (gptel-make-preset 'code
-		     :system my//gptel-code-directive)
-  (setq gptel-backend (gptel-make-gh-copilot my//gptel-default-chat))
+    :system my//gptel-code-directive)
+  (setq my//gptel-minimax-backend (gptel-make-anthropic my//gptel-default-chat
+                              :stream t
+                              :protocol "https"
+                              :host "api.minimax.io"
+                              :endpoint "/anthropic/v1/messages"
+                              :models '("MiniMax-M2.7")
+                              :key my//secrets-minimax-api-key))
+  (setq my//gptel-copilot-backend (gptel-make-gh-copilot my//gptel-default-chat))
+  ;; (setq gptel-backend my//gptel-minimax-backend)
+  (setq gptel-backend my//gptel-copilot-backend)
   :custom
   (gptel-model 'gpt-4.1)
   (gptel-prompt-prefix-alist
-	'((markdown-mode . "### > ")
+        '((markdown-mode . "### ")
           (org-mode . "*** ")
           (text-mode . "### ")))
   (gptel-rewrite-default-action 'merge)
+  ;; (gptel-include-reasoning nil)
   (add-to-list 'gptel-directives `(rewrite . ,my//gptel-rewrite-directive)))
 
 ;; -------------------------------------------------------------------------------------------------
@@ -85,26 +95,26 @@ Output:
                      (when (use-region-p)
                        (filter-buffer-substring (region-beginning) (region-end)))))
   (let* ((prompts (my//gptel-process-prompt prompt))
-	 (user-prompt (plist-get prompts :user))
-	 (full-prompt (if region (concat user-prompt "\n" region) user-prompt)))
+         (user-prompt (plist-get prompts :user))
+         (full-prompt (if region (concat user-prompt "\n" region) user-prompt)))
     (gptel-request full-prompt
       :system (plist-get prompts :system)
       :callback (lambda (response info)
                   (when response
                     (let ((buf (get-buffer-create "*gptel-response*")))
                       (with-current-buffer buf
-			(read-only-mode -1)
-			(erase-buffer)
-			(insert response)
-			(goto-char (point-min))
-			(markdown-view-mode))
+                        (read-only-mode -1)
+                        (erase-buffer)
+                        (insert response)
+                        (goto-char (point-min))
+                        (markdown-view-mode))
                       (pop-to-buffer buf)))))))
 
 (defun my/gptel-insert (prompt)
   "Ask gptel to generate content"
   (interactive (list (read-string "Insert: " nil my//gptel-history)))
   (let* ((prompts (my//gptel-process-prompt prompt))
-	 (user-prompt (plist-get prompts :user)))
+         (user-prompt (plist-get prompts :user)))
     (gptel-request user-prompt
       :system (plist-get prompts :system)
       :callback (lambda (response info)
@@ -115,6 +125,12 @@ Output:
   "Ask gptel to rewrite"
   (interactive (list (read-string "Rewrite: " nil my//gptel-history)))
   (gptel--suffix-rewrite prompt))
+
+(defun my/gptel-clean-blank-lines (&rest _)
+  "Collapse multiple blank lines into one."
+  (while (re-search-forward "^\\s-*\n\\s-*\n" nil t)
+    (replace-match "\n"))
+  (goto-char (point-max)))
 
 ;; -------------------------------------------------------------------------------------------------
 ;; Keybindings

@@ -2,9 +2,7 @@
 ;; Packages
 ;; -------------------------------------------------------------------------------------------------
 
-(use-package expand-region)
-
-(use-package crux
+(use-package exec-path-from-shell
+  :demand t
   :config
-  ;; If no region is selected, use whole buffer
-  (crux-with-region-or-buffer untabify))
+  (exec-path-from-shell-initialize))

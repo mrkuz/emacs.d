@@ -8,6 +8,8 @@
 ;; Modules
 ;; -------------------------------------------------------------------------------------------------
 
+(my//load-module "system")
+(my//load-module "secrets")
 (my//load-module "scratch")
 (my//load-module "backups")
 (my//load-module "editing")
