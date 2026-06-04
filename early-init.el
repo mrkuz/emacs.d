@@ -1,3 +1,7 @@
+;; -------------------------------------------------------------------------------------------------
+;; Configuration
+;; -------------------------------------------------------------------------------------------------
+
 ;; Prevent GC at startup
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 1.0)
@@ -8,10 +12,6 @@
 
 ;; Increase read process output
 (setq read-process-output-max (* 1024 1024))
-
-;; -------------------------------------------------------------------------------------------------
-;; Configuration
-;; -------------------------------------------------------------------------------------------------
 
 ;; Don't load default initialization file
 (setq inhibit-default-init t)
@@ -38,6 +38,21 @@
                             (internal-border-width . 4)
                             ;; (undecorated-round . t)
                             ))
+
+;; Show initialization time on startup
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "Started in %s seconds"
+                     (emacs-init-time "%.2f"))))
+
+;; Move eln-cache to var/
+;; See: https://github.com/emacscollective/no-littering/tree/main
+(when (and (fboundp 'startup-redirect-eln-cache)
+           (fboundp 'native-comp-available-p)
+           (native-comp-available-p))
+  (startup-redirect-eln-cache
+   (convert-standard-filename
+    (expand-file-name  "var/eln-cache/" user-emacs-directory))))
 
 ;; -------------------------------------------------------------------------------------------------
 ;; MacOS

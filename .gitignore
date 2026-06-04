@@ -1,5 +1,7 @@
-var/autosave/
+var/auto-save/
+var/eln-cache/
 var/elpaca/builds/
 var/elpaca/cache/
 var/elpaca/repos/
 var/elpaca/sources/
+var/gptel/
