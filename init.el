@@ -9,15 +9,18 @@
 ;; Modules
 ;; -------------------------------------------------------------------------------------------------
 
+(my//load-module "theme")
+(my//load-module "modeline")
 (my//load-module "system")
 (my//load-module "secrets")
-(my//load-module "scratch")
+
 (my//load-module "backups")
 (my//load-module "editing")
 (my//load-module "ediff")
 (my//load-module "help")
 (my//load-module "markdown")
 (my//load-module "gptel")
+(my//load-module "scratch")
 
 ;; -------------------------------------------------------------------------------------------------
 ;; Keybindings

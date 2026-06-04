@@ -35,7 +35,7 @@
 (setq default-frame-alist '(
                             (width . 140)
                             (height . 50)
-                            ;; (internal-border-width . 12)
+                            (internal-border-width . 4)
                             ;; (undecorated-round . t)
                             ))
 
