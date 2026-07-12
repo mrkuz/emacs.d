@@ -1,19 +1,17 @@
 (defvar my//gptel-default-chat "*Chat*")
 (defvar my//gptel-code-directive
   "
-# Code
-
-You are a senior software engineer.
+Role:
+- You are a senior software engineer
 
 Instructions:
 - Focus on correctness and readability
 
 Output:
-- Return the complete code
-- Return only code and comments
-- Do NOT use markdown
+- Return only code
+- Include comments if applicable
+- Do NOT use markdown code fences
 ")
-(defvar my//gptel-rewrite-directive my//gptel-code-directive)
 (defvar my//gptel-history nil)
 
 ;; -------------------------------------------------------------------------------------------------
@@ -46,9 +44,8 @@ Output:
         '((markdown-mode . "### ")
           (org-mode . "*** ")
           (text-mode . "### ")))
-  (gptel-rewrite-default-action 'merge)
   ;; (gptel-include-reasoning nil)
-  (add-to-list 'gptel-directives `(rewrite . ,my//gptel-rewrite-directive)))
+  (gptel-rewrite-default-action 'merge))
 
 ;; -------------------------------------------------------------------------------------------------
 ;; Functions
