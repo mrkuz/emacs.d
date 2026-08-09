@@ -15,7 +15,7 @@
 
 ;; Don't load default initialization file
 (setq inhibit-default-init t)
-;; Prevent loading packages prior init file
+;; Don't let package.el activate packages before the init file loads (Elpaca handles this)
 (setq package-enable-at-startup nil)
 
 ;; Disable splash screen
@@ -31,7 +31,7 @@
 ;; Allow frame resizing by pixel
 (setq frame-resize-pixelwise t)
 
-;; Set up initial frame position and size
+;; Set initial frame size and inner border
 (setq default-frame-alist '(
                             (width . 140)
                             (height . 50)

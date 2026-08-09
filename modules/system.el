@@ -16,7 +16,9 @@
   (add-to-list 'recentf-exclude
                (recentf-expand-file-name no-littering-var-directory))
   (add-to-list 'recentf-exclude
-               (recentf-expand-file-name no-littering-etc-directory)))
+               (recentf-expand-file-name no-littering-etc-directory))
+  ;; Load customizations written by `customize'
+  (load custom-file 'noerror 'nomessage))
 
 (use-package exec-path-from-shell
   :demand t
