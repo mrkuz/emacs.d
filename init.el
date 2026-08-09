@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (my//load-module "elpaca")
 
 (use-package compat)

@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (defvar my//gptel-default-chat "*Chat*")
 (defvar my//gptel-code-directive
   "
@@ -16,6 +17,8 @@ Output:
 - If the task cannot be completed, return a short code comment saying why
 ")
 (defvar my//gptel-history nil)
+(defvar my//gptel-minimax-backend nil)
+(defvar my//gptel-copilot-backend nil)
 
 ;; -------------------------------------------------------------------------------------------------
 ;; Packages
@@ -111,7 +114,7 @@ Output:
          (full-prompt (if region (concat user-prompt "\n" region) user-prompt)))
     (gptel-request full-prompt
       :system (plist-get prompts :system)
-      :callback (lambda (response info)
+      :callback (lambda (response _info)
                   (when response
                     (let ((buf (get-buffer-create "*gptel-response*")))
                       (with-current-buffer buf

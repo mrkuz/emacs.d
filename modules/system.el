@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;; -------------------------------------------------------------------------------------------------
 ;; Packages
 ;; -------------------------------------------------------------------------------------------------
@@ -31,3 +32,24 @@
 
 ;; Disable bell
 (setq ring-bell-function 'ignore)
+
+;; -------------------------------------------------------------------------------------------------
+;; Functions
+;; -------------------------------------------------------------------------------------------------
+
+(defun my/byte-compile-config ()
+  "Byte-compile the configuration files to surface warnings."
+  (interactive)
+  ;; Modules are loaded from source, so the .elc files are only a means to get
+  ;; the compiler's warnings; delete them afterwards.
+  (let ((files (cons early-init-file
+                     (cons user-init-file
+                           (directory-files
+                            (expand-file-name "modules" user-emacs-directory)
+                            t "\\.el\\'")))))
+    (dolist (file files)
+      (byte-compile-file file)
+      (let ((elc (byte-compile-dest-file file)))
+        (when (and elc (file-exists-p elc))
+          (delete-file elc))))
+    (message "Configuration byte-compiled; see *Compile-Log*")))
