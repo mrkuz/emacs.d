@@ -20,6 +20,7 @@
 (my//load-module "ediff")
 (my//load-module "help")
 (my//load-module "markdown")
+(my//load-module "org")
 (my//load-module "gptel")
 (my//load-module "scratch")
 
@@ -32,8 +33,10 @@
 ^Open^
 -----------------------
 _c_ Emacs configuration
+_t_ todo.org
 "
   ("c" (find-file user-init-file))
+  ("t" my/org-open-todo)
   ("q" nil))
 
 (defhydra my//hydra-elpaca (:color blue :hint nil)

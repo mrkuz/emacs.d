@@ -12,3 +12,9 @@
 - **Explain non-obvious `setq`s:** every variable that is set gets a short comment
   above it saying *why*, unless the intent is self-evident. Skip the comment only
   when the setting speaks for itself.
+- **`use-package` is for external packages only.** Configure built-in Emacs behavior
+  with plain `setq`/`defun`/hooks, not a `use-package` block.
+- **Prefer `:custom` over `:config` over `:init`.** Set options via `:custom`; drop to
+  `:config` only for setup that must run code after load (hooks, mode activation,
+  imperative calls); use `:init` only when something genuinely must run before the
+  package loads.
