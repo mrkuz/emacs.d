@@ -16,7 +16,7 @@
 
 ;; Don't load default initialization file
 (setq inhibit-default-init t)
-;; Don't let package.el activate packages before the init file loads (Elpaca handles this)
+;; Don't activate packages before the init file, Elpaca handles this
 (setq package-enable-at-startup nil)
 
 ;; Disable splash screen

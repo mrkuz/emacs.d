@@ -12,6 +12,9 @@
 - **Explain non-obvious `setq`s:** every variable that is set gets a short comment
   above it saying *why*, unless the intent is self-evident. Skip the comment only
   when the setting speaks for itself.
+- **Keep comments short.** They are read by an experienced Emacs user: state the
+  intent in one line and don't explain standard Emacs behavior, hooks, or what a
+  well-named function already says.
 - **`use-package` is for external packages only.** Configure built-in Emacs behavior
   with plain `setq`/`defun`/hooks, not a `use-package` block.
 - **Prefer `:custom` over `:config` over `:init`.** Set options via `:custom`; drop to

@@ -34,9 +34,11 @@
 -----------------------
 _c_ Emacs configuration
 _t_ todo.org
+_j_ Journal
 "
   ("c" (find-file user-init-file))
   ("t" my/org-open-todo)
+  ("j" my/org-open-journal)
   ("q" nil))
 
 (defhydra my//hydra-elpaca (:color blue :hint nil)

@@ -18,7 +18,6 @@
                (recentf-expand-file-name no-littering-var-directory))
   (add-to-list 'recentf-exclude
                (recentf-expand-file-name no-littering-etc-directory))
-  ;; Load customizations written by `customize'
   (load custom-file 'noerror 'nomessage))
 
 (use-package exec-path-from-shell
@@ -33,6 +32,9 @@
 ;; Disable bell
 (setq ring-bell-function 'ignore)
 
+;; Ask for y/n instead of yes/no
+(setq use-short-answers t)
+
 ;; -------------------------------------------------------------------------------------------------
 ;; Functions
 ;; -------------------------------------------------------------------------------------------------
@@ -40,8 +42,7 @@
 (defun my/byte-compile-config ()
   "Byte-compile the configuration files to surface warnings."
   (interactive)
-  ;; Modules are loaded from source, so the .elc files are only a means to get
-  ;; the compiler's warnings; delete them afterwards.
+  ;; Modules are loaded from source; the .elc files are only for the warnings
   (let ((files (cons early-init-file
                      (cons user-init-file
                            (directory-files

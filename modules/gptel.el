@@ -30,7 +30,7 @@ Output:
   :bind (:map gptel-mode-map
               ("C-c C-c" . gptel-send))
   :config
-  ;; Loads `gptel-rewrite' so its command and `gptel-rewrite-default-action' are available
+  ;; For `gptel-rewrite' and its options
   (require 'gptel-rewrite)
   (add-hook 'gptel-post-response-functions 'my//gptel-clean-blank-lines)
   (gptel-make-preset 'code
@@ -43,18 +43,17 @@ Output:
                               :models '("MiniMax-M2.7")
                               :key my//secrets-minimax-api-key))
   (setq my//gptel-copilot-backend (gptel-make-gh-copilot "Copilot"))
-  ;; Active backend; comment this line and uncomment the other to switch providers
+  ;; Active backend, swap to switch providers
   ;; (setq gptel-backend my//gptel-minimax-backend)
   (setq gptel-backend my//gptel-copilot-backend)
   :custom
-  ;; Default model to send with the active backend
   (gptel-model 'gpt-4.1)
   (gptel-prompt-prefix-alist
         '((markdown-mode . "### ")
           (org-mode . "*** ")
           (text-mode . "### ")))
   ;; (gptel-include-reasoning nil)
-  ;; Merge rewrites into the buffer automatically instead of opening the action menu
+  ;; Merge rewrites directly, instead of opening the action menu
   (gptel-rewrite-default-action 'merge))
 
 ;; -------------------------------------------------------------------------------------------------
@@ -71,12 +70,11 @@ Output:
              (preset-plist (alist-get preset-name gptel--known-presets nil nil #'string=))
              (system-prompt (plist-get preset-plist :system)))
         (if system-prompt
-            ;; Known preset: collect its directive and drop the token, then
-            ;; keep scanning from the same spot (the text shrank).
+            ;; Known preset, drop the token and rescan from the same spot
             (progn
               (push system-prompt system-prompts)
               (setq user-prompt (replace-match "" nil nil user-prompt)))
-          ;; Unknown token (e.g. a handle): leave it and scan past it.
+          ;; Unknown token, keep it and scan past
           (setq pos (match-end 0)))))
     (setq user-prompt (string-trim user-prompt))
     (list :system (when system-prompts
@@ -96,7 +94,7 @@ Output:
                        (filter-buffer-substring (region-beginning) (region-end)))))
   (gptel my//gptel-default-chat)
   (with-current-buffer my//gptel-default-chat
-    ;; Append to the end of the conversation, wherever point currently is
+    ;; Append to the end of the conversation
     (goto-char (point-max))
     (insert prompt)
     (when region
@@ -133,8 +131,7 @@ Output:
     (gptel-request user-prompt
       :system (plist-get prompts :system)
       :callback (lambda (response info)
-                  ;; Insert at the buffer/position captured by gptel when the
-                  ;; request was sent, not wherever point drifted to since.
+                  ;; Insert where the request was sent from, not where point drifted to
                   (when (stringp response)
                     (let ((buffer (plist-get info :buffer))
                           (pos (plist-get info :position)))

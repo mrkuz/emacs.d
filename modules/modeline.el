@@ -18,12 +18,9 @@
   (doom-modeline-height 22)
   :config
   (doom-modeline-mode 1)
-  ;; Applies immediately for a normal GUI launch; a no-op under a daemon
-  ;; (no graphic frame yet).
+  ;; No-op under a daemon, no graphic frame yet
   (my//modeline-set-box)
-  ;; Keep the border in sync when the theme changes.
   (add-hook 'enable-theme-functions #'my//modeline-set-box)
-  ;; Under a daemon the first real frame only exists once a client
-  ;; connects; defer so doom-modeline finishes its own face setup first.
+  ;; For client frames; deferred, so doom-modeline sets up its faces first
   (add-hook 'server-after-make-frame-hook
 	    (lambda () (run-at-time 0 nil #'my//modeline-set-box))))
