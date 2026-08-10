@@ -1,27 +1,47 @@
 ;; -*- lexical-binding: t; -*-
 (my//load-module "elpaca")
 
-(use-package compat)
-(use-package transient)
-(use-package hydra)
-(elpaca-wait)
-
 ;; -------------------------------------------------------------------------------------------------
 ;; Modules
 ;; -------------------------------------------------------------------------------------------------
 
-(my//load-module "theme")
-(my//load-module "modeline")
+;; Dependencies
+(my//load-module "compat")
+(my//load-module "transient")
+(my//load-module "hydra")
+(elpaca-wait)
+
+;; Appearance
+(my//load-module "doom-themes")
+(my//load-module "doom-modeline")
+
+;; Core
+(my//load-module "no-littering")
+(my//load-module "exec-path-from-shell")
 (my//load-module "system")
+(my//load-module "age")
 (my//load-module "secrets")
 
+;; Editing
 (my//load-module "backups")
-(my//load-module "editing")
+(my//load-module "expand-region")
+(my//load-module "crux")
 (my//load-module "ediff")
+
+;; Help
 (my//load-module "help")
-(my//load-module "markdown")
+
+;; Modes
+(my//load-module "markdown-mode")
+
+;; Org
 (my//load-module "org")
+(my//load-module "org-journal")
+
+;; AI
 (my//load-module "gptel")
+
+;; Miscellaneous
 (my//load-module "scratch")
 
 ;; -------------------------------------------------------------------------------------------------
