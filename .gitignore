@@ -1,4 +1,5 @@
 var/auto-save/
+var/bookmark-default.el
 var/eln-cache/
 var/elpaca/builds/
 var/elpaca/cache/

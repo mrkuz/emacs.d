@@ -4,6 +4,9 @@
 ;; -------------------------------------------------------------------------------------------------
 
 (use-package org-journal
+  ;; `my/org-open-journal' calls into org-journal, which `:hook' would defer
+  :demand t
+  :hook (org-journal-after-entry-create . my/org-set-created)
   :custom
   (org-journal-dir (expand-file-name "journal" org-directory))
   ;; One file per week
@@ -25,7 +28,7 @@
 ;;               'org-protocol://capture?template=j'
 (add-to-list 'org-capture-templates
              '("j" "Journal entry" plain (function my//org-journal-capture-location)
-               "** %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n"))
+               "** %(format-time-string org-journal-time-format)%?\n:PROPERTIES:\n:CREATED: %U\n:END:\n"))
 
 ;; -------------------------------------------------------------------------------------------------
 ;; Functions

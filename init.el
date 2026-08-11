@@ -36,12 +36,15 @@
 
 ;; Org
 (my//load-module "org")
+(my//load-module "org-protocol")
 (my//load-module "org-journal")
+(my//load-module "org-superstar")
 
 ;; AI
 (my//load-module "gptel")
 
 ;; Miscellaneous
+(my//load-module "bookmark")
 (my//load-module "scratch")
 
 ;; -------------------------------------------------------------------------------------------------

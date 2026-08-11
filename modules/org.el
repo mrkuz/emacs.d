@@ -10,27 +10,39 @@
 (setq org-cycle-hide-drawer-startup t)
 (add-hook 'org-cycle-hook #'org-cycle-hide-drawers)
 
-;; Needed to answer org-protocol:// URLs; org-capture binds the template list
-(require 'org-protocol)
+;; Indent by outline level
+(setq org-startup-indented t
+      org-indent-indentation-per-level 1)
+
+;; Add tags immediately after the headline
+(setq org-tags-column 0)
+
+;; Customize ellipsis
+(setq org-ellipsis " …")
+(custom-set-faces '(org-ellipsis ((nil :underline nil))))
+
+;; Binds the capture template list
 (require 'org-capture)
 
 ;; -------------------------------------------------------------------------------------------------
 ;; Functions
 ;; -------------------------------------------------------------------------------------------------
 
+(defun my/org-set-created ()
+  "Stamp the heading at point with a CREATED property."
+  (interactive)
+  (org-set-property "CREATED" (format-time-string (org-time-stamp-format t t))))
+
 (defun my/org-open-todo ()
   "Open todo.org in the Org directory."
   (interactive)
   (find-file (expand-file-name "todo.org" org-directory)))
 
-(defun my//org-protocol-capture-single-window ()
-  "Give the capture buffer the whole dedicated org-protocol frame."
-  (when (equal (frame-parameter nil 'name) "org-protocol-capture")
-    (delete-other-windows)))
-(add-hook 'org-capture-mode-hook #'my//org-protocol-capture-single-window)
+;; -------------------------------------------------------------------------------------------------
+;; Keybindings
+;; -------------------------------------------------------------------------------------------------
 
-(defun my//org-protocol-capture-cleanup (&rest _)
-  "Delete the dedicated org-protocol capture frame once capture ends."
-  (when (equal (frame-parameter nil 'name) "org-protocol-capture")
-    (delete-frame)))
-(add-hook 'org-capture-after-finalize-hook #'my//org-protocol-capture-cleanup)
+(global-set-key (kbd "C-c c") 'org-capture)
+
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "C-c C-x C") 'my/org-set-created))

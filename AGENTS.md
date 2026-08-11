@@ -21,3 +21,10 @@
   `:config` only for setup that must run code after load (hooks, mode activation,
   imperative calls); use `:init` only when something genuinely must run before the
   package loads.
+- **Prefer `:hook` over `add-hook`** for a package's own hooks, with two caveats:
+  - `:hook` defers the package. Add `:demand t` when it must load at startup (for
+    example when a command calls into it, or `:config` activates a mode).
+  - Only for hook variables ending in `-hook`. use-package appends that suffix
+    unless the symbol is already bound, so abnormal hooks like
+    `gptel-post-response-functions` silently become `…-functions-hook` and never
+    fire. Use `add-hook` in `:config` for those.
