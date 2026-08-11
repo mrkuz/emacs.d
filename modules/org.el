@@ -21,12 +21,34 @@
 (setq org-ellipsis " …")
 (custom-set-faces '(org-ellipsis ((nil :underline nil))))
 
+;; Every keyword logs a timestamp on entry
+(setq org-todo-keywords
+      '((sequence "TODO(t!)" "NEXT(n!)" "SCHEDULED(.!)" "STAGED(:!)" "WAITING(w!)" "|" "DONE(d!)" "CANCELED(c!)")
+        (sequence "OPEN(o!)" "|" "DONE(d!)" "CANCELED(c!)")
+        (sequence "REMINDER(r!)" "|" "DONE(d!)" "CANCELED(c!)")))
+
+;; Collect those timestamps in a LOGBOOK drawer instead of below the headline
+(setq org-log-into-drawer t)
+
 ;; Binds the capture template list
 (require 'org-capture)
 
 ;; -------------------------------------------------------------------------------------------------
 ;; Functions
 ;; -------------------------------------------------------------------------------------------------
+
+(defun my//org-prompt-for-date ()
+  "Prompt for a schedule or deadline after certain state changes."
+  (let ((fn (cond
+             ((member org-state '("SCHEDULED" "REMINDER")) #'org-schedule)
+             ((equal org-state "STAGED") #'org-deadline)))
+        (marker (point-marker)))
+    (when fn
+      ;; Deferred, so the prompt runs after `org-todo' has finished
+      (run-at-time 0 nil (lambda ()
+                           (org-with-point-at marker (funcall fn nil))
+                           (set-marker marker nil))))))
+(add-hook 'org-after-todo-state-change-hook #'my//org-prompt-for-date)
 
 (defun my/org-set-created ()
   "Stamp the heading at point with a CREATED property."
