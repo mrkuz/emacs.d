@@ -50,10 +50,11 @@
                            (set-marker marker nil))))))
 (add-hook 'org-after-todo-state-change-hook #'my//org-prompt-for-date)
 
-(defun my/org-set-created ()
-  "Stamp the heading at point with a CREATED property."
+(defun my/org-set-added ()
+  "Stamp the heading at point with an ADDED property."
   (interactive)
-  (org-set-property "CREATED" (format-time-string (org-time-stamp-format t t))))
+  ;; Not CREATED: org-journal reserves that name for its own %Y%m%d date index
+  (org-set-property "ADDED" (format-time-string (org-time-stamp-format t t))))
 
 (defun my/org-open-todo ()
   "Open todo.org in the Org directory."
@@ -67,4 +68,4 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (with-eval-after-load 'org
-  (define-key org-mode-map (kbd "C-c C-x C") 'my/org-set-created))
+  (define-key org-mode-map (kbd "C-c C-x C") 'my/org-set-added))

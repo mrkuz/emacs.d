@@ -80,10 +80,11 @@ _t_ Try
 ^Files^       ^Tools^       ^Miscellaneous^
 ----------------------------------------------------
 _o_ Open…     _g_ gptel     _x_ Expand region
-^ ^           ^ ^           _P_ Packages
+^ ^           _j_ Journal   _P_ Packages
 ^ ^           ^ ^           _R_ Reload configuration
 "
   ("g" my//hydra-gptel/body)
+  ("j" my//hydra-journal/body)
   ("o" my//hydra-open/body)
   ("P" my//hydra-elpaca/body)
   ("R" (load-file user-init-file))
