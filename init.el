@@ -14,6 +14,7 @@
 ;; Appearance
 (my//load-module "doom-themes")
 (my//load-module "doom-modeline")
+(my//load-module "scrolling")
 
 ;; Core
 (my//load-module "no-littering")
