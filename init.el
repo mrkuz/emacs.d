@@ -28,6 +28,8 @@
 (my//load-module "expand-region")
 (my//load-module "crux")
 (my//load-module "ediff")
+(my//load-module "undo")
+(my//load-module "vundo")
 
 ;; Help
 (my//load-module "help")
