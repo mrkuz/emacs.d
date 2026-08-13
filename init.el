@@ -30,6 +30,7 @@
 (my//load-module "ediff")
 (my//load-module "undo")
 (my//load-module "vundo")
+(my//load-module "yasnippet")
 
 ;; Help
 (my//load-module "help")

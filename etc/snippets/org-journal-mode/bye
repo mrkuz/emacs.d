@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: bye
+# key: <bye
+# --
+Bye!
+
+What did you achieve today?
+
+- $0
+
+What's next?
+
+- 

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: hello
+# key: <hello
+# --
+Hello!
+
+What are your top priorities today?
+
+- [ ] $0
