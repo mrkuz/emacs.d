@@ -6,6 +6,11 @@
 ;; See: https://github.com/progfolio/elpaca
 (defvar elpaca-installer-version 0.12)
 
+;; Elpaca can't derive this: its release table stops at 30.2 and the Nix build
+;; leaves `emacs-build-time' nil. Only used to check date-versioned built-in
+;; dependencies, so today is close enough for a rolling build.
+(defvar elpaca-core-date (list (string-to-number (format-time-string "%Y%m%d"))))
+
 ;; Place elpaca folder under var/
 (defvar elpaca-directory (expand-file-name "var/elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
