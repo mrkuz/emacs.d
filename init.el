@@ -14,6 +14,7 @@
 ;; Appearance
 (my//load-module "doom-themes")
 (my//load-module "doom-modeline")
+(my//load-module "diff-hl")
 (my//load-module "scrolling")
 
 ;; Core
@@ -85,9 +86,10 @@ _t_ Try
 ----------------------------------------------------
 _o_ Open…     _g_ gptel     _x_ Expand region
 ^ ^           _j_ Journal   _P_ Packages
-^ ^           ^ ^           _R_ Reload configuration
+^ ^           _G_ Git       _R_ Reload configuration
 "
   ("g" my//hydra-gptel/body)
+  ("G" my//hydra-git/body)
   ("j" my//hydra-journal/body)
   ("o" my//hydra-open/body)
   ("P" my//hydra-elpaca/body)

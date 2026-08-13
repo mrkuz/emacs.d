@@ -2,29 +2,18 @@
 
 ## Coding conventions
 
-- **Naming:** private (internal) variables and functions are prefixed `my//`; public
-  ones are prefixed `my/`. Example: `my//load-module` and `my//gptel-process-prompt`
-  are internal helpers; `my/gptel-chat` and `my/elpaca-update` are commands meant to
-  be invoked directly.
-- **Every function** carries a one-line docstring describing what it does, e.g.
-  `"Open gptel chat"`, `"Update Elpaca packages"`, `"Load module by name"` — internal
-  helpers included, not just interactive commands.
-- **Explain non-obvious `setq`s:** every variable that is set gets a short comment
-  above it saying *why*, unless the intent is self-evident. Skip the comment only
-  when the setting speaks for itself.
-- **Keep comments short.** They are read by an experienced Emacs user: state the
-  intent in one line and don't explain standard Emacs behavior, hooks, or what a
-  well-named function already says.
-- **`use-package` is for external packages only.** Configure built-in Emacs behavior
-  with plain `setq`/`defun`/hooks, not a `use-package` block.
-- **Prefer `:custom` over `:config` over `:init`.** Set options via `:custom`; drop to
-  `:config` only for setup that must run code after load (hooks, mode activation,
-  imperative calls); use `:init` only when something genuinely must run before the
-  package loads.
-- **Prefer `:hook` over `add-hook`** for a package's own hooks, with two caveats:
-  - `:hook` defers the package. Add `:demand t` when it must load at startup (for
-    example when a command calls into it, or `:config` activates a mode).
-  - Only for hook variables ending in `-hook`. use-package appends that suffix
-    unless the symbol is already bound, so abnormal hooks like
-    `gptel-post-response-functions` silently become `…-functions-hook` and never
-    fire. Use `add-hook` in `:config` for those.
+- **Naming:** `my//` for internal variables and functions, `my/` for commands.
+- **One-line docstring** on every function, internal helpers included.
+- **Comment settings with *why*,** unless self-evident. Keep comments short: they
+  are read by an experienced Emacs user, so don't explain standard Emacs behavior.
+- **`use-package` is for external packages only.** Configure built-ins with plain
+  `setq`/`defun`/hooks.
+- **Prefer `:custom` over `:config` over `:init`.**
+- **Prefer `:hook` over `add-hook`**, with two caveats: it defers the package, so
+  add `:demand t` when it must load at startup; and it only works for variables
+  ending in `-hook`, since use-package appends that suffix — abnormal hooks like
+  `gptel-post-response-functions` silently become `…-functions-hook` and never fire.
+- **Override faces with `custom-set-faces`.** It sets the user spec, which outranks
+  themes; `set-face-attribute` and `:custom-face` both lose to them. Use
+  `set-face-attribute` plus `enable-theme-functions` only for values computed from
+  the live theme, like the mode-line box reading the current background.

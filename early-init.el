@@ -37,6 +37,7 @@
                             (width . 140)
                             (height . 50)
                             (internal-border-width . 4)
+                            (left-fringe . 16)
                             ;; (undecorated-round . t)
                             ))
 
