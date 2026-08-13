@@ -19,6 +19,8 @@
   (org-journal-file-format "%G-W%V.org")
   ;; e.g. Thursday, 2026-08-13
   (org-journal-date-format "%A, %Y-%m-%d")
+  ;; Passed through `format-time-string'; only added to a new file
+  (org-journal-file-header "#+TITLE: Weekly Journal (W%V)")
   ;; Don't carry over unfinished TODOs
   (org-journal-carryover-items nil)
   :config

@@ -6,6 +6,9 @@
 ;; Base directory for Org files
 (setq org-directory "~/org")
 
+;; Open files with two levels shown
+(setq org-startup-folded 'show2levels)
+
 ;; Keep drawers folded, so TAB reveals the body instead of the properties
 (setq org-cycle-hide-drawer-startup t)
 (add-hook 'org-cycle-hook #'org-cycle-hide-drawers)
@@ -29,6 +32,10 @@
 
 ;; Collect those timestamps in a LOGBOOK drawer instead of below the headline
 (setq org-log-into-drawer t)
+
+;; Survive a restart with the clock still running
+(setq org-clock-persist t)
+(org-clock-persistence-insinuate)
 
 ;; Binds the capture template list
 (require 'org-capture)
