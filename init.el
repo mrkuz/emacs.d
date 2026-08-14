@@ -14,6 +14,7 @@
 ;; Appearance
 (my//load-module "doom-themes")
 (my//load-module "doom-modeline")
+(my//load-module "modeline")
 (my//load-module "diff-hl")
 (my//load-module "scrolling")
 
@@ -32,6 +33,7 @@
 (my//load-module "undo")
 (my//load-module "vundo")
 (my//load-module "yasnippet")
+(my//load-module "indentation")
 
 ;; Help
 (my//load-module "help")
@@ -50,6 +52,8 @@
 
 ;; Miscellaneous
 (my//load-module "bookmark")
+(my//load-module "dired")
+(my//load-module "ibuffer")
 (my//load-module "scratch")
 
 ;; -------------------------------------------------------------------------------------------------
