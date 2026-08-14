@@ -33,6 +33,9 @@
 (my//load-module "vundo")
 (my//load-module "yasnippet")
 (my//load-module "indentation")
+(my//load-module "completion")
+(my//load-module "vertico")
+(my//load-module "marginalia")
 
 ;; Help
 (my//load-module "help")
