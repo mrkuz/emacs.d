@@ -6,5 +6,8 @@ var/elpaca/cache/
 var/elpaca/repos/
 var/elpaca/sources/
 var/gptel/
+var/housekeeping.md
 var/org/
+var/save-place.el
+var/savehist.el
 var/transient/
