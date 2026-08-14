@@ -7,8 +7,8 @@
 
 ;; Dependencies
 (my//load-module "compat")
-(my//load-module "transient")
 (my//load-module "hydra")
+(my//load-module "no-littering")
 (elpaca-wait)
 
 ;; Appearance
@@ -19,7 +19,7 @@
 (my//load-module "scrolling")
 
 ;; Core
-(my//load-module "no-littering")
+(my//load-module "session")
 (my//load-module "exec-path-from-shell")
 (my//load-module "system")
 (my//load-module "age")
@@ -27,8 +27,7 @@
 
 ;; Editing
 (my//load-module "backups")
-(my//load-module "expand-region")
-(my//load-module "crux")
+(my//load-module "expreg")
 (my//load-module "ediff")
 (my//load-module "undo")
 (my//load-module "vundo")
@@ -99,7 +98,7 @@ _o_ Open…     _g_ gptel     _x_ Expand region
   ("o" my//hydra-open/body)
   ("P" my//hydra-elpaca/body)
   ("R" (load-file user-init-file))
-  ("x" er/expand-region)
+  ("x" expreg-expand)
   ("q" nil))
 
 (global-set-key (kbd "C-;") 'my//hydra/body)
