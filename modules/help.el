@@ -3,6 +3,7 @@
 ;; Configuration
 ;; -------------------------------------------------------------------------------------------------
 
+;; Drop the default arrow, and mark prefixes that lead to further keys
 (setq which-key-separator " "
       which-key-prefix-prefix "> ")
 

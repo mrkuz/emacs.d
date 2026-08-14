@@ -3,12 +3,5 @@
 ;; Configuration
 ;; -------------------------------------------------------------------------------------------------
 
-;; Reopen files at the last visited position
-(save-place-mode 1)
-
-;; Keep minibuffer history across restarts, well past the default 100 entries
-(setq history-length 1000)
-(savehist-mode 1)
-
-;; Track recently visited files
-(recentf-mode 1)
+;; Follow without asking, instead of prompting for every symlinked file
+(setq vc-follow-symlinks t)

@@ -55,6 +55,7 @@
 (my//load-module "dired")
 (my//load-module "ibuffer")
 (my//load-module "scratch")
+(my//load-module "vc")
 
 ;; -------------------------------------------------------------------------------------------------
 ;; Keybindings
@@ -98,7 +99,7 @@ _o_ Open…     _g_ gptel     _x_ Expand region
   ("o" my//hydra-open/body)
   ("P" my//hydra-elpaca/body)
   ("R" (load-file user-init-file))
-  ("x" expreg-expand)
+  ("x" expreg-expand nil :color red)
   ("q" nil))
 
 (global-set-key (kbd "C-;") 'my//hydra/body)

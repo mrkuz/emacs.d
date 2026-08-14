@@ -12,12 +12,24 @@
 ;; Steady cursor
 (blink-cursor-mode 0)
 
+;; One space ends a sentence, which is what `M-a', `M-e' and filling should assume
+(setq sentence-end-double-space nil)
+
+;; Only applies where filling happens, `M-q' and the like
+(setq-default fill-column 120)
+
+;; Keep long-line files from locking up the display
+(global-so-long-mode 1)
+
 ;; -------------------------------------------------------------------------------------------------
 ;; Keybindings
 ;; -------------------------------------------------------------------------------------------------
 
 ;; Suspends the frame, which is never what I want
 (global-unset-key (kbd "C-z"))
+
+;; Repeat the last key of a sequence without repeating the prefix
+(repeat-mode 1)
 
 ;; -------------------------------------------------------------------------------------------------
 ;; Functions

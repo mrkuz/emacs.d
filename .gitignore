@@ -8,6 +8,7 @@ var/elpaca/sources/
 var/gptel/
 var/housekeeping.md
 var/org/
+var/recentf-save.el
 var/save-place.el
 var/savehist.el
 var/transient/
