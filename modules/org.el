@@ -33,6 +33,9 @@
 ;; Collect those timestamps in a LOGBOOK drawer instead of below the headline
 (setq org-log-into-drawer t)
 
+;; Link to headings by ID, which survives renaming and refiling
+(setq org-id-link-to-org-use-id t)
+
 ;; Survive a restart with the clock still running
 (setq org-clock-persist t)
 (org-clock-persistence-insinuate)
@@ -74,5 +77,11 @@
 
 (global-set-key (kbd "C-c c") 'org-capture)
 
+;; Global, so links can be stored from any buffer, not just Org ones
+(global-set-key (kbd "C-c l") 'org-store-link)
+
 (with-eval-after-load 'org
-  (define-key org-mode-map (kbd "C-c C-x C") 'my/org-set-added))
+  (define-key org-mode-map (kbd "C-c C-x C") 'my/org-set-added)
+  ;; Org's own defaults, spelled out so they survive a stray rebinding
+  (define-key org-mode-map (kbd "C-c C-l") 'org-insert-link)
+  (define-key org-mode-map (kbd "C-c C-o") 'org-open-at-point))

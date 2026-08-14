@@ -46,6 +46,7 @@
 (my//load-module "org-protocol")
 (my//load-module "org-journal")
 (my//load-module "org-superstar")
+(my//load-module "org-appear")
 
 ;; AI
 (my//load-module "gptel")

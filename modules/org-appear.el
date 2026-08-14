@@ -1,12 +1,10 @@
 ;; -*- lexical-binding: t; -*-
 ;; -------------------------------------------------------------------------------------------------
-;; Configuration
+;; Packages
 ;; -------------------------------------------------------------------------------------------------
 
-(setq which-key-separator " "
-      which-key-prefix-prefix "> ")
-
-(which-key-mode 1)
-
-;; Echo the help text at point, which also reveals Org link targets.
-(setopt eldoc-help-at-pt t)
+(use-package org-appear
+  ;; :hook (org-mode . org-appear-mode)
+  :custom
+  ;; Show the target of a link while point is inside it
+  (org-appear-autolinks t))

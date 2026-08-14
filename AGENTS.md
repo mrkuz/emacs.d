@@ -9,6 +9,9 @@
 - **`use-package` is for external packages only.** Configure built-ins with plain
   `setq`/`defun`/hooks.
 - **Prefer `:custom` over `:config` over `:init`.**
+- **`setq` for settings, `setopt` only when the option has a `:set` setter**, which
+  `setq` skips — check with `(get 'var 'custom-set)`. The setter has to be known at
+  that point, so `setopt` still needs the library loaded.
 - **Prefer `:hook` over `add-hook`**, with two caveats: it defers the package, so
   add `:demand t` when it must load at startup; and it only works for variables
   ending in `-hook`, since use-package appends that suffix — abnormal hooks like
