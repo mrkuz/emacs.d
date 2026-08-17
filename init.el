@@ -78,6 +78,17 @@ _j_ Journal
   ("j" my/org-open-journal)
   ("q" nil))
 
+(defhydra my//hydra-toggle (:color blue :hint nil)
+  "
+^Toggle^
+-----------------------
+_v_ Visual line
+_w_ Whitespace
+"
+  ("v" visual-line-mode)
+  ("w" whitespace-mode)
+  ("q" nil))
+
 (defhydra my//hydra-elpaca (:color blue :hint nil)
   "
 ^Packages^
@@ -94,8 +105,9 @@ _t_ Try
 ^Files^       ^Tools^       ^Miscellaneous^
 ----------------------------------------------------
 _o_ Open…     _g_ gptel     _x_ Expand region
-^ ^           _j_ Journal   _P_ Packages
-^ ^           _G_ Git       _R_ Reload configuration
+^ ^           _j_ Journal   _T_ Toggle…
+^ ^           _G_ Git       _P_ Packages
+^ ^           ^ ^           _R_ Reload configuration
 "
   ("g" my//hydra-gptel/body)
   ("G" my//hydra-git/body)
@@ -103,6 +115,7 @@ _o_ Open…     _g_ gptel     _x_ Expand region
   ("o" my//hydra-open/body)
   ("P" my//hydra-elpaca/body)
   ("R" (load-file user-init-file))
+  ("T" my//hydra-toggle/body)
   ("x" expreg-expand nil :color red)
   ("q" nil))
 
