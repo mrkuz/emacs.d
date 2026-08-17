@@ -22,6 +22,8 @@
   (org-journal-file-header "#+TITLE: Weekly Journal (W%V)")
   ;; Don't carry over unfinished TODOs
   (org-journal-carryover-items nil)
+  ;; Use the whole frame; the default splits the window
+  (org-journal-find-file-fn 'find-file)
   :config
   ;; Create up front, otherwise org-journal prompts for it
   (make-directory org-journal-dir t))
@@ -101,12 +103,24 @@
       (org-clock-in)))
   (my//org-journal-ensure-greeting))
 
+(defun my//org-journal-focus-today ()
+  "Fold the journal down to today's entries, with the greeting expanded."
+  (my//org-journal-goto-today)
+  (org-cycle-overview)
+  (org-fold-show-children)
+  (save-excursion
+    ;; The greeting is always the first entry of the day
+    (when (org-goto-first-child)
+      (org-fold-show-subtree))))
+
 (defun my/org-journal-good-bye ()
   "Add a closing entry to today's journal and clock out."
   (interactive)
   ;; Clock out first, so the CLOCK line is written before the snippet is active.
   ;; Quietly: a stale clock must not stop the entry from being written
   (org-clock-out nil t)
+  ;; Lay the day out before writing, so the entry stays revealed on top of it
+  (my//org-journal-focus-today)
   (my//org-journal-add-entry "bye"))
 
 (defun my//org-journal-capture-location ()
