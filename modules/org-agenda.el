@@ -1,5 +1,12 @@
 ;; -*- lexical-binding: t; -*-
 ;; -------------------------------------------------------------------------------------------------
+;; Configuration
+;; -------------------------------------------------------------------------------------------------
+
+;; The `!' cookies log state changes, not CLOSED timestamps
+(setq org-agenda-log-mode-items '(closed clock state))
+
+;; -------------------------------------------------------------------------------------------------
 ;; Functions
 ;; -------------------------------------------------------------------------------------------------
 
@@ -16,6 +23,19 @@
   "Recompute `org-agenda-files', since the journal files shift every week."
   (setq org-agenda-files (my//org-agenda-files)))
 (advice-add 'org-agenda :before #'my//org-agenda-refresh-files)
+(advice-add 'org-agenda-list :before #'my//org-agenda-refresh-files)
+
+(defun my/org-agenda-week ()
+  "Show the agenda for this week."
+  (interactive)
+  (org-agenda-list nil nil 'week))
+
+(defun my/org-agenda-log-today ()
+  "Show what was closed, clocked and changed state today."
+  (interactive)
+  ;; `only' hides scheduled and deadline entries
+  (let ((org-agenda-start-with-log-mode 'only))
+    (org-agenda-list nil nil 'day)))
 
 ;; -------------------------------------------------------------------------------------------------
 ;; Keybindings

@@ -3,13 +3,13 @@
 ;; Configuration
 ;; -------------------------------------------------------------------------------------------------
 
-;; No `substring': `partial-completion' answers first and it would never be reached
+;; `substring' is left out: `partial-completion' always answers first
 (setq completion-styles '(basic partial-completion flex))
 
 ;; Let `partial-completion' match anywhere, not only at word starts
 (setq completion-pcm-leading-wildcard t)
 
-;; Vertico owns the minibuffer; the rest shapes the buffer in-buffer completion uses
+;; Vertico owns the minibuffer; the rest is for in-buffer completion
 
 ;; Show candidates right away and keep them current while typing
 (setq completion-eager-display t
@@ -19,7 +19,7 @@
 (setq completions-max-height 15
       completion-show-help nil)
 
-;; One candidate per line, so stepping through them is linear
+;; One candidate per line, so stepping is linear
 (setq completions-format 'one-column)
 
 ;; -------------------------------------------------------------------------------------------------

@@ -3,5 +3,5 @@
 ;; Configuration
 ;; -------------------------------------------------------------------------------------------------
 
-;; Follow without asking, instead of prompting for every symlinked file
+;; Follow without asking on every symlinked file
 (setq vc-follow-symlinks t)

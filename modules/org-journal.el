@@ -160,13 +160,15 @@
 
 (defhydra my//hydra-journal (:color blue :hint nil)
   "
-^Journal^
------------------------
-_i_ Clock in
-_o_ Clock out
+^Clock^        ^Review^
+-----------------------------
+_i_ Clock in   _a_ Week agenda
+_o_ Clock out  _l_ Log for today
 _O_ Good bye!
 "
   ("i" my/org-journal-clock-in)
   ("o" org-clock-out)
   ("O" my/org-journal-good-bye)
+  ("a" my/org-agenda-week)
+  ("l" my/org-agenda-log-today)
   ("q" nil))

@@ -6,7 +6,7 @@
 ;; Reopen files at the last visited position
 (save-place-mode 1)
 
-;; Keep minibuffer history across restarts, well past the default 100 entries
+;; Keep minibuffer history across restarts; the default keeps only 100
 (setq history-length 1000)
 (savehist-mode 1)
 
