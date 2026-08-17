@@ -19,7 +19,12 @@
   ;; e.g. Thursday, 2026-08-13
   (org-journal-date-format "%A, %Y-%m-%d")
   ;; Passed through `format-time-string'; only added to a new file
-  (org-journal-file-header "#+TITLE: Weekly Journal (W%V)")
+  (org-journal-file-header "#+TITLE: Weekly Journal (W%V)
+* Overview
+
+#+BEGIN: clocktable :scope file :maxlevel 1 :emphasize t
+#+END:
+")
   ;; Don't carry over unfinished TODOs
   (org-journal-carryover-items nil)
   ;; Use the whole frame; the default splits the window
@@ -77,6 +82,11 @@
 
 (add-hook 'org-journal-after-entry-create-hook #'my//org-journal-greet)
 
+(defun my//org-journal-refresh-overview ()
+  "Keep the Overview clocktable current whenever the journal is saved."
+  (add-hook 'before-save-hook #'org-update-all-dblocks nil t))
+(add-hook 'org-journal-mode-hook #'my//org-journal-refresh-overview)
+
 (defun my//org-journal-open-day ()
   "Mark a newly created journal day as OPEN, clock in and greet."
   ;; Without this the state change is logged, which org-journal's CREATED covers
@@ -119,6 +129,8 @@
   ;; Clock out first, so the CLOCK line is written before the snippet is active.
   ;; Quietly: a stale clock must not stop the entry from being written
   (org-clock-out nil t)
+  ;; The clock-out has landed, so the Overview totals are complete
+  (org-update-all-dblocks)
   ;; Lay the day out before writing, so the entry stays revealed on top of it
   (my//org-journal-focus-today)
   (my//org-journal-add-entry "bye"))

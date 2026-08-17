@@ -36,6 +36,9 @@
 ;; Link to headings by ID, which survives renaming and refiling
 (setq org-id-link-to-org-use-id t)
 
+;; Report durations in hours and minutes, instead of rolling over into days
+(setq org-duration-format 'h:mm)
+
 ;; Survive a restart with the clock still running
 (setq org-clock-persist t)
 (org-clock-persistence-insinuate)
