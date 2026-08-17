@@ -11,13 +11,15 @@
 ;; -------------------------------------------------------------------------------------------------
 
 (defun my//org-agenda-files ()
-  "Return todo.org plus this week's and last week's journal."
-  ;; No public accessor for a journal path
-  (seq-filter #'file-exists-p
-              (list (expand-file-name "todo.org" org-directory)
-                    (org-journal--get-entry-path)
-                    (org-journal--get-entry-path
-                     (time-subtract (current-time) (days-to-time 7))))))
+  "Return todo.org plus this week's and last week's journal and archive."
+  (let ((last-week (time-subtract (current-time) (days-to-time 7))))
+    ;; No public accessor for a journal path
+    (seq-filter #'file-exists-p
+                (list (expand-file-name "todo.org" org-directory)
+                      (org-journal--get-entry-path)
+                      (org-journal--get-entry-path last-week)
+                      (my//org-archive-path)
+                      (my//org-archive-path last-week)))))
 
 (defun my//org-agenda-refresh-files (&rest _)
   "Recompute `org-agenda-files', since the journal files shift every week."

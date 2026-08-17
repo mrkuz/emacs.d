@@ -48,6 +48,7 @@
 (my//load-module "org")
 (my//load-module "org-protocol")
 (my//load-module "org-journal")
+(my//load-module "org-archive")
 (my//load-module "org-agenda")
 (my//load-module "org-superstar")
 (my//load-module "org-appear")
