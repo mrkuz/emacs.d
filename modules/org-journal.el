@@ -126,8 +126,7 @@
 (defun my/org-journal-good-bye ()
   "Add a closing entry to today's journal and clock out."
   (interactive)
-  ;; Clock out first, so the CLOCK line is written before the snippet is active.
-  ;; Quietly: a stale clock must not stop the entry from being written
+  ;; First, so the CLOCK line precedes the snippet; quietly, so a stale clock cannot block it
   (org-clock-out nil t)
   ;; The clock-out has landed, so the Overview totals are complete
   (org-update-all-dblocks)
@@ -151,8 +150,7 @@
         (pop-to-buffer buffer '((display-buffer-reuse-window
                                  display-buffer-same-window)
                                 (reusable-frames . t)))
-      ;; Opens and creates if missing; `org-journal-open-current-journal-file'
-      ;; only messages when the file is absent
+      ;; Creates it if missing; `org-journal-open-current-journal-file' only messages
       (org-journal-new-entry t)
       (my//org-journal-ensure-greeting))))
 

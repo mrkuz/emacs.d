@@ -7,6 +7,5 @@
   :custom
   (yas-snippet-dirs (list (no-littering-expand-etc-file-name "snippets")))
   :config
-  ;; TAB is a conditional binding: it only expands when a snippet matches,
-  ;; otherwise it falls through to `org-cycle' and friends
+  ;; TAB is conditional: it only expands on a match, otherwise it falls through
   (yas-global-mode 1))

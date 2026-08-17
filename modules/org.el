@@ -20,6 +20,9 @@
 ;; Add tags immediately after the headline
 (setq org-tags-column 0)
 
+;; The default copies the spacing of surrounding entries
+(setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
+
 ;; Customize ellipsis
 (setq org-ellipsis " …")
 (custom-set-faces '(org-ellipsis ((nil :underline nil))))

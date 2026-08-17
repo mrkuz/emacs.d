@@ -3,16 +3,13 @@
 ;; Configuration
 ;; -------------------------------------------------------------------------------------------------
 
-;; No `substring': `partial-completion' answers first for every input it
-;; handles, so it would never be reached
+;; No `substring': `partial-completion' answers first and it would never be reached
 (setq completion-styles '(basic partial-completion flex))
 
-;; Let `partial-completion' fragments match anywhere in a candidate, not only
-;; at the start of a word
+;; Let `partial-completion' match anywhere, not only at word starts
 (setq completion-pcm-leading-wildcard t)
 
-;; Vertico owns the minibuffer, so the settings below shape the *Completions*
-;; buffer that in-buffer completion still uses
+;; Vertico owns the minibuffer; the rest shapes the buffer in-buffer completion uses
 
 ;; Show candidates right away and keep them current while typing
 (setq completion-eager-display t
@@ -29,8 +26,7 @@
 ;; Keybindings
 ;; -------------------------------------------------------------------------------------------------
 
-;; Only active while a *Completions* window is showing, so point movement is
-;; unaffected the rest of the time
+;; Only active while a *Completions* window is showing
 (keymap-set completion-in-region-mode-map "C-n"
             (minibuffer-visible-completions--bind #'minibuffer-next-completion))
 (keymap-set completion-in-region-mode-map "C-p"
