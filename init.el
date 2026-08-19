@@ -29,6 +29,7 @@
 ;; Editing
 (my//load-module "backups")
 (my//load-module "expreg")
+(my//load-module "avy")
 (my//load-module "ediff")
 (my//load-module "undo")
 (my//load-module "vundo")
@@ -113,13 +114,13 @@ _t_ Try
   "
 ^Files^       ^Tools^       ^Miscellaneous^
 ----------------------------------------------------
-_o_ Open…     _g_ gptel     _x_ Expand region
+_o_ Open…     _g_ Git       _x_ Expand region
 ^ ^           _j_ Journal   _T_ Toggle…
-^ ^           _G_ Git       _P_ Packages
+^ ^           _G_ gptel     _P_ Packages
 ^ ^           ^ ^           _R_ Reload configuration
 "
-  ("g" my//hydra-gptel/body)
-  ("G" my//hydra-git/body)
+  ("g" my//hydra-git/body)
+  ("G" my//hydra-gptel/body)
   ("j" my//hydra-journal/body)
   ("o" my//hydra-open/body)
   ("P" my//hydra-elpaca/body)
