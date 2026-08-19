@@ -40,6 +40,7 @@
 (my//load-module "minibuffer")
 (my//load-module "vertico")
 (my//load-module "marginalia")
+(my//load-module "consult")
 
 ;; Help
 (my//load-module "help")
