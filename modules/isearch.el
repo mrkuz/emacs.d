@@ -1,9 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 ;; -------------------------------------------------------------------------------------------------
-;; Packages
+;; Configuration
 ;; -------------------------------------------------------------------------------------------------
 
-(use-package hydra
-  :config
-  ;; Warning for unbound keys
-  (setq hydra-amaranth-warn-message "Key not bound"))
+;; Show the match count in the prompt
+(setq isearch-lazy-count t)

@@ -158,7 +158,7 @@
 ;; Keybindings
 ;; -------------------------------------------------------------------------------------------------
 
-(defhydra my//hydra-journal (:color blue :hint nil)
+(defhydra my//hydra-journal (:color blue :foreign-keys warn :hint nil)
   "
 ^Clock^        ^Review^
 -----------------------------

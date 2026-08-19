@@ -154,7 +154,7 @@ Output:
 ;; Keybindings
 ;; -------------------------------------------------------------------------------------------------
 
-(defhydra my//hydra-gptel (:color blue :hint nil)
+(defhydra my//hydra-gptel (:color blue :foreign-keys warn :hint nil)
   "
  ^Chat^                ^Edit^
  ----------------------------------

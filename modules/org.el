@@ -66,6 +66,12 @@
                            (set-marker marker nil))))))
 (add-hook 'org-after-todo-state-change-hook #'my//org-prompt-for-date)
 
+(defun my//org-fold-done ()
+  "Fold the entry once it is done, since there is nothing left to read."
+  (when (member org-state org-done-keywords)
+    (org-fold-hide-subtree)))
+(add-hook 'org-after-todo-state-change-hook #'my//org-fold-done)
+
 (defun my/org-set-added ()
   "Stamp the heading at point with an ADDED property."
   (interactive)

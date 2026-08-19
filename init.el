@@ -35,6 +35,7 @@
 (my//load-module "indentation")
 (my//load-module "deletion")
 (my//load-module "completion")
+(my//load-module "minibuffer")
 (my//load-module "vertico")
 (my//load-module "marginalia")
 
@@ -58,6 +59,8 @@
 
 ;; Miscellaneous
 (my//load-module "bookmark")
+(my//load-module "calendar")
+(my//load-module "isearch")
 (my//load-module "dired")
 (my//load-module "ibuffer")
 (my//load-module "scratch")
@@ -67,7 +70,7 @@
 ;; Keybindings
 ;; -------------------------------------------------------------------------------------------------
 
-(defhydra my//hydra-open (:color blue :hint nil)
+(defhydra my//hydra-open (:color blue :foreign-keys warn :hint nil)
   "
 ^Open^
 -----------------------
@@ -80,7 +83,7 @@ _j_ Journal
   ("j" my/org-open-journal)
   ("q" nil))
 
-(defhydra my//hydra-toggle (:color blue :hint nil)
+(defhydra my//hydra-toggle (:color blue :foreign-keys warn :hint nil)
   "
 ^Toggle^
 -----------------------
@@ -91,7 +94,7 @@ _w_ Whitespace
   ("w" whitespace-mode)
   ("q" nil))
 
-(defhydra my//hydra-elpaca (:color blue :hint nil)
+(defhydra my//hydra-elpaca (:color blue :foreign-keys warn :hint nil)
   "
 ^Packages^
 -----------------------
@@ -102,7 +105,7 @@ _t_ Try
   ("u" my/elpaca-update)
   ("q" nil))
 
-(defhydra my//hydra (:color blue :hint nil)
+(defhydra my//hydra (:color blue :foreign-keys warn :hint nil)
   "
 ^Files^       ^Tools^       ^Miscellaneous^
 ----------------------------------------------------

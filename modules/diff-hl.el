@@ -29,7 +29,7 @@
 ;; Keybindings
 ;; -------------------------------------------------------------------------------------------------
 
-(defhydra my//hydra-git (:color blue :hint nil)
+(defhydra my//hydra-git (:color blue :foreign-keys warn :hint nil)
   "
 ^Hunk^        ^Move^
 ----------------------------
