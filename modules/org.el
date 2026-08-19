@@ -20,6 +20,9 @@
 ;; Add tags immediately after the headline
 (setq org-tags-column 0)
 
+;; Stop after the TODO keyword and before the tags
+(setq org-special-ctrl-a/e t)
+
 ;; The default copies the spacing of surrounding entries
 (setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
 

@@ -10,3 +10,7 @@
 
 ;; Hide commands that do not apply to the current mode from `M-x'
 (setq read-extended-command-predicate #'command-completion-default-include-p)
+
+;; Allow a prompt on top of a prompt, with the depth shown so it stays clear
+(setq enable-recursive-minibuffers t)
+(minibuffer-depth-indicate-mode 1)

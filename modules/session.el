@@ -10,5 +10,6 @@
 (setq history-length 1000)
 (savehist-mode 1)
 
-;; Track recently visited files
+;; Track recently visited files, but not the read-only store
+(add-to-list 'recentf-exclude "/nix/store/")
 (recentf-mode 1)

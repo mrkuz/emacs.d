@@ -20,6 +20,7 @@
 
 ;; Core
 (my//load-module "session")
+(my//load-module "autorevert")
 (my//load-module "exec-path-from-shell")
 (my//load-module "system")
 (my//load-module "age")
@@ -34,6 +35,7 @@
 (my//load-module "yasnippet")
 (my//load-module "indentation")
 (my//load-module "deletion")
+(my//load-module "electric")
 (my//load-module "completion")
 (my//load-module "minibuffer")
 (my//load-module "vertico")
@@ -73,14 +75,15 @@
 (defhydra my//hydra-open (:color blue :foreign-keys warn :hint nil)
   "
 ^Open^
------------------------
-_c_ Emacs configuration
+-------------------------------------
+_c_ Emacs configuration  _r_ Recent file
 _t_ todo.org
 _j_ Journal
 "
   ("c" (find-file user-init-file))
   ("t" my/org-open-todo)
   ("j" my/org-open-journal)
+  ("r" recentf-open)
   ("q" nil))
 
 (defhydra my//hydra-toggle (:color blue :foreign-keys warn :hint nil)

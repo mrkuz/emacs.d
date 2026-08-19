@@ -21,6 +21,9 @@
 ;; Keep long-line files from locking up the display
 (global-so-long-mode 1)
 
+;; Repeating the same kill adds nothing to the ring
+(setq kill-do-not-save-duplicates t)
+
 ;; -------------------------------------------------------------------------------------------------
 ;; Keybindings
 ;; -------------------------------------------------------------------------------------------------
