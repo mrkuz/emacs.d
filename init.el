@@ -56,6 +56,7 @@
 (my//load-module "org-journal")
 (my//load-module "org-archive")
 (my//load-module "org-refile")
+(my//load-module "denote")
 (my//load-module "org-agenda")
 (my//load-module "org-superstar")
 (my//load-module "org-appear")
@@ -116,14 +117,15 @@ _t_ Try
   "
 ^Files^       ^Tools^       ^Miscellaneous^
 ----------------------------------------------------
-_o_ Open…     _g_ Git       _x_ Expand region
-^ ^           _j_ Journal   _T_ Toggle…
-^ ^           _G_ gptel     _P_ Packages
-^ ^           ^ ^           _R_ Reload configuration
+_o_ Open…     _g_ Git…      _x_ Expand region
+^ ^           _j_ Journal…  _T_ Toggle…
+^ ^           _n_ Notes…    _P_ Packages…
+^ ^           _G_ gptel…    _R_ Reload configuration
 "
   ("g" my//hydra-git/body)
   ("G" my//hydra-gptel/body)
   ("j" my//hydra-journal/body)
+  ("n" my//hydra-denote/body)
   ("o" my//hydra-open/body)
   ("P" my//hydra-elpaca/body)
   ("R" (load-file user-init-file))
