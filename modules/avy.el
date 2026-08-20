@@ -5,6 +5,6 @@
 
 (use-package avy
   :custom
-  ;; Put the jump character before the target, instead of covering it
+  ;; Puts the jump character before the target
   (avy-style 'pre)
   :bind ("C-c g" . avy-goto-char-timer))

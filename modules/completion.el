@@ -6,8 +6,11 @@
 ;; `substring' is left out: `partial-completion' always answers first
 (setq completion-styles '(basic partial-completion flex))
 
-;; Let `partial-completion' match anywhere, not only at word starts
+;; Lets `partial-completion' match anywhere in a candidate
 (setq completion-pcm-leading-wildcard t)
+
+(setq completion-ignore-case t
+      read-buffer-completion-ignore-case t)
 
 ;; Vertico owns the minibuffer; the rest is for in-buffer completion
 

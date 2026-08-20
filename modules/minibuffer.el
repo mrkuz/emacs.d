@@ -3,7 +3,7 @@
 ;; Configuration
 ;; -------------------------------------------------------------------------------------------------
 
-;; Keep point out of the prompt, which plain character motion walks into
+;; Keeps point out of the prompt
 (setopt minibuffer-prompt-properties
         '(read-only t cursor-intangible t face minibuffer-prompt))
 (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)

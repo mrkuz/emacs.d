@@ -7,6 +7,7 @@
 
 ;; Dependencies
 (my//load-module "compat")
+(my//load-module "transient")
 (my//load-module "hydra")
 (my//load-module "no-littering")
 (elpaca-wait)
@@ -54,6 +55,7 @@
 (my//load-module "org-protocol")
 (my//load-module "org-journal")
 (my//load-module "org-archive")
+(my//load-module "org-refile")
 (my//load-module "org-agenda")
 (my//load-module "org-superstar")
 (my//load-module "org-appear")

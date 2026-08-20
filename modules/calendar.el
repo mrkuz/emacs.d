@@ -7,5 +7,5 @@
 (setq calendar-week-start-day 1
       calendar-date-style 'iso)
 
-;; The default list is US civic holidays
+;; Skips the US civic holidays
 (setq calendar-holidays (append holiday-general-holidays holiday-christian-holidays))

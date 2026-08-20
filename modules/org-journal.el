@@ -12,7 +12,6 @@
   :hook (org-journal-after-header-create . my//org-journal-open-day)
   :custom
   (org-journal-dir (expand-file-name "journal" org-directory))
-  ;; One file per week
   (org-journal-file-type 'weekly)
   ;; ISO week-year (%G), e.g. 2026-W33.org
   (org-journal-file-format "%G-W%V.org")
@@ -27,7 +26,7 @@
 ")
   ;; Don't carry over unfinished TODOs
   (org-journal-carryover-items nil)
-  ;; Use the whole frame; the default splits the window
+  ;; Opens the journal in the whole frame
   (org-journal-find-file-fn 'find-file)
   :config
   ;; Create up front, otherwise org-journal prompts for it

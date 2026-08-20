@@ -1,11 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 ;; -------------------------------------------------------------------------------------------------
-;; Configuration
+;; Packages
 ;; -------------------------------------------------------------------------------------------------
 
-;; Show date and ISO week
-(setq display-time-format "%Y-%m-%d W%V "
-      display-time-default-load-average nil)
-;; (display-time-mode 1)
-
-(column-number-mode 1)
+;; Emacs ships transient, but a stale elpaca build shadows it on `load-path'
+(use-package transient)

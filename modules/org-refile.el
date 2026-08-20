@@ -3,9 +3,9 @@
 ;; Configuration
 ;; -------------------------------------------------------------------------------------------------
 
-;; Show date and ISO week
-(setq display-time-format "%Y-%m-%d W%V "
-      display-time-default-load-average nil)
-;; (display-time-mode 1)
+;; Allows refiling to headings at all levels
+(setq org-refile-targets '((nil :maxlevel . 99)))
 
-(column-number-mode 1)
+;; Offers the full path as a single candidate
+(setq org-refile-use-outline-path t
+      org-outline-path-complete-in-steps nil)

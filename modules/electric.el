@@ -3,5 +3,4 @@
 ;; Configuration
 ;; -------------------------------------------------------------------------------------------------
 
-;; Close parens, quotes and brackets automatically
 (electric-pair-mode 1)

@@ -4,9 +4,9 @@
 
 - **Naming:** `my//` for internal variables and functions, `my/` for commands.
 - **One-line docstring** on every function, internal helpers included.
-- **Comment settings with *why*,** unless self-evident. One line: they are read by
-  an experienced Emacs user, so don't explain standard Emacs behavior, and leave out
-  examples the explanation already covers.
+- **Comment settings with what they enable,** unless self-evident — not what the
+  setting is, and not what the default was. One line, read by an experienced Emacs
+  user, so skip standard behavior and redundant examples.
 - **`use-package` is for external packages only.** Configure built-ins with plain
   `setq`/`defun`/hooks.
 - **Prefer `:custom` over `:config` over `:init`.**

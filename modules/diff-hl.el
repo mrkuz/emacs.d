@@ -5,11 +5,11 @@
 
 (use-package diff-hl
   :custom
-  ;; Capped by the fringe width, the default is 16 pixels
+  ;; Capped by the fringe width
   (diff-hl-bmp-max-width 4)
   ;; Show staged changes separately, as "reference" indicators
   (diff-hl-show-staged-changes nil)
-  ;; The default is an empty bitmap, which only shows via a background
+  ;; Draws a solid bar, rather than relying on a background colour
   (diff-hl-fringe-flat-bmp 'diff-hl-bmp-middle)
   :config
   (global-diff-hl-mode 1)
