@@ -86,6 +86,21 @@
   (add-hook 'before-save-hook #'org-update-all-dblocks nil t))
 (add-hook 'org-journal-mode-hook #'my//org-journal-refresh-overview)
 
+(defun my//org-journal-overview-first ()
+  "Move the Overview above the days, since a new file gets its first entry at the top."
+  (save-excursion
+    (goto-char (point-min))
+    (when (and (re-search-forward "^\\*+ " nil t)
+               (progn (forward-line 0) (not (looking-at-p "^\\* Overview$"))))
+      (let ((top (point)))
+        (when (re-search-forward "^\\* Overview$" nil t)
+          (forward-line 0)
+          (let ((subtree (delete-and-extract-region
+                          (point) (progn (org-end-of-subtree t t) (point)))))
+            (goto-char top)
+            (insert subtree)))))))
+(add-hook 'org-journal-after-header-create-hook #'my//org-journal-overview-first)
+
 (defun my//org-journal-open-day ()
   "Mark a newly created journal day as OPEN, clock in and greet."
   ;; Without this the state change is logged, which org-journal's CREATED covers

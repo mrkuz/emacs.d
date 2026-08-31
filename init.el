@@ -81,14 +81,15 @@
   "
 ^Open^
 -------------------------------------
-_c_ Emacs configuration  _r_ Recent file
-_t_ todo.org
-_j_ Journal
+_t_ todo.org   _r_ Recent file
+_j_ Journal    _c_ Emacs configuration
+_n_ Note
 "
-  ("c" (find-file user-init-file))
   ("t" my/org-open-todo)
   ("j" my/org-open-journal)
+  ("n" denote-open-or-create)
   ("r" recentf-open)
+  ("c" (find-file user-init-file))
   ("q" nil))
 
 (defhydra my//hydra-toggle (:color blue :foreign-keys warn :hint nil)

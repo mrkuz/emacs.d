@@ -7,6 +7,8 @@
   :custom
   ;; Keeps notes beside the journal and archive
   (denote-directory (expand-file-name "notes" org-directory))
+  ;; Suggests only keywords already used, instead of the stock examples
+  (denote-known-keywords nil)
   :config
   ;; Shows the note title in the buffer name, instead of the identifier
   (denote-rename-buffer-mode 1))
@@ -28,11 +30,9 @@
   "
 ^Notes^        ^Links^
 ----------------------------
-_o_ Open       _l_ Link
-_s_ Search     _b_ Backlinks
-_r_ Rename
+_s_ Search     _l_ Link
+_r_ Rename     _b_ Backlinks
 "
-  ("o" denote-open-or-create)
   ("s" my/denote-search)
   ("r" denote-rename-file)
   ("l" denote-link)
